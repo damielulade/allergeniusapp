@@ -1,14 +1,19 @@
-allergenius:
- script:
- - apt-get update -qy
- - apt-get install -y python-dev python-pip
- - pip install -r requirements.txt
- - export MONGOHQ_URL=$MONGO_URL
+stages:
+  - build
+  - deploy
+
+build-job:
+  stage: build
+  script:
+  - apt-get update -qy
+  - apt-get install -y python-dev python-pip
+  - pip install -r requirements.txt
+  - export MONGOHQ_URL=$MONGO_URL
  
 production:
- type: deploy
- script:
- - apt-get update -qy
- - dpl --provider=heroku --app=allergenius --api-key=$HEROKU_API_KEY
- only:
- - master
+  stage: deploy
+  script:
+  - apt-get update -qy
+  - dpl --provider=heroku --app=allergenius --api-key=$HEROKU_API_KEY
+  only:
+  - master

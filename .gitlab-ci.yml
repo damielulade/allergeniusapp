@@ -5,7 +5,6 @@ test_app:
   image: python:latest
   stage: test
   before_script:
-    - python3 -V
     - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate

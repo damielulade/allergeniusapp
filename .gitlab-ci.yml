@@ -14,3 +14,4 @@ test_app:
   script:
     - sudo pip install Flask
     - python test.py
+    

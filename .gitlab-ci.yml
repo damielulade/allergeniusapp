@@ -21,4 +21,4 @@ deploy_job:
   stage: deploy
   script:
     - echo "Deploys on heroku..."
-    - dpl --provider=heroku --app=<login>-simplewebapp --api-key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=allergenius --api-key=$HEROKU_API_KEY

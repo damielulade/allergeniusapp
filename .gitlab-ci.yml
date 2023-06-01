@@ -3,6 +3,7 @@ stages:
   - test
 
 build_job:
+  image: python:latest 
   stage: build
   script:
     - echo "Builds up the virtual environment..."

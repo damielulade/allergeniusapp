@@ -15,7 +15,7 @@ test_job:
   stage: test
   script:
     - echo "Tests the test files..."
-    - python3 test.py:w
+    - python3 test.py
 
 deploy_job:
   image: ruby:latest

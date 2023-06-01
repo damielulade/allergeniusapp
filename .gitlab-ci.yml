@@ -15,19 +15,9 @@ test_job:
   stage: test
   script:
     - echo "Tests the test files..."
-    - python3 test.py
+    - python3 test.py:w
 
-deploy_vm_job:
-  stage: deploy
-  variables:
-    PORT: 5000
-  before_script:
-    - fuser -n tcp -k $PORT || true
-  script:
-    - echo "Deploys on vm..."
-    #- python3 -m flask run
-
-deploy_heroku_job:
+deploy_job:
   image: ruby:latest
   stage: deploy
   script:

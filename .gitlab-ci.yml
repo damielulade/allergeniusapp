@@ -32,4 +32,5 @@ deploy_heroku_job:
   stage: deploy
   script:
     - echo "Deploys on heroku..."
+    - gem install dpl
     - dpl --provider=heroku --app=allergenius --api-key=$HEROKU_API_KEY

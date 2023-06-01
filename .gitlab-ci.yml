@@ -6,7 +6,7 @@ build_job:
   stage: build
   script:
     - echo "Builds up the virtual environment:"
-    - python3 -V
+    - python3 --version
     - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate

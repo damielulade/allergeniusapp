@@ -18,6 +18,7 @@ test_job:
     - python3 test.py
 
 deploy_job:
+  image: ruby:latest
   stage: deploy
   script:
     - echo "Deploys on heroku..."

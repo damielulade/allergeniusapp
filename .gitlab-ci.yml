@@ -5,8 +5,7 @@ test_app:
   image: python:latest
   stage: test
   before_script:
-    - sudo apt-get update -qy
-    - sudo apt-get install -y python-dev python-pip
+    - python3 -V
     - sudo pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate

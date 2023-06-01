@@ -25,7 +25,7 @@ deploy_vm_job:
     - fuser -n tcp -k $PORT || true
   script:
     - echo "Deploys on vm..."
-    - python3 -m flask run
+    #- python3 -m flask run
 
 deploy_heroku_job:
   image: ruby:latest

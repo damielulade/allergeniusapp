@@ -5,7 +5,8 @@ stages:
 build_job:
   stage: build
   script:
-    - echo "Builds up the virtual environment:"
+    - echo "Builds up the virtual environment..."
+    - python3 -V
     - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate
@@ -14,5 +15,5 @@ build_job:
 test_job:
   stage: test
   script:
-    - echo "Tests the test files"
+    - echo "Tests the test files..."
     - python3 test.py

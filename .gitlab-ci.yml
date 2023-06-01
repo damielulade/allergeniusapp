@@ -1,15 +1,19 @@
 stages:
+  - build
   - test
 
-test_app:
-  image: python:latest
-  stage: test
-  before_script:
+build_job:
+  stage: build
+  script:
+    - echo "Builds up the virtual environment:"
     - python3 -V
-    - sudo pip install virtualenv
+    - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate
-    - sudo pip install -r requirements.txt
+    - pip install -r requirements.txt
+
+test_job:
+  stage: test
   script:
-    - sudo pip install Flask
-    - python test.py
+    - echo "Tests the test files"
+    - python3 test.py

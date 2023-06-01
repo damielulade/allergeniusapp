@@ -1,9 +1,14 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/hello')
 def hello_world():  # put application's code here
     return 'Hello World!'
 
@@ -20,4 +25,4 @@ def sum_two(a, b):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

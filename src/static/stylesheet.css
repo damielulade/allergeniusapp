@@ -114,6 +114,9 @@ body {
 #search-button {
   width: 20%;
   margin: 0 auto;
+  font-size:larger;
+  text-align: center;
+  padding: 0;
 }
 
 #userimg {
@@ -170,6 +173,7 @@ body {
   width: 100%;
   display: inline-flex;
   z-index:-1;
+  position:relative;
 }
 
 #friends-button, #account-button {

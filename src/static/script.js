@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function() {
       var main = document.querySelector('.main');
       main.style.width = '100%';
 
+      var accountname = document.querySelector('#accountname');
+      accountname.style.color = 'rgb(0, 0, 0)';
+
       var topbar = document.querySelector('.top-bar');
       topbar.style.width = '100%';
       topbar.style.marginRight = '0%';
@@ -64,10 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
       map_image.src = "static/staticmap2.png";
 
       var searchresults_image = document.getElementById('searchresults');
-      searchresults_image.src = "static/searchresults2.png";
-
-      // var user_image = document.querySelector('#userimg1');
-      // user_image.style.width = '1%';
+      searchresults_image.src = "static/searchresults2.png";  
     } else if (window.matchMedia("(orientation: landscape)").matches) {            
 
     }

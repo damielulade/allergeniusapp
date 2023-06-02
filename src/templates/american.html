@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='/stylesheet.css') }}">
     <script src="{{ url_for('static', filename='/script.js') }}"></script>
   </head>
 	<body>
-    <div class = "sidebar-left">
+		<div class = "sidebar-left">
       <img src="static/user.png" id="userimg">
       <p id="accountname">John Doe</p>
       <div id="allergenlist">
@@ -29,21 +29,10 @@
         <button onclick = "window.location.href = '/';" id = "back1-button">〈</button>  
 			</div>	
 			<div class="container">
-				<img src="static/staticmap1.png" id="mapimg">
-        <div class="map-block">
-          <div id="search-box">
-            <input type="text" placeholder="Search..." id = "search-input">
-            <button onclick = "exampleQuery()" id = "search-button">⌕</button>  
-          </div>
-					<button onclick = "window.location.href = 'filter';" id = "filter-button"> Filter </button>
-        </div>
+				<div></div>
 			</div>	
-      <div class = "button-bar">
-        <button onclick = "window.location.href = 'friends';" id = "friends-button"><img src="static/friends.png" id="friendsimg"></button>  
-        <button onclick = "window.location.href = 'account';" id = "account-button"><img src="static/account.png" id="accountimg"></button>  
-      </div>  
 		</div>
-    <div class = "sidebar-right">
+		<div class = "sidebar-right">
       <p></p>
     </div>
 	</body>

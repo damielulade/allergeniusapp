@@ -83,3 +83,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 }
 );
+
+function exampleQuery() {
+  var query = document.getElementById("search-input").value;
+  if (query == "american"){
+    window.location.href = 'american';
+  } else {
+    window.location.href = 'search';
+  }
+}

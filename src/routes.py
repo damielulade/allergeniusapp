@@ -23,6 +23,10 @@ def account():
 def friends():
     return render_template('friends.html', title = 'Allergenius - Friends')
 
+@app.route('/american')
+def american():
+    return render_template('american.html', title = 'Allergenius - American')
+
 
 # @app.route('/')
 # def home():

@@ -16,6 +16,7 @@ test_job:
   script:
     - echo "Tests the test files..."
     - python3 -m tests.test
+    - python3 -m tests.firebase_test
 
 deploy_vm_job:
   stage: deploy

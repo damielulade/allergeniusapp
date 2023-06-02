@@ -82,6 +82,8 @@ body {
 
 #mapimg, #searchresults {
   width: 100%;
+  position: relative;
+  z-index:1;
 }
 
 /* Bottom right text */
@@ -172,7 +174,7 @@ body {
   margin-top: 2.5%;
   width: 100%;
   display: inline-flex;
-  z-index:-1;
+  z-index:10;
   position:relative;
 }
 

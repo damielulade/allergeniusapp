@@ -1,5 +1,5 @@
 import unittest
-from app import sum_two
+from src.routes import sum_two
 
 
 class Test(unittest.TestCase):

@@ -1,12 +1,5 @@
 import unittest
-
-try:
-    from src.routes import sum_two
-except ModuleNotFoundError:
-    import sys
-    from os.path import abspath, dirname
-    sys.path.append(abspath(dirname(__file__)) + '/../src')
-    from routes import sum_two
+from src.routes import sum_two
 
 
 class Test(unittest.TestCase):

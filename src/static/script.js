@@ -39,6 +39,7 @@ window.addEventListener("orientationchange", function () {
 
 document.addEventListener("DOMContentLoaded", function() {
   if (/Mobi/.test(navigator.userAgent)) {
+    document.body.style.backgroundColor = 'rgb(255, 255, 255)';
     if(window.matchMedia("(orientation: portrait)").matches) {      
       var sidebar_right = document.querySelector('.sidebar-right');
       sidebar_right.style.display = 'none';
@@ -67,9 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // var user_image = document.querySelector('#userimg1');
       // user_image.style.width = '1%';
-
-      document.body.style.backgroundColor = 'rgb(255, 255, 255)';
-
     } else if (window.matchMedia("(orientation: landscape)").matches) {            
 
     }

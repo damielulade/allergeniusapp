@@ -25,7 +25,8 @@ def friends():
 
 @app.route('/american')
 def american():
-    return render_template('american.html', title = 'Allergenius - American')
+    query = db.child("restaurant").child("american").get()
+    return render_template('american.html', title = 'Allergenius - American', data=query)
 
 
 # @app.route('/')

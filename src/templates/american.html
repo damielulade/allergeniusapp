@@ -29,7 +29,9 @@
         <button onclick = "window.location.href = '/';" id = "back1-button">〈</button>  
 			</div>	
 			<div class="container">
-				<div></div>
+				{% for r in data.each() %}
+                    <p>{{ r.val() }}</p>
+                {% endfor %}
 			</div>	
 		</div>
 		<div class = "sidebar-right">

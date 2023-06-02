@@ -1,10 +1,12 @@
 from flask import render_template, request
-from src import app, APP_ROOT
+from src import app
+from src.firebase import db
 
 
 @app.route('/')
 def home():
-    return render_template('index.html', title='Home')
+    query = db.child("user").get()
+    return render_template('index.html', title='Home', data=query)
 
 
 @app.route('/about')

@@ -42,9 +42,9 @@ def example():
     get_values(db.child("user"))
 
     # delete_values(db.child("user"))
-    db.child("user").remove()
+    # db.child("user").remove()
 
-example()
+# example()
 
 # data = {"Age": 21, "Name": "Brett", "Likes Pizza": True}
 #

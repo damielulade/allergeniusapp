@@ -8,6 +8,10 @@
   </head>
   <body>
     <h1>Hello, welcome to the page!</h1>
+
+    {% for r in data.each() %}
+        <h3>{{ r.val() }}</h3>
+    {% endfor %}
 {#    ANY SCRIPTS     #}
   </body>
 </html>

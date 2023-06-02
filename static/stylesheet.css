@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  margin: 0%;
+}
+
+.main {
+  width: 100%;
+}
+
+.top-bar {
+  color: white;
+  font-weight: lighter;
+  height: 10%;
+  background-color: rgb(134, 219, 134);
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#title {
+  text-align: center;
+  width: 100%;
+}
+
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: solid black 1px;
+}
+
+#mapimg {
+  width: 100%;
+}
+
+#hello {
+  width: 100%;
+}
+
+/* Bottom right text */
+.map-block {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgb(0,0,0,0);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#search-button, #filter-button {
+  width: 25%;
+  margin: 2.5%;
+}

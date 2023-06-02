@@ -15,7 +15,7 @@ test_job:
   stage: test
   script:
     - echo "Tests the test files..."
-    - python3 test.py
+    - python3 tests/test.py
 
 deploy_vm_job:
   stage: deploy

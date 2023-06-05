@@ -18,17 +18,17 @@ test_job:
     - python3 -m tests.test
     - python3 -m tests.firebase_test
 
-deploy_vm_job:
-  stage: deploy
-  variables:
-    PORT: 5000
-  before_script:
-    - fuser -n tcp -k $PORT || true
-  script:
-    - echo "Deploys on vm..."
+#deploy_vm_job:
+#  stage: deploy
+#  variables:
+#    PORT: 5000
+#  before_script:
+#    - fuser -n tcp -k $PORT || true
+#  script:
+#    - echo "Deploys on vm..."
 
 deploy_heroku_job:
-  image: ruby:latest
+  #image: ruby:latest
   stage: deploy
   script:
     - echo "Deploys on heroku..."

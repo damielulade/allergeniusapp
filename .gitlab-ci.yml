@@ -20,3 +20,5 @@ deploy_job:
   script: 
     - echo "Deploying..."
     - dpl --provider=heroku --app=allergenius --api-key=$HEROKU_API_KEY
+  only:
+    - master

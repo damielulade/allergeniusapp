@@ -1,0 +1,22 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  image: python:latest
+  stage: build
+  script:
+    - echo "Building..."
+    - pip3 install -r requirements.txt
+
+test_job:
+  stage: test
+  script: 
+    - echo "Testing..."
+
+deploy_job:
+  stage: deploy
+  script: 
+    - echo "Deploying..."
+    - depl --provider=heroku --app=allergenius --api-key=$HEROKU_API_KEY

@@ -19,4 +19,4 @@ deploy_job:
   stage: deploy
   script: 
     - echo "Deploying..."
-    - depl --provider=heroku --app=allergenius --api-key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=allergenius --api-key=$HEROKU_API_KEY

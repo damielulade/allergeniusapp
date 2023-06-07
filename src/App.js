@@ -1,15 +1,23 @@
 import React from 'react';
-// import './App.css';
-import Main from './components/Main';
-import SidebarLeft from './components/SidebarLeft';
-import SidebarRight from './components/SidebarRight';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import AccountPage from './pages/AccountPage';
+import FilterPage from './pages/FilterPage';
+import FriendsPage from './pages/FriendsPage';
+import SearchPage from './pages/SearchPage';
+import HomePage from './pages/HomePage';
 
 export default function App() {
   return (
-    <div className='section'>
-      <SidebarLeft />
-      <Main />
-      <SidebarRight />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/filter" element={<FilterPage />} />
+        <Route path="/friends" element={<FriendsPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
+    
   )
 }

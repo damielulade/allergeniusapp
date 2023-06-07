@@ -1,17 +1,14 @@
 import React from "react";
 import userimg from "../static/images/user.png"
+import MainHeader from "../components/MainHeader";
 
-export default function Account() {
+export default function AccountPage() {
   return (
     <div className = "section">
       <div class = "sidebar-left">
       </div>
       <div class = "main">
-        <div class = "top-bar">
-          <button onclick = "window.location.href = '/';" id = "back-button">〈</button>  
-          <h1 id="top-title">Allergenius</h1>
-          <button onclick = "window.location.href = '/';" id = "back1-button">〈</button>  
-        </div>	
+        <MainHeader />	
         <div class="container">
           <img src={userimg} id="userimg" />
           <p id="accountname">John Doe</p>

@@ -1,29 +1,13 @@
 import React from "react";
-import userimg from "../static/images/user.png"
+import SidebarLeft from "../components/SidebarLeft";
+import MainHeader from "../components/MainHeader";
 
-export default function SidebarRight() {
+export default function FilterPage() {
   return (
     <div className = "section">  
-      <div class = "sidebar-left">
-        <img src={userimg} id="userimg" />
-        <p id="accountname">John Doe</p>
-        <div id="allergenlist">
-          <p>My Allergens List (1)</p>
-        </div>
-        <div id="favoriteslist">
-          <p>My Favourite Restaurants (3)</p>
-        </div>
-        <div id="privacysettings">
-          <p>Privacy Settings</p>
-        </div>
-        <p id="signout">Sign Out</p>
-      </div>
+      <SidebarLeft />
       <div class = "main">
-        <div class = "top-bar">
-          <button onclick = "window.location.href = '/';" id = "back-button">〈</button>  
-          <h1 id="top-title">Allergenius</h1>
-          <button onclick = "window.location.href = '/';" id = "back1-button">〈</button>  
-        </div>	
+        <MainHeader />	
         <div class="container">
           <form id="allergenchecks">
             <input type="checkbox" id="allergen1" name="allergen1" value="Gluten" />

@@ -1,6 +1,6 @@
 import React from "react";
-import MainHeader from "../components/MainHeader";
-import SidebarRight from "../components/EmptySidebar";
+import MainHeaderVariant from "../components/MainHeaderVariant";
+import SidebarRight from "../components/SidebarRight";
 import FriendsCard from "../components/FriendsCard";
 
 export default function FriendsPage() {
@@ -9,8 +9,8 @@ export default function FriendsPage() {
 			<div class = "sidebar-left">
       </div>
       <div class = "main">
-        <MainHeader />
-        <div class="container">
+        <MainHeaderVariant />
+        <div className="container-other">
           <h2 id="friends-title">Friends</h2>
           <FriendsCard />
           <FriendsCard />

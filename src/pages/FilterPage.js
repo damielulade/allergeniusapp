@@ -1,14 +1,14 @@
 import React from "react";
 import SidebarLeft from "../components/SidebarLeft";
-import MainHeader from "../components/MainHeader";
+import MainHeaderVariant from "../components/MainHeaderVariant";
 
 export default function FilterPage() {
   return (
     <div className = "section">  
       <SidebarLeft />
       <div class = "main">
-        <MainHeader />	
-        <div class="container">
+        <MainHeaderVariant />
+        <div class="container-other">
           <form id="allergenchecks">
             <input type="checkbox" id="allergen1" name="allergen1" value="Gluten" />
             <label for="allergen1"> Gluten </label><br />

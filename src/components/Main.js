@@ -25,10 +25,10 @@ export default function Main() {
             </div>
             <div className = "button-bar">
                 <Link to="/friends" id = "friends-button">
-                    <img src={friendsimg} id = "friendsimg" alt = "temp"/>
+                    <img src={friendsimg} id = "friends-img" alt = "temp"/>
                 </Link>
                 <Link to="/account" id = "account-button">
-                    <img src={accountimg} id = "accountimg" alt = "temp"/>
+                    <img src={accountimg} id = "account-img" alt = "temp"/>
                 </Link>
             </div>
         </div>

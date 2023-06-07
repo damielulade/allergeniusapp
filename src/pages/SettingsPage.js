@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import SidebarRight from "../components/EmptySidebar";
+import React from "react";
+import SidebarRight from "../components/SidebarRight";
 import SidebarLeft from "../components/SidebarLeft";
-import MainHeader from "../components/MainHeader";
-import RadioButtonGroup from "../components/ViewRadioButton";
+import MainHeaderVariant from "../components/MainHeaderVariant";
+import RadioComponent from '../components/ViewRadioButton';
 
 export default function SettingsPage() {
     return (
       <div className="section">
           <SidebarLeft/>
           <div className="main">
-              <MainHeader/>
-              <div className="container">
+              <MainHeaderVariant/>
+              <div className="container-other">
                   <h2 id="settings-title">Settings</h2>
-                  {/*<RadioButtonGroup selectedOption={selectedOption} handleChange={handleChange}/>*/}
+                  <RadioComponent />
               </div>
           </div>
           <SidebarRight />

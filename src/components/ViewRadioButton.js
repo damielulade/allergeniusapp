@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function RadioButtonGroup(props) {
-  return (
-      <div className="view-setting" onChange={this.setGender.bind(this)}>
-          <label>
-              <input type="radio" name="map-list-view" value = {0} checked/>
-              <span>Map View</span>
-          </label>
-          <label>
-              <input type="radio" name="map-list-view" value = {1}/>
-              <span>List View</span>
-          </label>
-      </div>
-  );
+export default function RadioComponent() {
+    const [selectedOption, setSelectedOption] = useState(0);
+    const handleOptionChange = (event) => {
+        const value = event.target.value;
+        setSelectedOption(value);
+    };
+
+    return (
+        <div className = "view-setting">
+            <label>
+                <input
+                    type = "radio" id="map-view" name="map-list-view"
+                    value = {0} defaultChecked = {selectedOption === 0}
+                    onChange = {handleOptionChange}
+                />
+                <span>Map View</span>
+            </label>
+
+            <label>
+                <input
+                    type = "radio" id="list-view" name="map-list-view"
+                    value = {1} defaultChecked = {selectedOption === 1}
+                    onChange = {handleOptionChange}
+                />
+                <span>List View</span>
+            </label>
+
+            {/*<p>Selected Option: {selectedOption}</p>*/}
+        </div>
+    );
 }

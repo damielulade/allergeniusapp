@@ -9,30 +9,28 @@
   </head>
 	<body>
         <div class = "sidebar-left">
-          <p></p>
+            <p></p>
         </div>
 		<div class = "main">
 			<div class = "top-bar">
                 <button onclick = "window.location.href = '/';" id = "back-button">〈</button>
 				<div id="top-title">Allergenius</div>
                 <button onclick = "window.location.href = '/';" id = "back1-button">〈</button>
-            </div>
-            <div class="container-other">
-                <img src="static/user.png" id="user-img">
-                <p id="account-name">John Doe</p>
-                <div id="allergen-list">
-                    <div>My Allergens List (1)</div>
+			</div>	
+			<div class="container-other">
+				<h2 id="settings-title">Settings</h2>
+                <div class = "view-setting">
+                    <label>
+                        <input type="radio" id="map-view" name="map-list-view" checked value=0 /><span>Map View</span>
+                    </label>
+                    <label>
+                        <input type="radio" id="list-view" name="map-list-view" value=1 /><span>List View</span>
+                    </label>
                 </div>
-                <div id="favorites-list">
-                    <div>My Favourite Restaurants (3)</div>
-                </div>
-                <div id="privacy-settings">
-                    <div>Privacy Settings</div>
-                </div>
-                <button id="sign-out">Sign Out</button>
-            </div>
+			</div>
 		</div>
 		<div class = "sidebar-right">
+      <p></p>
     </div>
 	</body>
 </html>

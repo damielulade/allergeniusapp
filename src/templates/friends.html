@@ -8,34 +8,60 @@
     <script src="{{ url_for('static', filename='/script.js') }}"></script>
   </head>
 	<body>
-		<div class = "sidebar-left">
-    </div>
-		<div class = "main">
+        <div class = "sidebar-left">
+            <p></p>
+        </div>
+        <div class = "main">
 			<div class = "top-bar">
-        <button onclick = "window.location.href = '/';" id = "back-button">〈</button>  
-				<h1 id="top-title">Allergenius</h1>
-        <button onclick = "window.location.href = '/';" id = "back1-button">〈</button>  
+                <button onclick = "window.location.href = '/';" id = "back-button">〈</button>
+				<div id="top-title">Allergenius</div>
+                <button onclick = "window.location.href = '/';" id = "back1-button">〈</button>
 			</div>	
-			<div class="container">
+			<div class="container-other">
 				<h2 id="friends-title">Friends</h2>
-        <div id="friend1">
-          <h3>Lorem Ipsum</h3>
-          <p>text text text</p>
-          <!-- <img src="static/user.png" id="userimg1"> -->
+
+                <div id="friend1">
+                    <div id = "friend-profile-picture">
+                        <img src="/static/user.png" id = "friends-page-img">
+                    </div>
+                    <div id = "friend-description-box">
+                        <p id="friend1-name">Lorem Ipsum</p>
+                        <p id="friends-desc">text text text</p>
+                    </div>
+                </div>
+
+                <div id="friend2">
+                    <div id = "friend-profile-picture">
+                        <img src="/static/user.png" id = "friends-page-img">
+                    </div>
+                    <div id = "friend-description-box">
+                        <p id="friend2-name">Dolor Sit Amet</p>
+                        <p id="friends-desc">text text text</p>
+                    </div>
+                </div>
+
+                <div id="friend3">
+                    <div id = "friend-profile-picture">
+                        <img src="/static/user.png" id = "friends-page-img">
+                    </div>
+                    <div id = "friend-description-box">
+                        <p id="friend3-name">Consectetur Adipiscing-Elit</>
+                        <p id="friends-desc">text text text</p>
+                    </div>
+                </div>
+
+                <div id="friend4">
+                    <div id = "friend-profile-picture">
+                        <img src="/static/user.png" id = "friends-page-img">
+                    </div>
+                    <div id = "friend-description-box">
+                        <p id="friend4-name">Sed-Do Eiusmod</p>
+                        <p id="friends-desc">text text text</p>
+                    </div>
+                </div>
+            </div>
+            <div class = "sidebar-right"></div>
         </div>
-        <div id="friend2">
-          <h3>Dolor Sit Amet</h3>
-          <!-- <img src="static/user.png" id="userimg1"> -->
-          <p>text text text</p>
-        </div>
-        <div id="friend3">
-          <h3>Consectetur Adipiscing Elit</h3>
-          <p>text text text</p>
-          <!-- <img src="static/user.png" id="userimg1"> -->
-        </div>
-		</div>
-		<div class = "sidebar-right">
-    </div>
 	</body>
 </html>
 

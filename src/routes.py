@@ -5,28 +5,38 @@ from src.firebase import db
 
 @app.route("/")
 def main():
-    return render_template("index.html", title = 'Allergenius - Home')
+    return render_template("index.html", title='Allergenius - Home')
+
 
 @app.route('/filter')
-def filter():
-    return render_template('filter.html', title = 'Allergenius - Filter by Allergen')
+def filter_page():
+    return render_template('filter.html', title='Allergenius - Filter by Allergen')
+
+
+@app.route('/settings')
+def settings_page():
+    return render_template('settings.html', title='Allergenius - Settings')
+
 
 @app.route('/search')
-def search():
-    return render_template('search.html', title = 'Allergenius - Search for Restaurant')
+def search_page():
+    return render_template('search.html', title='Allergenius - Search for Restaurant')
+
 
 @app.route('/account')
-def account():
-    return render_template('account.html', title = 'Allergenius - Account Page')
+def account_page():
+    return render_template('account.html', title='Allergenius - Account Page')
+
 
 @app.route('/friends')
-def friends():
-    return render_template('friends.html', title = 'Allergenius - Friends')
+def friends_page():
+    return render_template('friends.html', title='Allergenius - Friends')
+
 
 @app.route('/american')
-def american():
+def american_page():
     query = db.child("restaurant").child("american").get()
-    return render_template('american.html', title = 'Allergenius - American', data=query)
+    return render_template('american.html', title='Allergenius - American', data=query)
 
 
 # @app.route('/')

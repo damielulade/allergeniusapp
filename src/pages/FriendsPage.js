@@ -1,6 +1,7 @@
 import React from "react";
 import MainHeader from "../components/MainHeader";
 import SidebarRight from "../components/EmptySidebar";
+import FriendsCard from "../components/FriendsCard";
 
 export default function FriendsPage() {
   return (    
@@ -11,9 +12,9 @@ export default function FriendsPage() {
         <MainHeader />
         <div class="container">
           <h2 id="friends-title">Friends</h2>
-          <FriendsPage />
-          <FriendsPage />
-          <FriendsPage />
+          <FriendsCard />
+          <FriendsCard />
+          <FriendsCard />
         </div>
       </div>
       <SidebarRight />

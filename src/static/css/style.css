@@ -151,6 +151,10 @@ body, .section, #root {
   width: 60%;
   margin: 2.5%;
   display: flex;
+  border: solid black 1px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 #search-input {
@@ -158,9 +162,11 @@ body, .section, #root {
   margin: 0 auto;
   padding-left: 5%;
   font-size: 100%;
-  border: solid black 1px;
-  border-radius: 10px 0 0 10px;
-  border-right: transparent;
+  border: none;
+  /*border: solid black 1px;*/
+  /*border-radius: 10px 0 0 10px;*/
+  /*border-right: transparent;*/
+  /*box-sizing: border-box;*/
   background-color: white;
   color: black;
 }
@@ -171,11 +177,13 @@ body, .section, #root {
   font-size:x-large;
   text-align: center;
   padding: 0;
-  border: solid black 1px;
-  border-radius: 0 10px 10px 0;
+  border: none;
+  border-left: solid black 1px;
+  /*border: solid black 1px;*/
+  /*border-radius: 0 10px 10px 0;*/
+  /*box-sizing: border-box;*/
   background-color: var(--inputbackground);
   color: black;
-  text-align: center;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -436,5 +444,4 @@ h3 {
   #account-button span {
     margin-top: 0;
   }
-
 }

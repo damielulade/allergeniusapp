@@ -21,6 +21,28 @@ db_config = {
 firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
 
+
+def add_user(data):
+    db.child("user").push(data)
+
+
+def add_restaurant(data):
+    db.child("Restaurant").push(data)
+
+
+def get_values(ref, limit=10):
+    res = []
+    for record in ref.get().each():
+        res.append(record.val())
+    return res
+
+
+def delete_values(ref):
+    for record in ref.get().each():
+        key = record.key()
+        ref.child(key).remove()
+
+
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
@@ -44,26 +66,3 @@ def foo():
     
 if __name__ == '__main__':
     app.run(debug=True)
-    
-
-
-def add_user(data):
-    db.child("user").push(data)
-
-
-def add_restaurant(data):
-    db.child("Restaurant").push(data)
-
-
-def get_values(ref, limit=10):
-    res = []
-    for record in ref.get().each():
-        res.append(record.val())
-    return res
-
-
-def delete_values(ref):
-    for record in ref.get().each():
-        key = record.key()
-        ref.child(key).remove()
-

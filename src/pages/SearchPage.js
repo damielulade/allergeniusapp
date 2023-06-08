@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import searchresults1 from "../static/images/searchresults1.png";
 import MainHeader from "../components/MainHeader";
-import { async } from "q";
 import axios from 'axios'
 
 axios.defaults.baseURL = "http://localhost:5000"
@@ -26,6 +24,7 @@ export default function SearchPage() {
                 console.error(error.message)
             }
             setLoading(false);
+            console.log(loading)
         }
 
         fetchData();
@@ -34,7 +33,7 @@ export default function SearchPage() {
         //     // setData(data);
         //     console.log(data);
         // })
-    }, [])
+    }, [loading])
 
   return (
       <div className = "section">

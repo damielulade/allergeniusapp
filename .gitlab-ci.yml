@@ -9,7 +9,6 @@ build_job:
   script:
     - echo "Building..."
     - pip3 install -r requirements.txt
-    - npm install
     - npm run build
 
 test_job:

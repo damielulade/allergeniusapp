@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import searchresults1 from "../static/images/searchresults1.png";
 import MainHeader from "../components/MainHeader";
 
+
 export default function SearchPage() {
-    const data = [
-        { val: 'Value 1' },
-        { val: 'Value 2' },
-        { val: 'Value 3' },
-    ];
+
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetch('/data').then(data => {
+            setData(data);
+        })
+    }, [])
+
   return (
       <div className = "section">
-          <div class = "main">
+          <div className = "main">
               <MainHeader />
               <div className="container-other">
-                  {data.map((r, index) => (
+                {data.map(r => (
+                    <p>{r}</p> 
+                ))}
+
+
+
+
+                  {/* {data.map((r, index) => (
                       <p key={index}>{r.val}</p>
                   ))}
-                  {/*<img src={searchresults1} id="searchresults" alt = "temp"/>*/}
+                  <img src={searchresults1} id="searchresults" alt = "temp"/> */}
               </div>
           </div>
       </div>

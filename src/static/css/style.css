@@ -16,7 +16,7 @@ html {
 body, .section, #root {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
@@ -62,6 +62,15 @@ body, .section, #root {
   justify-content: center;
 }
 
+#back-button:focus, #back-button:active {
+  outline: none;
+  box-shadow: none;
+}
+
+#back-button span:focus, #back-button span:active {
+  outline: none;
+  box-shadow: none;
+}
 
 .top-bar {
   color: white;
@@ -88,6 +97,15 @@ body, .section, #root {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+#settings-button:focus, #settings-button:active {
+  outline: none;
+  box-shadow: none;
+}
+
+#settings-img {
+  width: 100%;
 }
 
 #back1-button {

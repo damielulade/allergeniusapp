@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 export default function MapComponent() {
     const mapContainerRef = useRef(null);
@@ -9,6 +8,7 @@ export default function MapComponent() {
         mapTypeControl: false,
         fullscreenControl: false,
         streetViewControl: false,
+        keyboardShortcuts: false,
         // zoomControlOptions: {
         //     position: window.google.maps.ControlPosition.BOTTOM_LEFT,
         // },
@@ -17,6 +17,8 @@ export default function MapComponent() {
     const center = {
         lat: 51.5074,
         lng: -0.1278,
+        // lat: 51.4018,
+        // lng: -0.079,
     };
 
     useEffect(() => {

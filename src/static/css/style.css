@@ -268,6 +268,7 @@ body, .section, #root {
 }
 
 #friends-button {
+  text-decoration: none;
   border-radius: 0;
   border: solid black 1px;
   border-left: none;
@@ -276,9 +277,16 @@ body, .section, #root {
   color: black;
   display: flex;
   justify-content: center;
+  flex-flow: column;
+  align-items: center;
+}
+
+#friends-button span {
+  margin-top: -5%;
 }
 
 #account-button {
+  text-decoration: none;
   border-radius: 0;
   border: solid black 1px;
   border-right: none;
@@ -287,6 +295,12 @@ body, .section, #root {
   color: black;
   display: flex;
   justify-content: center;
+  flex-flow: column;
+  align-items: center;
+}
+
+#account-button span {
+  margin-top: -5%;
 }
 
 #friends-page-img {

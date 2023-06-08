@@ -35,9 +35,11 @@ export default function Main() {
             <div className = "button-bar">
                 <Link to="/friends" id = "friends-button">
                     <img src={friendsimg} id = "friends-img" alt = "temp"/>
+                    <span>Friends</span>
                 </Link>
                 <Link to="/account" id = "account-button">
                     <img src={accountimg} id = "account-img" alt = "temp"/>
+                    <span>Account</span>
                 </Link>
             </div>
         </div>

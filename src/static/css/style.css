@@ -147,6 +147,10 @@ body, .section, #root {
   z-index:10;
 }
 
+input:focus {
+  outline: none;
+}
+
 #search-box {
   width: 60%;
   margin: 2.5%;

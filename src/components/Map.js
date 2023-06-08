@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useMemo} from 'react';
 
 export default function MapComponent() {
     const mapContainerRef = useRef(null);
     const mapInstanceRef = useRef(null);
 
-    const options = {
+    const options = useMemo(() => ({
         mapTypeControl: false,
         fullscreenControl: false,
         streetViewControl: false,
@@ -12,21 +12,21 @@ export default function MapComponent() {
         // zoomControlOptions: {
         //     position: window.google.maps.ControlPosition.BOTTOM_LEFT,
         // },
-    };
+    }), []);
 
-    const center = {
+    const center = useMemo(() => ({
         lat: 51.5074,
         lng: -0.1278,
         // lat: 51.4018,
         // lng: -0.079,
-    };
+    }), []);
 
     useEffect(() => {
         if (!mapInstanceRef.current) {
             // Load the map for the first time
             mapInstanceRef.current = new window.google.maps.Map(mapContainerRef.current, {
-                center,
-                options,
+                center: center,
+                options: options,
                 zoom: 10,
             });
         }
@@ -38,7 +38,7 @@ export default function MapComponent() {
                 mapInstanceRef.current = null;
             }
         };
-    }, []);
+    }, [center, options]);
 
     return (
         <div ref={mapContainerRef} className="map-container">

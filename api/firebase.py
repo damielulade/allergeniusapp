@@ -24,11 +24,9 @@ def add_restaurant(data):
 
 
 def get_values(ref, limit=10):
-    # return ref.get()
     res = []
     for record in ref.get().each():
         res.append(record.val())
-        # print(record.val())
     return res
 
 

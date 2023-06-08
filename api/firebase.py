@@ -1,4 +1,4 @@
-import pyrebase
+from pyrebase import pyrebase
 
 config = {
     "apiKey": "AIzaSyBtnDvZYWimGywQYQ-vvFpU5bVz2o3dmBg",
@@ -24,8 +24,10 @@ def add_restaurant(data):
 
 
 def get_values(ref, limit=10):
+    res = []
     for record in ref.get().each():
-        print(record.val())
+        res.append(record.val())
+    return res
 
 
 def delete_values(ref):
@@ -33,12 +35,3 @@ def delete_values(ref):
         key = record.key()
         ref.child(key).remove()
 
-
-
-
-def example():
-    add_user({"firstName": "Brett", "lastName": "Conway", "Age": 20})
-    add_user({"firstName": "Brett", "lastName": "Conroute", "Age": 20})
-    add_user({"firstName": "Brett", "lastName": "Connection", "Age": 20})
-
-    get_values(db.child("user"))

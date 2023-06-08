@@ -15,7 +15,7 @@ export default function Main() {
             window.location.href = 'search';
         }
     }
-// AIzaSyA5lTihboPl_N7Yt8T3worfrbjvF1MDLWc
+
     return (
         <div className = "main">
             <MainHeader />

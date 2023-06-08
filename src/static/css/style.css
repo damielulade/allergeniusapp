@@ -211,7 +211,7 @@ body, .section, #root {
 }
 
 #accountname {
-  color:white;
+  color: black;
   width: 100%;
   text-align: center;
   margin:0 auto;
@@ -232,7 +232,7 @@ body, .section, #root {
 }
 
 #privacysettings {
-  margin: 40% 5% 5%;
+  margin: 5%;
   padding-left: 5%;
   padding-right: 5%;
   height: 7.5%;
@@ -443,5 +443,11 @@ h3 {
 
   #account-button span {
     margin-top: 0;
+  }
+
+  #userimg {
+    width:40%;
+    margin-left: 30%;
+    margin-right: 30%;
   }
 }

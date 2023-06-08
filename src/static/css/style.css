@@ -394,19 +394,14 @@ h3 {
 
 /* LANDSCAPE DETECTION */
 @media only screen and (orientation: landscape) {
-  .sidebar-left {
-    width: 30%;
-    display: inline-block;
-  }
-
-  .sidebar-right {
-    width: 30%;
-    display: inline-block;
-  }
-
   .main {
     height: 100%;
     width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
     box-sizing: border-box;
+    border: solid black 1px;
+    border-bottom: none;
+    overflow: hidden;
   }
 }

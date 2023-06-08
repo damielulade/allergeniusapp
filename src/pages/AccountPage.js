@@ -5,12 +5,10 @@ import MainHeaderVariant from "../components/MainHeaderVariant";
 export default function AccountPage() {
   return (
     <div className = "section">
-      <div class = "sidebar-left">
-      </div>
       <div class = "main">
         <MainHeaderVariant />
           <div className="container-other">
-              <img src={userimg} id="userimg" />
+              <img src={userimg} id="userimg" alt = "temp"/>
               <p id="accountname">John Doe</p>
               <div id="allergenlist">
                   <p>My Allergens List (1)</p>
@@ -24,9 +22,6 @@ export default function AccountPage() {
               <p id="signout">Sign Out</p>
           </div>
       </div>
-        <div class = "sidebar-right">
-
-        </div>
     </div>
   )
 }

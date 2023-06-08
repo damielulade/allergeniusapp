@@ -419,3 +419,8 @@ h3 {
     overflow: hidden;
   }
 }
+
+.map-container {
+  height: 100%;
+  width: 100%;
+}

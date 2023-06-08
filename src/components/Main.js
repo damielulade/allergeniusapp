@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import mapimg from "../static/images/staticmap2.png";
+// import mapimg from "../static/images/staticmap2.png";
 import friendsimg from "../static/images/friends.png";
 import accountimg from "../static/images/account.png";
 import MainHeader from "./MainHeader";
+import MapComponent from "./Map";
 
 export default function Main() {
     function exampleQuery() {
@@ -14,12 +15,13 @@ export default function Main() {
             window.location.href = 'search';
         }
     }
-
+// AIzaSyA5lTihboPl_N7Yt8T3worfrbjvF1MDLWc
     return (
         <div className = "main">
             <MainHeader />
             <div className = "container-index">
-				<img src={mapimg} id="map-img" alt = "temp" />
+				{/*<img src={mapimg} id="map-img" alt = "temp" />*/}
+                <MapComponent/>
                 <div className="map-block">
                     <div id="search-box">
                         <input type="text" placeholder="Search..." id = "search-input" />

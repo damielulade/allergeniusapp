@@ -12,14 +12,12 @@ export default function SearchPage() {
     const [data, setData] = useState({})
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const {data: response} = await backend.get('/getRestaurantData');
-                console.log((Object.entries(response)))
-                setData(response);
-            } catch (error) {
-                console.error(error.message)
-            }
+        const fetchData = () => {
+            backend.get('/getRestaurantData').then(
+                response => {
+                    setData(response.data)
+                }
+            ).catch(error => console.log(error))
         }
 
         fetchData();

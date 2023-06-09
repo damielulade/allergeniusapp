@@ -33,7 +33,7 @@ export default function SearchPage() {
                 {Object.entries(data).map(entry => {
                     const [key, value] = entry
                     return (
-                        <div>
+                        <div key={key}>
                             <h3>{key}: {value}</h3>
                         </div>
                     )

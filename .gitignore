@@ -8,6 +8,7 @@
 venv
 .idea
 .vscode*
+package-lock.json
 
 # testing
 /coverage

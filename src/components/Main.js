@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import mapimg from "../static/images/staticmap2.png";
 import friendsimg from "../static/images/friends.png";
 import accountimg from "../static/images/account.png";
@@ -7,13 +7,17 @@ import MainHeader from "./MainHeader";
 import MapComponent from "./Map";
 
 export default function Main() {
-    function exampleQuery() {
+    
+    let navigate = useNavigate();
+    const routeChange = () => {
         const query = document.getElementById("search-input").value;
+        let path; 
         if (query === "american"){
-            window.location.href = 'search';
+            path = "/search";
         } else {
-            window.location.href = 'search';
+            path = "/search";
         }
+        navigate(path);
     }
 
     return (
@@ -25,7 +29,7 @@ export default function Main() {
                 <div className="map-block">
                     <div id="search-box">
                         <input type="text" placeholder="Search..." id = "search-input" />
-                        <button onClick ={exampleQuery} id = "search-button"><span>⌕</span></button>
+                        <button onClick ={routeChange} id = "search-button"><span>⌕</span></button>
                         {/* @TODO: fix/replace this button  */}
                     </div>
                     <Link to="/filter" id="filter-button">

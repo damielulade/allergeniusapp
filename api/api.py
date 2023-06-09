@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 import json
 
 app = Flask(__name__, static_folder="../build", static_url_path='/')
-cors = CORS(app)
+CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 db_config = {
@@ -20,6 +20,7 @@ db_config = {
 
 firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
+
 
 
 def add_user(data):
@@ -50,19 +51,33 @@ def index():
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+    
 
+@app.route('/getRestaurantData', methods=["GET"])
+@cross_origin()
+def get_restaurant():
+    restaurant_data = {
+        "name": "Restaurant A",
+        "location": "location coordinates",
+        "menu": {},
+        "allergens": {},
+        "ratings": {},
+        # "location": "location coordinates",
+    }
+    db.child("restaurant").set(restaurant_data)
+    return db.child("restaurant").get().val()
+
+@app.route('/collectData', methods=["GET"])
+@cross_origin()
+def foo():
+    return db.child("user").get().val()
+    
 @app.route('/data')
 def example():
     add_user({"firstName": "Brett", "lastName": "Conway", "Age": 20})
     add_user({"firstName": "Brett", "lastName": "Conroute", "Age": 20})
     add_user({"firstName": "Brett", "lastName": "Connection", "Age": 20})
     return json.dumps(get_values(db.child("user")))
-    # assert(false)
-    
-@app.route('/collectData', methods=["GET"])
-@cross_origin()
-def foo():
-    return db.child("user").get().val()
-    
+
 if __name__ == '__main__':
     app.run(debug=True)

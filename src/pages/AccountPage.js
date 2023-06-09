@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import userimg from "../static/images/user.png"
 import MainHeaderVariant from "../components/MainHeaderVariant";
 
@@ -11,7 +12,9 @@ export default function AccountPage() {
               <img src={userimg} id="userimg" alt = "temp"/>
               <p id="accountname">John Doe</p>
               <div id="allergenlist">
-                  <p>My Allergens List (1)</p>
+                  <Link to="/allergens" id = "allergen-button">
+                    <span>My Allergens List (1) </span>
+                  </Link>
               </div>
               <div id="favoriteslist">
                   <p>My Favourite Restaurants (3)</p>

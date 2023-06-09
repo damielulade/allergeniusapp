@@ -1,11 +1,12 @@
 import React from "react";
 import MainHeaderVariant from "../components/MainHeaderVariant";
+import MainHeaderForAccount from "../components/MainHeaderForAccount";
 
-export default function FilterPage() {
+export default function MyAllergenPage() {
   return (
       <div className = "section">
         <div class = "main">
-          <MainHeaderVariant />
+          <MainHeaderForAccount />
           <div class="container-other">
             <form id="allergenchecks">
               <input type="checkbox" id="allergen1" name="allergen1" value="Gluten" />

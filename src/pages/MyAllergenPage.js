@@ -9,43 +9,43 @@ export default function FilterPage() {
           <div class="container-other">
             <form id="allergenchecks">
               <input type="checkbox" id="allergen1" name="allergen1" value="Gluten" />
-              <label for="allergen1"> American </label><br />
+              <label for="allergen1"> Gluten </label><br />
 
               <input type="checkbox" id="allergen2" name="allergen2" value="Dairy" />
-              <label for="allergen2"> Italian </label><br />
+              <label for="allergen2"> Dairy </label><br />
             
               <input type="checkbox" id="allergen3" name="allergen3" value="Nuts" />
-              <label for="allergen3"> Greek </label><br />
+              <label for="allergen3"> Nuts </label><br />
           
               <input type="checkbox" id="allergen4" name="allergen4" value="Peanuts" />
-              <label for="allergen4"> Breakfast </label><br />
+              <label for="allergen4"> Peanuts </label><br />
           
               <input type="checkbox" id="allergen5" name="allergen5" value="Lupin" />
-              <label for="allergen5"> Fast Food </label><br />
+              <label for="allergen5"> Lupin </label><br />
           
               <input type="checkbox" id="allergen6" name="allergen6" value="Sesame Seeds" />
-              <label for="allergen6"> Chinese </label><br />
+              <label for="allergen6"> Sesame Seeds </label><br />
           
               <input type="checkbox" id="allergen7" name="allergen7" value="Soya" />
-              <label for="allergen7"> Burgers </label><br />
+              <label for="allergen7"> Soya </label><br />
           
               <input type="checkbox" id="allergen8" name="allergen8" value="Mustard" />
-              <label for="allergen8"> Sushi </label><br />
+              <label for="allergen8"> Mustard </label><br />
           
               <input type="checkbox" id="allergen9" name="allergen9" value="Fish" />
-              <label for="allergen9"> Caribbean </label><br />
+              <label for="allergen9"> Fish </label><br />
           
               <input type="checkbox" id="allergen10" name="allergen10" value="Crustaceans" />
-              <label for="allergen10"> Vietnamese </label><br />
+              <label for="allergen10"> Crustaceans </label><br />
           
               <input type="checkbox" id="allergen11" name="allergen11" value="Molluscs" />
-              <label for="allergen11"> Korean </label><br />
+              <label for="allergen11"> Molluscs </label><br />
           
               <input type="checkbox" id="allergen12" name="allergen12" value="Sulphites" />
-              <label for="allergen12"> Brazillian </label><br />
+              <label for="allergen12"> Sulphites </label><br />
           
               <input type="checkbox" id="allergen13" name="allergen13" value="Celery" />
-              <label for="allergen13"> Pasta </label><br />
+              <label for="allergen13"> Celery </label><br />
             </form>
           </div>
         </div>

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import MainHeader from "../components/MainHeader";
-import axios from 'axios'
+import { Axios } from 'axios'
 
-axios.defaults.baseURL = "http://localhost:5000"
+const backend = Axios.create({
+    baseURL: "http://127.0.0.1:5000"
+})
 
 
 export default function SearchPage() {
@@ -14,7 +16,7 @@ export default function SearchPage() {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const {data: response} = await axios.get('/collectData');
+                const {data: response} = await backend.get('/collectData');
                 // console.log(response);
                 const arr = Object.entries(response).map(x => Object.entries(x[1]));
 

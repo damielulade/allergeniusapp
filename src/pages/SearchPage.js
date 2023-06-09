@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import MainHeader from "../components/MainHeader";
-import { Axios } from 'axios'
+import axios from 'axios'
 
-const backend = Axios.create({
-    baseURL: "http://127.0.0.1:5000"
+const backend = axios.create({
+    baseURL:  `${window.location.protocol}//${window.location.hostname}:5000`
 })
 
 
@@ -17,24 +17,15 @@ export default function SearchPage() {
             setLoading(true);
             try {
                 const {data: response} = await backend.get('/collectData');
-                // console.log(response);
                 const arr = Object.entries(response).map(x => Object.entries(x[1]));
-
-                console.log(arr);
                 setData(arr);
             } catch (error) {
                 console.error(error.message)
             }
             setLoading(false);
-            console.log(loading)
         }
 
         fetchData();
-
-        // fetch('/collectData').then(data => {
-        //     // setData(data);
-        //     console.log(data);
-        // })
     }, [loading])
 
   return (

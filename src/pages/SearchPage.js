@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 import MainHeader from "../components/MainHeader";
 import axios from 'axios'
 
-const backend = axios.create({
-    baseURL:  `${window.location.protocol}//${window.location.hostname}:5000`
-})
-
 
 export default function SearchPage() {
 
@@ -13,7 +9,7 @@ export default function SearchPage() {
 
     useEffect(() => {
         const fetchData = () => {
-            backend.get('/getRestaurantData').then(
+            axios.get('http://localhost:5000/getRestaurantData').then(
                 response => {
                     setData(response.data)
                 }

@@ -28,7 +28,7 @@ def add_user(data):
 
 
 def add_restaurant(data):
-    db.child("Restaurant").push(data)
+    db.child("restaurant").push(data)
 
 
 def get_values(ref, limit=10):
@@ -83,19 +83,29 @@ def example():
 if __name__ == '__main__':
     app.run(debug=True)
 
-restaurantB = {"name": "Restaurant B",
+restaurantA = {
+        "name": "Restaurant A",
         "location": "location coordinates",
         "city" : "London",
-        "menu": {"salad", "sandwich"},
-        "allergens": {"nuts"},
-        "ratings": {"4"}}
+        "menu" : ["peperroni pizza", "hotdog", "burger", "soup"],
+        "allergens": ["gluten", "dairy", "nuts", "fish"],
+        "ratings": ["5"]
+        # "location": "location coordinates",
+    }
+
+restaurantB = {"name": "Restaurant B",
+               "location": "location coordinates",
+               "city" : "London",
+               "menu": ["salad", "sandwich"],
+               "allergens": ["nuts"],
+               "ratings": ["4"]}
 
 restaurantC = {"name": "Restaurant C",
         "location": "location coordinates",
         "city" : "London",
-        "menu": {"fries", "burger"},
-        "allergens": {"gluten"},
-        "ratings": {"3"}}
+        "menu": ["fries", "burger"],
+        "allergens": ["gluten"],
+        "ratings": ["3"]}
 
 restaurantD = {"name": "Restaurant D",
         "location": "location coordinates",

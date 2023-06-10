@@ -57,44 +57,12 @@ def not_found(e):
 @cross_origin()
 def get_restaurant():
     restaurant_data = {
-        {"name": "Restaurant A",
+        "name": "Restaurant A",
         "location": "location coordinates",
         "city" : "London",
         "menu" : {"items" : {"peperroni pizza", "hotdog", "burger", "soup"}},
         "allergens": {"gluten", "dairy", "nuts", "fish"},
-        "ratings": {"5"}},
-        # "location": "location coordinates",
-
-        {"name": "Restaurant B",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu": {"salad", "sandwich"},
-        "allergens": {"nuts"},
-        "ratings": {"4"}},
-        # "location": "location coordinates",
-
-        {"name": "Restaurant C",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu": {"fries", "burger"},
-        "allergens": {"gluten"},
-        "ratings": {"3"}},
-        # "location": "location coordinates",
-
-        {"name": "Restaurant D",
-        "location": "location coordinates",
-        "city" : "Nottingham",
-        "menu": {"steak", "soup"},
-        "allergens": {},
-        "ratings": {"5"}},
-        # "location": "location coordinates",
-
-        {"name": "Restaurant E",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu": {"taco"},
-        "allergens": {"gluten"},
-        "ratings": {"3"}}
+        "ratings": {"5"}
         # "location": "location coordinates",
     }
     db.child("restaurant").set(restaurant_data)
@@ -114,3 +82,31 @@ def example():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+restaurantB = {"name": "Restaurant B",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu": {"salad", "sandwich"},
+        "allergens": {"nuts"},
+        "ratings": {"4"}}
+
+restaurantC = {"name": "Restaurant C",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu": {"fries", "burger"},
+        "allergens": {"gluten"},
+        "ratings": {"3"}}
+
+restaurantD = {"name": "Restaurant D",
+        "location": "location coordinates",
+        "city" : "Nottingham",
+        "menu": {"steak", "soup"},
+        "allergens": {},
+        "ratings": {"5"}}
+
+restaurantE = {"name": "Restaurant E",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu": {"taco"},
+        "allergens": {"gluten"},
+        "ratings": {"3"}}

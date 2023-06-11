@@ -21,7 +21,31 @@ db_config = {
 firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
 
+restaurantA = {
+        "name": "Restaurant A",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu" : ["peperroni pizza", "hotdog", "burger", "soup"],
+        "ratings": ["5"],
+        "allergens" : {"cereals" : ["hotdog", "burger", "peperroni pizza"], "soybeans" : ["soup"]}
+    }
 
+restaurantB = {
+        "name": "Restaurant B",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu": ["salad", "sandwich"],
+        "ratings": ["4"],
+        "allergens" : {"celery" : ["salad"], "cereals" : ["sandwich"], "sesame" : ["salad"]}
+        }
+
+restaurantC = {"name": "Restaurant C",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu": ["fries", "burger", "garlic bread"],
+        "ratings": ["3"],
+        "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]}
+        }
 
 def add_user(data):
     db.child("user").push(data)
@@ -83,40 +107,4 @@ def example():
 if __name__ == '__main__':
     app.run(debug=True)
 
-restaurantA = {
-        "name": "Restaurant A",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu" : ["peperroni pizza", "hotdog", "burger", "soup"],
-        "allergens": ["gluten", "dairy", "nuts", "fish"],
-        "ratings": ["5"]
-        # "location": "location coordinates",
-    }
-
-restaurantB = {"name": "Restaurant B",
-               "location": "location coordinates",
-               "city" : "London",
-               "menu": ["salad", "sandwich"],
-               "allergens": ["nuts"],
-               "ratings": ["4"]}
-
-restaurantC = {"name": "Restaurant C",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu": ["fries", "burger"],
-        "allergens": ["gluten"],
-        "ratings": ["3"]}
-
-restaurantD = {"name": "Restaurant D",
-        "location": "location coordinates",
-        "city" : "Nottingham",
-        "menu": {"steak", "soup"},
-        "allergens": {},
-        "ratings": {"5"}}
-
-restaurantE = {"name": "Restaurant E",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu": {"taco"},
-        "allergens": {"gluten"},
-        "ratings": {"3"}}
+#add_restaurant(restaurantC)

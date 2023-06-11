@@ -20,14 +20,38 @@ db_config = {
 firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
 
+restaurantA = {
+        "name": "Restaurant A",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu" : ["peperroni pizza", "hotdog", "burger", "soup"],
+        "ratings": ["5"],
+        "allergens" : {"cereals" : ["hotdog", "burger", "peperroni pizza"], "soybeans" : ["soup"]}
+    }
 
+restaurantB = {
+        "name": "Restaurant B",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu": ["salad", "sandwich"],
+        "ratings": ["4"],
+        "allergens" : {"celery" : ["salad"], "cereals" : ["sandwich"], "sesame" : ["salad"]}
+        }
+
+restaurantC = {"name": "Restaurant C",
+        "location": "location coordinates",
+        "city" : "London",
+        "menu": ["fries", "burger", "garlic bread"],
+        "ratings": ["3"],
+        "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]}
+        }
 
 def add_user(data):
     db.child("user").push(data)
 
 
 def add_restaurant(data):
-    db.child("Restaurant").push(data)
+    db.child("restaurant").push(data)
 
 
 def get_values(ref, limit=10):
@@ -55,44 +79,12 @@ def not_found(e):
 @app.route('/getRestaurantData', methods=["GET"])
 def get_restaurant():
     restaurant_data = {
-        {"name": "Restaurant A",
+        "name": "Restaurant A",
         "location": "location coordinates",
         "city" : "London",
         "menu" : {"items" : {"peperroni pizza", "hotdog", "burger", "soup"}},
         "allergens": {"gluten", "dairy", "nuts", "fish"},
-        "ratings": {"5"}},
-        # "location": "location coordinates",
-
-        {"name": "Restaurant B",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu": {"salad", "sandwich"},
-        "allergens": {"nuts"},
-        "ratings": {"4"}},
-        # "location": "location coordinates",
-
-        {"name": "Restaurant C",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu": {"fries", "burger"},
-        "allergens": {"gluten"},
-        "ratings": {"3"}},
-        # "location": "location coordinates",
-
-        {"name": "Restaurant D",
-        "location": "location coordinates",
-        "city" : "Nottingham",
-        "menu": {"steak", "soup"},
-        "allergens": {},
-        "ratings": {"5"}},
-        # "location": "location coordinates",
-
-        {"name": "Restaurant E",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu": {"taco"},
-        "allergens": {"gluten"},
-        "ratings": {"3"}}
+        "ratings": {"5"}
         # "location": "location coordinates",
     }
     db.child("restaurant").set(restaurant_data)
@@ -111,3 +103,5 @@ def example():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+#add_restaurant(restaurantC)

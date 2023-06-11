@@ -83,10 +83,6 @@ def not_found(e):
 
 @app.route('/getRestaurantData')
 def get_restaurant():
-    # Adds default restaurants.
-    add_restaurant(restaurantA)
-    add_restaurant(restaurantB)
-    add_restaurant(restaurantC)
     return json.dumps(get_values(db.child("restaurant")))
 
 @app.route('/collectData')
@@ -102,3 +98,4 @@ def example():
 
 if __name__ == '__main__':
     app.run(debug=True)
+

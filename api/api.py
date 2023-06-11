@@ -5,7 +5,6 @@ import json
 
 app = Flask(__name__, static_folder="../build", static_url_path='/')
 CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
 
 db_config = {
     "apiKey": "AIzaSyBtnDvZYWimGywQYQ-vvFpU5bVz2o3dmBg",
@@ -54,7 +53,6 @@ def not_found(e):
     
 
 @app.route('/getRestaurantData', methods=["GET"])
-@cross_origin()
 def get_restaurant():
     restaurant_data = {
         {"name": "Restaurant A",
@@ -101,7 +99,6 @@ def get_restaurant():
     return db.child("restaurant").get().val()
 
 @app.route('/collectData', methods=["GET"])
-@cross_origin()
 def foo():
     return db.child("user").get().val()
     

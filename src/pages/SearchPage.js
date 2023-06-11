@@ -2,24 +2,18 @@ import React, { useEffect, useState } from "react";
 import MainHeader from "../components/MainHeader";
 import axios from 'axios'
 
-const backend = axios.create({
-    baseURL:  `${window.location.protocol}//${window.location.hostname}:5000`
-})
-
 
 export default function SearchPage() {
 
     const [data, setData] = useState({})
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const {data: response} = await backend.get('/getRestaurantData');
-                console.log((Object.entries(response)))
-                setData(response);
-            } catch (error) {
-                console.error(error.message)
-            }
+        const fetchData = () => {
+            axios.get('http://localhost:5000/getRestaurantData').then(
+                response => {
+                    setData(response.data)
+                }
+            ).catch(error => console.log(error))
         }
 
         fetchData();

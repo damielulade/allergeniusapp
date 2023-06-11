@@ -81,11 +81,12 @@ def not_found(e):
     return app.send_static_file('index.html')
     
 
-@app.route('/getRestaurantData')
+@app.route('/getRestaurantData', methods=["GET"])
+@cross_origin()
 def get_restaurant():
     return json.dumps(get_values(db.child("restaurant")))
 
-@app.route('/collectData')
+@app.route('/collectData', methods=["GET"])
 def foo():
     return db.child("user").get().val()
     

@@ -10,7 +10,7 @@ export default function SearchPage() {
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('/getRestaurantData').then(
+            axios.get('http://localhost:5000/getRestaurantData').then(
                 response => {
                     setData(response.data)
                 }

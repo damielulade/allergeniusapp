@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MainHeader from "../components/MainHeader";
 import RestaurantInfo from "../components/RestaurantInfo";
 import axios from 'axios'
+import MainHeaderVariant from "../components/MainHeaderVariant";
 
 
 export default function SearchPage() {
@@ -10,7 +11,7 @@ export default function SearchPage() {
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('/getRestaurantData').then(
+            axios.get('http://localhost:5000/getRestaurantData').then(
                 response => {
                     setData(response.data)
                 }
@@ -22,10 +23,12 @@ export default function SearchPage() {
     return (
         <div className = "section">
             <div className = "main">
-                <MainHeader />
-                {data.map((restaurant, index) => (
-                    <RestaurantInfo key={index} {...restaurant} />
-                ))}
+                <MainHeaderVariant />
+                <div className="container-other">
+                    {data.map((restaurant, index) => (
+                        <RestaurantInfo key={index} {...restaurant} />
+                    ))}
+                </div>
             </div>
         </div>
     )

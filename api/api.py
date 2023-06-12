@@ -73,15 +73,6 @@ chopstix = {
     }
 }
 
-
-def add_user(data):
-    db.child("user").push(data)
-
-
-def add_restaurant(data):
-    db.child("restaurant").push(data)
-
-
 def get_values(ref, limit=10):
     res = []
     for record in ref.get().each():
@@ -93,6 +84,15 @@ def delete_values(ref):
     for record in ref.get().each():
         key = record.key()
         ref.child(key).remove()
+        
+def get_users():
+    res = []
+    ref = db.child("user")
+    print(ref)
+    print(ref.get().val())
+    #for user in db.child("user").get().val().each():
+    #    res.append(user)
+    return res
 
 
 @app.route('/')
@@ -105,21 +105,14 @@ def not_found(e):
     
 
 @app.route('/getRestaurantData', methods=["GET"])
-@cross_origin()
 def get_restaurant():
     return json.dumps(get_values(db.child("restaurant")))
 
-@app.route('/collectData', methods=["GET"])
-def foo():
-    return db.child("user").get().val()
-    
-@app.route('/data')
-def example():
-    add_user({"firstName": "Brett", "lastName": "Conway", "Age": 20})
-    add_user({"firstName": "Brett", "lastName": "Conroute", "Age": 20})
-    add_user({"firstName": "Brett", "lastName": "Connection", "Age": 20})
+@app.route('/getUserFriends', methods=["GET"])
+def getUserFriends():
     return json.dumps(get_values(db.child("user")))
 
+    
 if __name__ == '__main__':
     app.run(debug=True)
 

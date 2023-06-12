@@ -102,6 +102,40 @@ wasabi = {
     }
 }
 
+fiveGuys = {
+    "name": "Five Guys",
+    "location": "location coordinates",
+    "city": "London",
+    "menu": ["Hamburger", "Cheeseburger", "Bacon Burger", "Bacon Cheeseburger", "Little Hamburger", "Little Cheeseburger", "Little Bacon Burger", "Little Bacon Cheeseburger",
+             "All Beef Hot Dog", "Cheese Dog", "Bacon Dog", "Bacon Cheese Dog", "Veggie Sandwich", "Cheese Veggie Sandwich", "Grilled Cheese", "BLT", "Little Five Guys Style Fries",
+             "Regular Five Guys Style Fries", "Large Five Guys Style Fries", "Little Cajun Style Fries", "Regular Cajun Style Fries", "Large Cajun Style Fries", "Five Guys Shake", "Reese's Peanut Butter Cups Shake", "Coca-Cola Original Taste",
+             "Diet Coke", "Coca-Cola Zero Sugar", "Sprite", "Fanta Orange", "Dr Pepper", "Glaceau Smart Water", "Budweiser", "Corona", "Brooklyn Beer"],
+    "ratings": ["4.80"],
+    "allergens": {
+        "celery": ["Little Five Guys Style Fries", "Regular Five Guys Style Fries", "Large Five Guys Style Fries", "Little Cajun Style Fries", "Regular Cajun Style Fries", "Large Cajun Style Fries"],
+        "cereals": ["Hamburger", "Cheeseburger", "Bacon Burger", "Bacon Cheeseburger", "Little Hamburger", "Little Cheeseburger", "Little Bacon Burger", "Little Bacon Cheeseburger",
+                    "All Beef Hot Dog", "Cheese Dog", "Bacon Dog", "Bacon Cheese Dog", "Veggie Sandwich", "Cheese Veggie Sandwich", "Grilled Cheese", "BLT"],
+        "crustaceans": [],
+        "eggs": ["Hamburger", "Cheeseburger", "Bacon Burger", "Bacon Cheeseburger", "Little Hamburger", "Little Cheeseburger", "Little Bacon Burger", "Little Bacon Cheeseburger",
+             "All Beef Hot Dog", "Cheese Dog", "Bacon Dog", "Bacon Cheese Dog"],
+        "fish": [],
+        "lupin": [], 
+        "milk": ["Hamburger", "Cheeseburger", "Bacon Burger", "Bacon Cheeseburger", "Little Hamburger", "Little Cheeseburger", "Little Bacon Burger", "Little Bacon Cheeseburger",
+                 "All Beef Hot Dog", "Cheese Dog", "Bacon Dog", "Bacon Cheese Dog", "Five Guys Shake", "Reese's Peanut Butter Cups Shake"],
+        "molluscs": [],
+        "mustard": [],
+        "nuts": ["Hamburger", "Cheeseburger", "Bacon Burger", "Bacon Cheeseburger", "Little Hamburger", "Little Cheeseburger", "Little Bacon Burger", "Little Bacon Cheeseburger", 
+                 "All Beef Hot Dog", "Cheese Dog", "Bacon Dog", "Bacon Cheese Dog", "Reese's Peanut Butter Cups Shake"],
+        "peanuts": ["Little Five Guys Style Fries", "Regular Five Guys Style Fries", "Large Five Guys Style Fries",
+                    "Little Cajun Style Fries", "Regular Cajun Style Fries", "Large Cajun Style Fries", "Five Guys Shake", "Reese's Peanut Butter Cups Shake"], 
+        "sesame seeds": ["Hamburger", "Cheeseburger", "Bacon Burger", "Bacon Cheeseburger", "Little Hamburger", "Little Cheeseburger", "Little Bacon Burger", "Little Bacon Cheeseburger", 
+                         "All Beef Hot Dog", "Cheese Dog", "Bacon Dog", "Bacon Cheese Dog", "Reese's Peanut Butter Cups Shake"],
+        "soya": ["Hamburger", "Cheeseburger", "Bacon Burger", "Bacon Cheeseburger", "Little Hamburger", "Little Cheeseburger", "Little Bacon Burger", "Little Bacon Cheeseburger", 
+                 "All Beef Hot Dog", "Cheese Dog", "Bacon Dog", "Bacon Cheese Dog", "Five Guys Shake", "Reese's Peanut Butter Cups Shake"],
+        "sulphur dioxide": [],
+    }
+}
+
 default = {
     "name": "",
     "location": "location coordinates",

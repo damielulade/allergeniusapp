@@ -73,6 +73,59 @@ chopstix = {
     }
 }
 
+wasabi = {
+    "name": "wasabi",
+    "location": "location coordinates",
+    "city": "London",
+    "menu": [
+        "Avocado homosaki", "Cucumber homosaki", "Salmon homosaki", "Tuna homosaki", "Inari & red pepper hosomaki",
+        "California roll", "Fried prawn roll", "Salmon & mango roll", "Surumi crabmeat & cucumber roll", "Tofu roll", "Salmon teriyaki roll",
+        
+        ],
+    "ratings": ["3.55"],
+    "allergens": {
+        "celery": [],
+        "cereals": [],
+        "crustaceans": ["California roll", "Fried prawn roll", "Surumi crabmeat & cucumber roll", ],
+        "eggs": ["California roll", "Fried prawn roll", "Surumi crabmeat & cucumber roll", ],
+        "fish": ["Salmon homosaki", "Tuna homosaki","California roll", "Salmon & mango roll", "Surumi crabmeat & cucumber roll", ],
+        "lupin": [], 
+        "milk": ["Fried prawn roll", ],
+        "molluscs": [],
+        "mustard": [],
+        "nuts": [],
+        "peanuts": [], 
+        "sesame seeds": ["California roll", "Fried prawn roll",],
+        "soya": ["Inari & red pepper hosomaki", "California roll", "Fried prawn roll", "Salmon & mango roll", "Surumi crabmeat & cucumber roll",
+                 "Tofu roll", ],
+        "sulphur dioxide": ["Surumi crabmeat & cucumber roll", ],
+    }
+}
+
+default = {
+    "name": "",
+    "location": "location coordinates",
+    "city": "London",
+    "menu": [],
+    "ratings": ["4.20"],
+    "allergens": {
+        "celery": [],
+        "cereals": [],
+        "crustaceans": [],
+        "eggs": [],
+        "fish": [],
+        "lupin": [], 
+        "milk": [],
+        "molluscs": [],
+        "mustard": [],
+        "nuts": [],
+        "peanuts": [], 
+        "sesame seeds": [],
+        "soya": [],
+        "sulphur dioxide": [],
+    }
+}
+
 def get_values(ref, limit=10):
     res = []
     for record in ref.get().each():

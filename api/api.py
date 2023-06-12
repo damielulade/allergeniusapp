@@ -138,17 +138,17 @@ if __name__ == '__main__':
 
 
 
-uIds = db.child("user").get()
-for id in uIds.each():
-    if (id.val()["firstName"] == "Brett"):
-        id1 = id.key()
-    elif (id.val()["firstName"] == "Dami"):
-        id2 = id.key()
-    elif (id.val()["firstName"] == "Thatcher"):
-        id3 = id.key()
-    else:
-        id4 = id.key()
+#uIds = db.child("user").get()
+#for id in uIds.each():
+#    if (id.val()["firstName"] == "Brett"):
+#        id1 = id.key()
+#    elif (id.val()["firstName"] == "Dami"):
+#        id2 = id.key()
+#    elif (id.val()["firstName"] == "Thatcher"):
+#        id3 = id.key()
+#    else:
+#        id4 = id.key()
 
-add_friendship(id1, id2)
-add_friendship(id2, id3)
+#add_friendship(id1, id2)
+#add_friendship(id2, id3)
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import mapimg from "../static/images/staticmap2.png";
-import friendsimg from "../static/images/friends.png";
-import accountimg from "../static/images/account.png";
+import friends_img from "../static/images/friends.png";
+import account_img from "../static/images/account.png";
 import MainHeader from "./MainHeader";
 import MapComponent from "./Map";
 
@@ -40,11 +40,11 @@ export default function Main() {
             </div>
             <div className = "button-bar">
                 <Link to="/friends" id = "friends-button">
-                    <img src={friendsimg} id = "friends-img" alt = "temp"/>
+                    <img src={friends_img} id = "friends-img" alt = "temp"/>
                     <span>Friends</span>
                 </Link>
                 <Link to="/account" id = "account-button">
-                    <img src={accountimg} id = "account-img" alt = "temp"/>
+                    <img src={account_img} id = "account-img" alt = "temp"/>
                     <span>Account</span>
                 </Link>
             </div>

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import settings from "../static/images/settings.png";
 
 export default function MainHeaderForAccount() {
   return (

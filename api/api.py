@@ -49,6 +49,10 @@ restaurantC = {
         "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]}
     }
 
+#def add_friendship(user1, user2):
+#    data = {
+
+#    }
 
 
 def add_user(data):
@@ -92,9 +96,31 @@ def foo():
     
 @app.route('/data')
 def example():
-    add_user({"firstName": "Brett", "lastName": "Conway", "Age": 20})
-    add_user({"firstName": "Brett", "lastName": "Conroute", "Age": 20})
-    add_user({"firstName": "Brett", "lastName": "Connection", "Age": 20})
+    add_user({
+        "firstName": "Brett",
+        "lastName": "Conway",
+        "age": 20,
+        "allergens" : ["tree nuts", "cereals"],
+        "friends" : []
+     })
+    add_user({
+        "firstName": "Dami",
+        "lastName": "Elulade", 
+        "allergens" : ["cereals", "molluscs"],
+        "age": 20
+    })
+    add_user({
+        "firstName": "Thatcher",
+        "lastName": "Ference",
+        "allergens" : ["milk"],
+        "age": 21
+    })
+    add_user({
+        "firstName": "Hyunjun",
+        "lastName": "Choi",
+        "allergens" : ["soybeans"],
+        "age": 20
+    })
     return json.dumps(get_values(db.child("user")))
 
 if __name__ == '__main__':

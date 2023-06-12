@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 // import mapimg from "../static/images/staticmap2.png";
 import friends_img from "../static/images/friends.png";
@@ -7,7 +7,8 @@ import MainHeader from "./MainHeader";
 import MapComponent from "./Map";
 
 export default function Main() {
-    
+    const inputRef = useRef(null);
+
     let navigate = useNavigate();
     const routeChange = () => {
         const query = document.getElementById("search-input").value;
@@ -20,20 +21,24 @@ export default function Main() {
         navigate(path);
     }
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            routeChange();
+        }
+    };
+
     return (
         <div className = "main">
             <MainHeader />
             <div className = "container-index">
-				{/*<img src={mapimg} id="map-img" alt = "temp" />*/}
                 <MapComponent/>
                 <div className="map-block">
                     <div id="search-box">
-                        <input type="text" placeholder="Search..." id = "search-input" />
+                        <input type="text" placeholder="Search..." id = "search-input" ref={inputRef} onKeyDown={handleKeyPress}/>
                         <button onClick ={routeChange} id = "search-button"><span>⌕</span></button>
                         {/* @TODO: fix/replace this button  */}
                     </div>
                     <Link to="/filter" id="filter-button">
-                        {/*<button> Filter </button>*/}
                         <span>Filter</span>
                     </Link>
                 </div>

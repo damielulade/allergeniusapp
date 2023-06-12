@@ -171,7 +171,7 @@ body {
   border-left: none;
   justify-content: space-around;
   background-color: white;
-  overflow: hidden;
+  overflow: auto;
 }
 
 /*#map-img, #searchresults {*/

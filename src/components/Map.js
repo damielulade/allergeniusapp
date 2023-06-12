@@ -13,8 +13,8 @@ export default function MapComponent() {
     }), []);
 
     const center = useMemo(() => ({
-        lat: 51.5074,
-        lng: -0.1278,
+        lat: 51.4941082, //51.5074,
+        lng: -0.1743669 //-0.1278,
     }), []);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export default function MapComponent() {
                 mapInstanceRef.current = new window.google.maps.Map(mapContainerRef.current, {
                     center: center,
                     options: options,
-                    zoom: 10,
+                    zoom: 15,
                 });
             }
         });

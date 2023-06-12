@@ -49,10 +49,18 @@ restaurantC = {
         "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]}
     }
 
-#def add_friendship(user1, user2):
-#    data = {
+def add_friendship(user1, user2):
+    fIds = db.child("user").child(user1).child("friends").get()
 
-#    }
+    found = False
+
+    #for id in fIds.each():
+    #    if (id.key() == user2):
+    #        found = True
+    #        break
+    
+    db.child("user").child(user1).child("friends").push(user2)
+    db.child("user").child(user2).child("friends").push(user1)
 
 
 def add_user(data):
@@ -107,7 +115,8 @@ def example():
         "firstName": "Dami",
         "lastName": "Elulade", 
         "allergens" : ["cereals", "molluscs"],
-        "age": 20
+        "age": 20,
+        "friends" : []
     })
     add_user({
         "firstName": "Thatcher",
@@ -121,8 +130,25 @@ def example():
         "allergens" : ["soybeans"],
         "age": 20
     })
+
     return json.dumps(get_values(db.child("user")))
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+uIds = db.child("user").get()
+for id in uIds.each():
+    if (id.val()["firstName"] == "Brett"):
+        id1 = id.key()
+    elif (id.val()["firstName"] == "Dami"):
+        id2 = id.key()
+    elif (id.val()["firstName"] == "Thatcher"):
+        id3 = id.key()
+    else:
+        id4 = id.key()
+
+add_friendship(id1, id2)
+add_friendship(id2, id3)
 

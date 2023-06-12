@@ -8,7 +8,12 @@ export default function FriendsPage() {
           <div class = "main">
               <MainHeaderVariant />
               <div className="container-other">
-                  <h2 id="friends-title">Friends</h2>
+                  <h2 id="friends-ID-title">Search for a user by user ID</h2>
+                  <div id = "search-friends">
+                        <input type="text" placeholder="Search..." id = "search-friends-input"/>
+                        <button id = "search-friends-button"><span>⌕</span></button>
+                  </div>
+                  <h2 id="friends-title">Existing Friends</h2>
                   <FriendsCard />
                   <FriendsCard />
                   <FriendsCard />

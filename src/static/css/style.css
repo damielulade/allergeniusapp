@@ -477,6 +477,7 @@ input:focus {
 }
 
 #search-friends {
+  height: 5%;
   width: 90%;
   margin: 2.5% 5%;
   display: flex;
@@ -489,7 +490,7 @@ input:focus {
 #search-friends-input {
   width: 80%;
   margin: 0 auto;
-  padding-left: 5%;
+  padding-left: 2.5%;
   font-size: 100%;
   border: none;
   /*border: solid black 1px;*/

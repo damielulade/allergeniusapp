@@ -20,6 +20,8 @@ db_config = {
 firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
 
+
+# default restaurants
 restaurantA = {
         "name": "Restaurant A",
         "location": "location coordinates",
@@ -36,15 +38,18 @@ restaurantB = {
         "menu": ["salad", "sandwich"],
         "ratings": ["4"],
         "allergens" : {"celery" : ["salad"], "cereals" : ["sandwich"], "sesame" : ["salad"]}
-        }
+    }
 
-restaurantC = {"name": "Restaurant C",
+restaurantC = {
+        "name": "Restaurant C",
         "location": "location coordinates",
         "city" : "London",
         "menu": ["fries", "burger", "garlic bread"],
         "ratings": ["3"],
         "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]}
-        }
+    }
+
+
 
 def add_user(data):
     db.child("user").push(data)
@@ -77,18 +82,9 @@ def not_found(e):
     
 
 @app.route('/getRestaurantData', methods=["GET"])
+@cross_origin()
 def get_restaurant():
-    restaurant_data = {
-        "name": "Restaurant A",
-        "location": "location coordinates",
-        "city" : "London",
-        "menu" : {"items" : {"peperroni pizza", "hotdog", "burger", "soup"}},
-        "allergens": {"gluten", "dairy", "nuts", "fish"},
-        "ratings": {"5"}
-        # "location": "location coordinates",
-    }
-    db.child("restaurant").set(restaurant_data)
-    return db.child("restaurant").get().val()
+    return json.dumps(get_values(db.child("restaurant")))
 
 @app.route('/collectData', methods=["GET"])
 def foo():
@@ -104,4 +100,3 @@ def example():
 if __name__ == '__main__':
     app.run(debug=True)
 
-#add_restaurant(restaurantC)

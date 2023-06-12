@@ -88,12 +88,14 @@ wasabi = {
         "Salmon hosomaki set", "Avocado hosomaki set", "Cucumber hosomaki set", "Spicy salmon roll", "Spicy yasai roll", "Kyoto set",
         "Chumaki set - brown rice", "Salmon nigiri set - brown rice", "Rainbow set - brown rice", "Yasai roll set - brown rice", "Harmony set - brown rice",  
         "Chicken katsu salad", "Chirashi bowl", "Salmon teriyaki salad", "Tofu teriyaki salad",
-        "Salmon Matsuri platter", "Tsudoi platter", "Yasai platter"
+        "Salmon Matsuri platter", "Tsudoi platter", "Yasai platter", 
+        "Chilli mayo sauce", "Chinese chilli sauce", "Sweet chilli sauce", "Japanese BBQ sauce", "Japanese dresing", "Teriyaki sauce", "Balsamic vinegar olive oil", 
+        "Goma dressing", "Korean chilli sauce", "Ginger sachet", "Soy sauce sachet", "Sweet soy sauce sachet", "Gluten free soy sachet", "Reduced salt soy sauce sachet", "Wasabi sachet"
         ],
     "ratings": ["3.55"],
     "allergens": {
         "celery": [],
-        "cereals": [],
+        "cereals": ["Japanese dresing", "Teriyaki sauce", "Goma dressing", "Korean chilli sauce", "Soy sauce sachet", "Sweet soy sauce sachet", "Reduced salt soy sauce sachet", ],
         "crustaceans": ["California roll", "Fried prawn roll", "Surumi crabmeat & cucumber roll", "Shrimp nigiri", "Surumi crabmeat gunkan",
                         "Chicken katsu & kimchi onigiri", "Chumaki set", "Harmony set", "Mixed maki set", "Rainbow set", "Osaka set", "Crispy ebi roll",
                         "Wasabi special bento", "Kyoto set", "Chumaki set - brown rice", "Rainbow set - brown rice", "Harmony set - brown rice", "Chirashi bowl", 
@@ -101,7 +103,7 @@ wasabi = {
         "eggs": ["California roll", "Fried prawn roll", "Surumi crabmeat & cucumber roll", "Japanese omelette nigiri", "Surumi crabmeat gunkan",
                  "Tuna & mustard onigiri", "Chumaki set", "Harmony set", "Mixed maki set", "Rainbow set", "Osaka set", "Crispy ebi roll", "Wasabi special bento", 
                  "Kyoto set", "Chumaki set - brown rice", "Rainbow set - brown rice", "Harmony set - brown rice", "Chicken katsu salad", "Chirashi bowl",
-                 "Tsudoi platter", ],
+                 "Tsudoi platter", "Chilli mayo sauce", ],
         "fish": ["Salmon hosomaki", "Tuna hosomaki","California roll", "Salmon & mango roll", "Surumi crabmeat & cucumber roll", "Salmon teriyaki roll",
                  "Salmon nigiri", "Tuna nigiri", "Salmon sesame gunkan", "Surumi crabmeat gunkan", "Tuna & mustard onigiri", "Chicken katsu & kimchi onigiri",
                  "Salmon teriyaki onigiri",
@@ -118,15 +120,15 @@ wasabi = {
                     "Wasabi special bento", "Yasai roll set", "Salmon teriyaki roll set", "Crispy ebi roll", "Chicken katsu roll set", "Veggie roll set", "Tofu pocket roll set",
                     "Salmon hosomaki set", "Avocado hosomaki set", "Cucumber hosomaki set", "Spicy salmon roll", "Spicy yasai roll", "Kyoto set", 
                     "Chumaki set - brown rice", "Salmon nigiri set - brown rice", "Rainbow set - brown rice", "Yasai roll set - brown rice", "Harmony set - brown rice", 
-                    "Chirashi bowl", "Salmon teriyaki salad", "Tofu teriyaki salad", "Salmon Matsuri platter", "Tsudoi platter", "Yasai platter"],
+                    "Chirashi bowl", "Salmon teriyaki salad", "Tofu teriyaki salad", "Salmon Matsuri platter", "Tsudoi platter", "Yasai platter", "Japanese dresing", "Wasabi sachet", ],
         "nuts": [],
-        "peanuts": [], 
+        "peanuts": ["Goma dressing", ], 
         "sesame seeds": ["California roll", "Fried prawn roll", "Salmon teriyaki roll", "Salmon sesame gunkan", "Chicken katsu & kimchi onigiri",
                          "Seaweed onigiri", "Salmon teriyaki onigiri", "Chicken teriyaki onigiri", "Chumaki set", "Harmony set", "Mini hosomaki set", 
                          "Mixed maki set", "Rainbow set", "Salmon nigiri set", "Sashimi set", "Osaka set", "Chicken katsu roll set", "Crispy ebi roll",
                          "Salmon teriyaki roll set", "Yasai roll set", "Spicy salmon roll",
                          "Chumaki set - brown rice", "Salmon nigiri set - brown rice", "Rainbow set - brown rice", "Yasai roll set - brown rice", "Harmony set - brown rice", 
-                         "Chicken katsu salad", "Chirashi bowl", "Salmon teriyaki salad", "Tofu teriyaki salad", "Tsudoi platter", "Yasai platter"],
+                         "Chicken katsu salad", "Chirashi bowl", "Salmon teriyaki salad", "Tofu teriyaki salad", "Tsudoi platter", "Yasai platter", "Goma dressing", "Korean chilli sauce", ],
         "soya": ["Inari & red pepper hosomaki", "California roll", "Fried prawn roll", "Salmon & mango roll", "Surumi crabmeat & cucumber roll",
                  "Tofu roll", "Salmon teriyaki roll", "Tofu nigiri", "Salmon sesame gunkan", "Surumi crabmeat gunkan", "Chicken katsu & kimchi onigiri",
                  "Edamame & butternut squash onigiri", "Seaweed onigiri", "Salmon teriyaki onigiri", "Chicken teriyaki onigiri",
@@ -134,11 +136,12 @@ wasabi = {
                  "Wasabi special bento", "Yasai roll set", "Salmon teriyaki roll set", "Crispy ebi roll", "Chicken katsu roll set", "Veggie roll set", "Tofu pocket roll set",
                  "Salmon hosomaki set", "Avocado hosomaki set", "Cucumber hosomaki set", "Spicy salmon roll", "Spicy yasai roll", "Kyoto set", 
                  "Chumaki set - brown rice", "Salmon nigiri set - brown rice", "Rainbow set - brown rice", "Yasai roll set - brown rice", "Harmony set - brown rice", 
-                 "Chicken katsu salad", "Chirashi bowl", "Salmon teriyaki salad", "Tofu teriyaki salad", "Salmon Matsuri platter", "Tsudoi platter", "Yasai platter"
+                 "Chicken katsu salad", "Chirashi bowl", "Salmon teriyaki salad", "Tofu teriyaki salad", "Salmon Matsuri platter", "Tsudoi platter", "Yasai platter", "Japanese dresing",
+                 "Teriyaki sauce", "Goma dressing", "Korean chilli sauce", "Soy sauce sachet", "Sweet soy sauce sachet", "Gluten free soy sachet", "Reduced salt soy sauce sachet", 
                  ],
         "sulphur dioxide": ["Surumi crabmeat & cucumber roll", "Surumi crabmeat gunkan", "Chicken katsu & kimchi onigiri", "Chicken teriyaki onigiri", 
                             "Chumaki set", "Harmony set", "Mixed maki set", "Rainbow set", "Osaka set", "Wasabi special bento", "Spicy yasai roll", "Kyoto set", 
-                            "Chumaki set - brown rice", "Rainbow set - brown rice", "Harmony set - brown rice", "Chirashi bowl", ],
+                            "Chumaki set - brown rice", "Rainbow set - brown rice", "Harmony set - brown rice", "Chirashi bowl", "Chinese chilli sauce", "Balsamic vinegar olive oil", ],
     }
 }
 
@@ -189,7 +192,7 @@ honestBurger = {
              "Manchester Salford Mule", "Portabello G&T", "Jeffrey's G&T", "Pink G&T", "Espresso Martini", "Kings St Punch", "Portabello Spritz", "Vanilla Milkshake", "Strawberry Milkshake",
              "Aperol Spritz", "Original: Chocolate Milkshake", "Original: Salted Caramel Milkshake", "Honey I'm Home", "Rum Bongo", "Winter Spiced Mule", "Smashed Cheeseburger",
              "Smashed Baconburger", "Smashed Fried Chicken Burger", "Smashed Cali Burger", "Smashed BBQ Burger", "Smashed Chilli Burger", "Smashed Plant Burger", ],
-    "ratings": ["4.20"],
+    "ratings": ["4.50"],
     "allergens": {
         "celery": ["Caribbean Fried Chicken Burger", "Tribute Burger", "Dressed Green Salad", "Vegan Bacon Ketchup", "Smashed Cali Burger", ],
         "cereals": ["Caribbean Fried Chicken Burger", "Plant Burger", "Beef Burger", "Cheese Burger", "Blue Cheese Burger", "Honest Burger", "Tribute Burger", "Chilli Burger", "Pesto Burger",

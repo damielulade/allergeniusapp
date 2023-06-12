@@ -73,8 +73,80 @@ chopstix = {
     }
 }
 
+thai_square = {
+    "name": "Thai Square",
+    "location": "location coordinates", 
+    "city": "London",
+    "menu": [
+        "Prawn Crackers", "Thai Square Mixed Starters (for 2 people)", "Aromatic Duck (for 2 people)", "Thai Dumplings", "Chicken Satay", "Salt and Pepper Squid", "Butterfly Prawns", "Duck Spring Rolls",
+        "Spicy Prawn Soup (Tom Yum Goong)", "Chicken in Coconut Soup (Tom Kha Gai)", "Papaya Salad", "Minced Chicken Salad",
+        "Stir Fried with Basil Leaves", "Stir Fried with Cashew Nuts", "Sweet and Sour", "Stir Fried with Oyster Sauce", "Stir Fried with Ginger", "Chilli Lamb", "Drunken Duck", 
+        "Tamarind Duck", "Weeping Tiger", "Grilled Pork Neck (Kor Moo Yang)",
+        "Lamb Shank Panang Curry", "Green Curry", "Red Curry", "Panang Curry", "Jungle Curry", "Massaman Curry", "Duck Curry", "Golden Curry",
+        "Chu Chi Jumbo Prawns", "Steamed Sea Bass", "Crispy Tilapia", "Spicy Seafood", "Garlic Prawns", "Prawns Love Scallops", 
+        "Pad Thai", "Pad Si-ew", "Drunken Noodles", "Thai Square Fried Rice",
+        "Steamed Thai Jasmine Rice", "Brown Rice", "Egg Fried Rice", "Sticky Rice", "Coconut Rice", "Thai Square Noodles", "Mixed Vegetables with Garlic Sauce", "Broccoli with Garlic and Soya Sauce", 
+        "Mixed Vegetarian Starter (for 2 people)", "Vegetable Spring Rolls", "Corn Cakes", "Vegetable Tempura", "Vegetable and Tofu Satay", "Salt and Pepper Tofu", "Papaya Salad (Som Tum Jay)", "Mushroom in Coconut Soup (Tom Kha Hed)",
+        "Tofu with Basil Leaves", "Vegetable Green Curry", "Vegetable Jungle Curry", "Sweet and Sour Tofu", "Tofu with Cashew Nuts", "Tofu with Ginger", "Spicy Aubergine", "Vegetarian Pad Thai"
+    ],
+    "ratings": ["3.6"], 
+    "allergens": {
+        "celery": ["Sweet and Sour", "Pad Thai", "Sweet and Sour Tofu", "Vegetarian Pad Thai"],
+        "cereals": ["Thai Square Mixed Starters (for 2 people)", "Aromatic Duck (for 2 people)", "Thai Dumplings", "Salt and Pepper Squid", "Butterfly Prawns", "Duck Spring Rolls", "Stir Fried with Basil Leaves", "Stir Fried with Cashew Nuts", "Stir Fried with Oyster Sauce", "Stir Fried with Ginger", "Chilli Lamb", "Drunken Duck", "Tamarind Duck", "Weeping Tiger", "Grilled Pork Neck (Kor Moo Yang)", "Crispy Tilapia", "Spicy Seafood", "Garlic Prawns", "Prawns Love Scallops", "Pad Si-ew", "Drunken Noodles", "Thai Square Fried Rice", "Thai Square Noodles", "Mixed Vegetables with Garlic Sauce", "Broccoli with Garlic and Soya Sauce", "Mixed Vegetarian Starter (for 2 people)", "Vegetable Spring Rolls", "Corn Cakes", "Vegetable Tempura", "Sald and Pepper Tofu", "Papaya Salad (Som Tum Jay)", "Tofu with Basil Leaves", "Vegetable Jungle Curry", "Tofu with Cashew Nuts", "Tofu with Ginger", "Spicy Aubergine"],
+        "crustaceans": ["Prawn Crackers", "Thai Square Mixed Starters (for 2 people)", "Thai Dumplings", "Butterfly Prawns", "Spicy Prawn Soup (Tom Yum Goong)", "Chicken in Coconut Soup (Tom Kha Gai)", "Chilli Lamb", "Lamb Shank Panang Curry", "Green Curry", "Red Curry", "Panang Curry", "Jungle Curry", "Massaman Curry", "Duck Curry", "Golden Curry", "Chu Chi Jumbo Prawns", "Spicy Seafood", "Garlic Prawns", "Prawns Love Scallops", "Thai Square Fried Rice"],
+        "eggs": ["Thai Square Mixed Starters (for 2 people)", "Thai Dumplings", "Salt and Pepper Squid", "Butterfly Prawns", "Spicy Seafood", "Pad Thai", "Pad Si-ew", "Thai Square Fried Rice", "Egg Fried Rice", "Thai Square Noodles", "Vegetarian Pad Thai"],
+        "fish": ["Spicy Prawn Soup (Tom Yum Goong)", "Chicken in Coconut Soup (Tom Kha Gai)", "Papaya Salad (Som Tum)", "Minced Chicken Salad (Laab Gai)", "Tamarind Duck", "Weeping Tiger", "Grilled Pork Neck (Kor Moo Yang)", "Lamb Shank Panang Curry", "Green Curry", "Red Curry", "Panang Curry", "Jungle Curry", "Massaman Curry", "Duck Curry", "Golden Curry", "Chu Chi Jumbo Prawns", "Steamed Sea Bass", "Crispy Tilapia", "Spicy Seafood", "Pad Thai"],
+        "lupin": [], 
+        "milk": ["Thai Square Mixed Starters (for 2 people)", "Duck Spring Rolls", "Spicy Prawn Soup (Tom Yum Goong)", "Mixed Vegetarian Starter (for 2 people)", "Vegetable Spring Rolls"],
+        "molluscs": ["Salt and Pepper Squid", "Stir Fried with Basil Leaves", "Stir Fried with Cashew Nuts", "Stir Fried with Oyster Sauce", "Stir Fried with Ginger", "Chilli Lamb", "Drunken Duck", "Weeping Tiger", "Grilled Pork Neck (Kor Moo Yang)", "Spicy Seafood", "Garlic Prawns", "Prawns Love Scallops", "Pad Si-ew", "Drunken Noodles", "Thai Square Fried Rice"],
+        "mustard": ["Thai Square Mixed Starters (for 2 people)", "Chicken Satay"],
+        "nuts": ["Papaya Salad (Som Tum)", "Stir Fried with Cashew Nuts", "Pad Thai", "Papaya Salad (Som Tum Jay)", "Tofu with Cashew Nuts", "Vegetarian Pad Thai"],
+        "peanuts": ["Thai Square Mixed Starters (for 2 people)", "Chicken Satay", "Pad Thai", "Mixed Vegetarian Starter (for 2 people)", "Vegetable and Tofu Satay", "Papaya Salad (Som Tum Jay)", "Vegetarian Pad Thai"], 
+        "sesame seeds": ["Thai Square Mixed Starters (for 2 people)", "Aromatic Duck (for 2 people)", "Thai Dumplings", "Duck Spring Rolls", "Stir Fried with Cashew Nuts", "Thai Square Noodles", "Mixed Vegetarian Starter (for 2 people)", "Vegetable Spring Rolls", "Tofu with Cashew Nuts"],
+        "soya": ["Thai Square Mixed Starters (for 2 people)", "Aromatic Duck (for 2 people)", "Thai Dumplings", "Butterfly Prawns", "Duck Spring Rolls", "Stir Fried with Basil Leaves", "Stir Fried with Cashew Nuts", "Stir Fried with Oyster Sauce", "Stir Fried with Ginger", "Chilli Lamb", "Drunken Duck", "Tamarind Duck", "Weeping Tiger", "Grilled Pork Neck (Kor Moo Yang)", "Spicy Seafood", "Garlic Prawns", "Prawns Love Scallops", "Pad Thai", "Pad Si-ew", "Drunken Noodles", "Thai Square Fried Rice", "Thai Square Noodles", "Mixed Vegetables with Garlic Sauce", "Broccoli with Garlic and Soya Sauce", "Mixed Vegetarian Starter (for 2 people)", "Vegetable Spring Rolls", "Vegetable and Tofu Satay", "Salt and Pepper Tofu", "Papaya Salad (Som Tum Jay)", "Tofu with Basil Leaves", "Vegetable Green Curry", "Vegetable Jungle Curry", "Sweet and Sour Tofu", "Tofu with Cashew Nuts", "Tofu with Ginger", "Spicy Aubergine", "Vegetarian Pad Thai"],
+        "sulphur dioxide": [],
+    }
+}
+
+comptoir_libanais = {
+    "name": "Comptoir Libanais",
+    "location": "location coordinates",
+    "city": "London",
+    "menu": [
+        "Selection of Pickes", "Marinated Mixed Olives", "Warm Za'atar & Garlic Flatbread",
+        "Mezze Platter", "Lentil Soup", "Hommos", "Tony's Hommos", "Baba Ghanuj", "Batata Harra", "Cheese Samboussek", "Falafel", "Halloumi & Tomato", "Lamb Kibbeh", "Tabbouleh", "Fattoush", "Whipped Feta Dip", "Halloumi & Roasted Figs", 
+        "Mama Zohra Salad", "Falafel Salad", "The Wedge Salad", "Summer Salad", 
+        "Chicken Wrap", "Falafel Wrap", "Lamb Kofta Wrap", "Chicken Taouk Plate", "Lamb Kofta Plate", "Falafel Plate", "Vanilla Ice-cream",
+        "Chocolate Brownie", "Mango & Vanilla Cheesecake", "Orange Blossom Mouhalabia", "Baklawa Sandwich", "Comptoir Sundae",
+        "Hadath", "Bokaj", "Pistachio", "Assabee", "Kolwashkur", 
+        "Falafel", "Lamb Kofta", "Chicken Taouk", "Halloumi", 
+        "Spiced Lamb Kofta", "Spced Chicken Kofta", "Marinated Chicken Taouk",
+        "Mixed Grill", "Sea Bass Sayadiyah", "Lamb Kofta Roll", "Steak Skewer", "Spinach & Feta Borek",
+        "Aubergine & Chickpea Tagine", "Lamb Kofta Tagine", "Chicken & Green Olive Tagine", 
+        "Warm Flatbread", "Vermicelli Rice", "Steamed Couscous", "Jewelled Couscous", "Quinoa", "Garlic Sauce", "Mint Yoghurt Sauce", "Tahina Sauce", "Harissa Sauce", "Fries", 
+        "Teas with Cow Milk", "Teas with Soya Milk", "Teas with Almond", "Hot Chocolate with Cow Milk", "Hot Chocolate with Soya Milk", "Hot Chocolate with Almond Milk", "Americano with Cow Milk", "Americano with Soya Milk", "Americano with Almond Milk", "Cappuccino with Cow Milk", "Cappuccino with Soya Milk", "Cappuccino with Almond Milk", "Latte with Cow Milk", "Latte with Soya Milk", "Latte with Almond Milk", "Flat White with Cow Milk", "Flat White with Soya Milk", "Flat White with Almond Milk", "Mocha with Cow Milk", "Mocha with Soya Milk", "Mocha with Almond Milk", "Espresso with Cow Milk", "Espresso with Soya Milk", "Espresson with Almond Milk", "Macchiato with Cow Milk", "Macchiato with Soya Milk", "Macchiato with Almond Milk", "Lebanese Coffee with Cow Milk", "Lebanese Coffee with Soya Milk", "Lebanese Coffee with Almond Milk", "Lebanese Spiced Hot Chocolate with Cow Milk", "Lebanese Spiced Hot Chocolate with Soya Milk", "Lebanese Spiced Hot Chocolate with Almond Milk"
+    ],
+    "ratings": ["4.0"],
+    "allergens": {
+        "celery": [],
+        "cereals": ["Warm Za'atar & Garlic Flatbread", "Mezze Platter", "Lentil Soup", "Hommos", "Tony's Hommos", "Baba Ghanuj", "Batata Harra", "Cheese Samboussek", "Falafel", "Lamb Kibbeh", "Fattoush", "Whipped Feta Dip", "Mama Zohra Salad", "Falafel Salad", "The Wedge Salad", "Chicken Wrap", "Falafel Wrap", "Lamb Kofta Wrap", "Chicken Taouk Plate", "Lamb Kofta Plate", "Falafel Plate", "Vanilla Ice-cream", "Chocolate Brownie", "Mango & Vanilla Cheesecake", "Baklawa Sandwich", "Comptoir Sundae", "Hadath", "Bokaj", "Pistachio", "Assabee", "Kolwashkur", "Falafel", "Lamb Kofta", "Chicken Taouk", "Halloumi", "Sea Bass Sayadiyah", "Lamb Kofta Roll", "Steak Skewer", "Spinach & Feta Borek", "Aubergine & Chickpea Tagine", "Lamb Kofta Tagine", "Chicken & Green Olive Tagine", "Warm Flatbrread", "Vermicelli Rice", "Steamed Couscous", "Jewelled Couscous", "Fries"],
+        "crustaceans": [],
+        "eggs": ["Mezze Platter", "Tony's Hommos", "Batata Harra", "Cheese Samboussek", "Falafel", "Lamb Kibbeh", "Falafel Salad", "Chicken Wrap", "Falafel Wrap", "Lamb Kofta Wrap", "Chicken Taouk Plate", "Lamb Kofta Plate", "Falafel Plate", "Vanilla Ice-cream", "Chocolate Brownie", "Baklawa Sandwich", "Comptoir Sundae", "Falafel", "Sea Bass Sayadiyah", "Lamb Kofta Roll", "Steak Skewer", "Spinach & Feta Borek", "Jewelled Couscous", "Fries"],
+        "fish": ["Sea Bass Sayadiyah"],
+        "lupin": ["Warm Za'atar & Garlic Flatbread", "Mezze Platter", "Lentil Soup", "Hommos", "Tony's Hommos", "Baba Ghanuj", "Whipped Feta Dip", "Warm Flatbread"],
+        "milk": ["Mezze Platter", "Tony's Hommos", "Batata Harra", "Cheese Samboussek", "Falafel", "Halloumi & Tomato", "Lamb Kibbeh", "Whipped Feta Dip", "Halloumi & Roasted Figs", "Mama Zohra Salad", "Falafel Salad", "Summer Salad", "Chicken Wrap", "Falafel Wrap", "Lamb Kofta Wrap", "Chicken Taouk Plate", "Lamb Kofta Plate", "Falafel Plate", "Vanilla Ice-cream", "Chocolate Brownie", "Mango & Vanilla Cheesecake", "Orange Blossom Mouhalabia", "Baklawa Sandwich", "Comptoir Sundae", "Hadath", "Bokaj", "Pistachio", "Assabee", "Kolwashkur", "Falafel", "Halloumi", "Sea Bass Sayadiyah", "Lamb Kofta Roll", "Steak Skewer", "Spinach & Feta Borek", "Lamb Kofta Tagine", "Jewelled Couscous", "Mint Yoghurt Sauce", "Fries", "Teas with Cow Milk", "Hot Chocolate with Cow Milk", "Americano with Cow Milk", "Cappuccino with Cow Milk", "Latte with Cow Milk", "Flat White with Cow Milk", "Mocha with Cow Milk", "Expresso with Cow Milk", "Macchiato with Cow Milk", "Lebanese Coffee with Cow Milk", "Lebanese Spiced Hot Chocolate with Cow Milk"],
+        "molluscs": [],
+        "mustard": ["Warm Za'atar & Garlic Flatboard", "Mezze Platter", "Lentil Soup", "Hommos", "Tony's Hommos", "Baba Ghanuj", "Whipped Feta Dip", "Warm Flatbread"],
+        "nuts": ["Halloumi & Roasted Figs", "Summer Salad", "Chocolate Brownie", "Mango & Vanilla Cheesecake", "Baklawa Sandwich", "Comptoir Sundae", "Hadath", "Bokaj", "Pistachio", "Assabee", "Kolwashkur", "Teas with Almond", "Hot Chocolate with Almond Milk", "Americano with Almond Milk", "Cappuccino with Almond Milk", "Latte with Almond Milk", "Flat White with Almond Milk", "Mocha with Almond Milk", "Espresso with Almond Milk", "Macchiato with Almond Milk", "Lebanese Coffee with Almond Milk", "Lebanese Spiced Hot Chocolate with Cow Milk", "Lebanese Spiced Hot Chocolate with Soya Milk", "Lebanese Spiced Hot Chocolate with Almond Milk"],
+        "peanuts": [], 
+        "sesame seeds": ["Warm Za'atar & Garlic Flatbread", "Mezze Platter", "Lentil Soup", "Hommos", "Tony's Hommos", "Baba Ghanuj", "Batata Harra", "Cheese Samboussek", "Falafel", "Lamb Kibbeh", "Whipped Feta Dip", "Halloumi & Roated Figs", "Mama Zohra Salad", "Falafel Salad", "The Wedge Salad", "Summer Salad", "Chicken Wrap", "Falafel Wrap", "Lamb Kofta Wrap", "Chicken Taouk Plate", "Lamb Kofta Plate", "Falafel Plate", "Chocolate Brownie", "Orange Blossom Mouhalabia", "Baklawa Sandwich", "Comptoir Sundae", "Falafel", "Lamb Kofta", "Chicken Taouk", "Halloumi", "Spiced Lamb Kofta", "Spiced Chicken Kofta", "Marinated Chicken Taouk", "Mixed Grill", "Sea Bass Sayadiyah", "Lamb Kofta Roll", "Steak Skewer", "Spinach & Feta Borek", "Warm Flatbread", "Jewelled Couscous", "Garlic Sauce", "Tahina Sauce", "Harissa Sauce", "Fries", "Lebanese Spiced Hot Chocolate with Cow Milk", "Lebanese Spiced Hot Chocolate with Soya Milk", "Lebanese Spiced Hot Chocolate with Almond Milk"],
+        "soya": ["Warm Za'atar & Garlic Flatbread", "Mezze Platter", "Lentil Soup", "Hommos", "Tony's Hommos", "Baba Ghanuj", "Whipped Feta Dip", "Chocolate Brownie", "Comptoir Sundae", "Lamb Kofta Roll", "Warm Flatbread", "Teas with Soya Milk", "Hot Chocolate with Soya Milk", "Americano with Soya Milk", "Cappuccino with Soya Milk", "Latte with Soya Milk", "Flat White with Soya Milk", "Mocha with Soya Milk", "Espresso with Soya Milk", "Macchiato with Sayo Milk", "Lebanese Coffee with Soya Milk", "Lebanese Spiced Hot Chocolate with Soya Milk"],
+        "sulphur dioxide": ["Selection of Pickes", "Mezze Platter", "Falafel", "Whipped Feta Dip", "Halloumi & Roasted Figs", "Falafel Salad", "Summer Salad", "Falafel Plate", "Orange Blossom Mouhalabia", "Falafel", "Lamb Kofta", "Chicken Taouk", "Halloumi", "Spiced Lamb Kofta", "Spiced Chicken Kofta", "Marinated Chicken Taouk", "Mixed Grill", "Lamb Kofta Roll", "Chicken & Green Olive Tagine"],
+    }
+}
+
 wasabi = {
-    "name": "wasabi",
+    "name": "Wasabi",
     "location": "location coordinates",
     "city": "London",
     "menu": [

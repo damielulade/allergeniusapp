@@ -1,5 +1,6 @@
 :root {
   --inputbackground: rgb(240, 240, 240);
+  --inputbackgrounddarker: rgb(180, 180, 180);
   --triadicappcolor1: rgb(134, 219, 134);
   --triadicappcolor2: rgb(134, 134, 219);
   --triadicappcolor3: rgb(219, 134, 134);
@@ -269,35 +270,30 @@ input:focus {
   margin:0 auto;
 }
 
-#allergenlist, #favoriteslist {
+#allergenlist, #favoriteslist, #privacysettings {
   margin: 5%;
-  padding-left: 5%;
-  padding-right: 5%;
   height: 7.5%;
   box-sizing: border-box;
-  border: solid var(--triadicappcolor2) 1px;
-  color: black;
-  background-color: rgb(255, 255, 255, 0.5);
-  border-radius: 10px;
   align-items: center;
   display: flex;
 }
 
-#privacysettings {
-  margin: 5%;
+#allergen-button, #favourites-button, #privacy-settings-button {
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
   padding-left: 5%;
   padding-right: 5%;
-  height: 7.5%;
-  box-sizing: border-box;
+  background-color: rgb(255, 255, 255, 0.5);
   border: solid var(--triadicappcolor2) 1px;
   color: black;
-  background-color: rgb(255, 255, 255, 0.5);
   border-radius: 10px;
-  align-items: center;
   display: flex;
+  align-items: center;
 }
 
-#signout {
+#sign-out-button {
+  text-decoration: none;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -329,6 +325,70 @@ input:focus {
   left: 0;
   right: 0;
 }
+
+#allergens-list-title {
+  margin: 5%;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 18px; /* Adjusted font size */
+  user-select: none;
+}
+
+.checkbox-container .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px; /* Adjusted size */
+  width: 20px; /* Adjusted size */
+  background-color: var(--inputbackground);
+  border: 1px solid var(--triadicappcolor2);
+  border-radius: 4px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--triadicappcolor2);
+  border-color: var(--triadicappcolor2);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox-container .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 7px; /* Adjusted position */
+  top: 3px; /* Adjusted position */
+  width: 4px; /* Adjusted size */
+  height: 8px; /* Adjusted size */
+  border: solid white;
+  border-width: 0 2px 2px 0; /* Adjusted border size */
+  transform: rotate(45deg);
+}
+
+.allergen-checkbox {}
 
 #friends-button {
   text-decoration: none;
@@ -416,6 +476,11 @@ input:focus {
   margin: 5%;
 }
 
+#privacy-title {
+  margin: 5%;
+  text-align: center;
+}
+
 h3 {
   width: 100%;
 }
@@ -424,7 +489,7 @@ h3 {
   width: 5%;
 }
 
-#allergenchecks {
+#restaurant-filter-checks, #allergenchecks {
   margin: 5%;
 }
 
@@ -462,6 +527,47 @@ h3 {
 }
 
 .view-setting input:checked + span {
+  background-color:var(--triadicappcolor2);
+  color: white;
+  padding: 0;
+  height: 4vh;
+  line-height: 4vh;
+}
+
+.privacy-setting label {
+  float:left;
+  width:40%;
+  background-color:var(--inputbackground);
+  overflow:auto;
+  border-collapse: separate;
+  border: solid var(--triadicappcolor2) 1px;
+  box-sizing: border-box;
+}
+
+.privacy-setting label:first-of-type {
+  margin-left: 10%;
+  border-radius: 6px 0 0 6px;
+}
+
+.privacy-setting label:last-of-type {
+  margin-right: 10%;
+  border-radius: 0 6px 6px 0;
+}
+
+.privacy-setting label span {
+  text-align:center;
+  display:block;
+  padding: 0;
+  line-height: 4vh;
+  overflow: hidden;
+}
+
+.privacy-setting label input {
+  position:absolute;
+  visibility: hidden;
+}
+
+.privacy-setting input:checked + span {
   background-color:var(--triadicappcolor2);
   color: white;
   padding: 0;
@@ -539,4 +645,10 @@ h3 {
     margin-left: 30%;
     margin-right: 30%;
   }
+
+  /* On mouse-over, add a grey background color */
+  .checkbox-container:hover input ~ .checkmark {
+    background-color: var(--inputbackgrounddarker);
+  }
 }
+

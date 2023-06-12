@@ -1,52 +1,78 @@
 import React from "react";
-import MainHeaderVariant from "../components/MainHeaderVariant";
 import MainHeaderForAccount from "../components/MainHeaderForAccount";
 
 export default function MyAllergenPage() {
   return (
       <div className = "section">
-        <div class = "main">
+        <div className = "main">
           <MainHeaderForAccount />
-          <div class="container-other">
+          <div className="container-other">
+            <h2 id="allergens-list-title">My Allergens</h2>
             <form id="allergenchecks">
-              <input type="checkbox" id="allergen1" name="allergen1" value="Gluten" />
-              <label for="allergen1"> Gluten </label><br />
+              <label className="checkbox-container" htmlFor="allergen1">
+                <input type="checkbox" id="allergen1" name="allergen1" value="Gluten"/>
+                  <span className="checkmark"></span> Gluten
+              </label>
 
-              <input type="checkbox" id="allergen2" name="allergen2" value="Dairy" />
-              <label for="allergen2"> Dairy </label><br />
-            
-              <input type="checkbox" id="allergen3" name="allergen3" value="Nuts" />
-              <label for="allergen3"> Nuts </label><br />
-          
-              <input type="checkbox" id="allergen4" name="allergen4" value="Peanuts" />
-              <label for="allergen4"> Peanuts </label><br />
-          
-              <input type="checkbox" id="allergen5" name="allergen5" value="Lupin" />
-              <label for="allergen5"> Lupin </label><br />
-          
-              <input type="checkbox" id="allergen6" name="allergen6" value="Sesame Seeds" />
-              <label for="allergen6"> Sesame Seeds </label><br />
-          
-              <input type="checkbox" id="allergen7" name="allergen7" value="Soya" />
-              <label for="allergen7"> Soya </label><br />
-          
-              <input type="checkbox" id="allergen8" name="allergen8" value="Mustard" />
-              <label for="allergen8"> Mustard </label><br />
-          
-              <input type="checkbox" id="allergen9" name="allergen9" value="Fish" />
-              <label for="allergen9"> Fish </label><br />
-          
-              <input type="checkbox" id="allergen10" name="allergen10" value="Crustaceans" />
-              <label for="allergen10"> Crustaceans </label><br />
-          
-              <input type="checkbox" id="allergen11" name="allergen11" value="Molluscs" />
-              <label for="allergen11"> Molluscs </label><br />
-          
-              <input type="checkbox" id="allergen12" name="allergen12" value="Sulphites" />
-              <label for="allergen12"> Sulphites </label><br />
-          
-              <input type="checkbox" id="allergen13" name="allergen13" value="Celery" />
-              <label for="allergen13"> Celery </label><br />
+              <label className="checkbox-container" htmlFor="allergen2">
+                <input type="checkbox" id="allergen2" name="allergen2" value="Dairy"/>
+                  <span className="checkmark"></span> Dairy
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen3">
+                <input type="checkbox" id="allergen3" name="allergen3" value="Nuts"/>
+                  <span className="checkmark"></span> Nuts
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen4">
+                <input type="checkbox" id="allergen4" name="allergen4" value="Peanuts"/>
+                  <span className="checkmark"></span> Peanuts
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen5">
+                <input type="checkbox" id="allergen5" name="allergen5" value="Lupin"/>
+                  <span className="checkmark"></span> Lupin
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen6">
+                <input type="checkbox" id="allergen6" name="allergen6" value="Sesame Seeds"/>
+                  <span className="checkmark"></span> Sesame Seeds
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen7">
+                <input type="checkbox" id="allergen7" name="allergen7" value="Soya"/>
+                  <span className="checkmark"></span> Soya
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen8">
+                <input type="checkbox" id="allergen8" name="allergen8" value="Mustard"/>
+                  <span className="checkmark"></span> Mustard
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen9">
+                <input type="checkbox" id="allergen9" name="allergen9" value="Fish"/>
+                  <span className="checkmark"></span> Fish
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen10">
+                <input type="checkbox" id="allergen10" name="allergen10" value="Crustaceans"/>
+                  <span className="checkmark"></span> Crustaceans
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen11">
+                <input type="checkbox" id="allergen11" name="allergen11" value="Molluscs"/>
+                  <span className="checkmark"></span> Molluscs
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen12">
+                <input type="checkbox" id="allergen12" name="allergen12" value="Sulphites"/>
+                  <span className="checkmark"></span> Sulphites
+              </label>
+
+              <label className="checkbox-container" htmlFor="allergen13">
+                <input type="checkbox" id="allergen13" name="allergen13" value="Celery"/>
+                  <span className="checkmark"></span> Celery
+              </label>
             </form>
           </div>
         </div>

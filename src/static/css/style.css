@@ -493,6 +493,11 @@ h3 {
   margin: 5%;
 }
 
+.restaurant-info {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .view-setting label {
   float:left;
   width:40%;

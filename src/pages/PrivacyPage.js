@@ -1,6 +1,6 @@
 import React from "react";
-import MainHeaderForAccount from "../components/MainHeaderForAccount";
-import RadioComponent from '../components/PrivacyRadioButton';
+import MainHeaderForAccount from "../components/main/MainHeaderForAccount";
+import RadioComponent from '../components/utility/PrivacyRadioButton';
 
 export default function PrivacyPage() {
     return (

@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 // import mapimg from "../static/images/staticmap2.png";
-import friends_img from "../static/images/friends.png";
-import account_img from "../static/images/account.png";
+import friends_img from "../../static/images/friends.png";
+import account_img from "../../static/images/account.png";
 import MainHeader from "./MainHeader";
-import MapComponent from "./Map";
+import MapComponent from "../map/Map";
 
 export default function Main() {
     const inputRef = useRef(null);

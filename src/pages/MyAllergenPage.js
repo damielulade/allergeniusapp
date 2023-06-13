@@ -1,5 +1,5 @@
 import React from "react";
-import MainHeaderForAccount from "../components/MainHeaderForAccount";
+import MainHeaderForAccount from "../components/main/MainHeaderForAccount";
 import AllergenCard from "../components/AllergenCard";
 
 export default function MyAllergenPage() {
@@ -28,6 +28,14 @@ export default function MyAllergenPage() {
       />
     );
   });
+
+  // useEffect(() => {
+  //   const originalState = () => {
+  //     axios.get("/getAllergens").then((response) => {
+  //       // setChecked()
+  //     })
+  //   }
+  // })
 
   return (
     <div className="section">

@@ -449,16 +449,6 @@ def delete_values(ref):
         key = record.key()
         ref.child(key).remove()
         
-def get_users():
-    res = []
-    ref = db.child("user")
-    print(ref)
-    print(ref.get().val())
-    #for user in db.child("user").get().val().each():
-    #    res.append(user)
-    return res
-
-
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
@@ -475,6 +465,15 @@ def get_restaurant():
 @app.route('/getUserFriends', methods=["GET"])
 def getUserFriends():
     return json.dumps(get_values(db.child("user")))
+
+@app.route('/getFirstUser', methods=["GET"])
+def getUserGroups():
+    ref = db.child("user").order_by_key().limit_to_first(1)
+    return json.dumps(get_values(ref))
+
+# @app.route('/getAllergens', methods=["GET"])
+# def getAllergens():
+#     return json.dumps(get_values(db.child("user")))
 
     
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import settings from "../static/images/settings.png";
+import settings from "../../static/images/settings.png";
 
 export default function MainHeader() {
   return (

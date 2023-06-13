@@ -8,6 +8,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import SearchPage from './pages/SearchPage';
 import HomePage from './pages/HomePage';
 import SettingsPage from './pages/SettingsPage';
+import GroupsPage from './pages/GroupsPage';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path='/groups' element={<GroupsPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

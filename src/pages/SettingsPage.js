@@ -1,6 +1,6 @@
 import React from "react";
-import MainHeaderVariant from "../components/MainHeaderVariant";
-import TwoOptionRadioButton from "../components/ViewRadioButton";
+import MainHeaderVariant from "../components/main/MainHeaderVariant";
+import TwoOptionRadioButton from "../components/utility/ViewRadioButton";
 
 export default function SettingsPage() {
   const placeholderFunc = (event) => {};

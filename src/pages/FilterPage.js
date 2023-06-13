@@ -1,5 +1,5 @@
 import React from "react";
-import MainHeaderVariant from "../components/MainHeaderVariant";
+import MainHeaderVariant from "../components/main/MainHeaderVariant";
 
 export default function FilterPage() {
   return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import MainHeaderVariant from "../components/MainHeaderVariant";
+import MainHeaderVariant from "../components/main/MainHeaderVariant";
 import FriendsCard from "../components/FriendsCard";
 import axios from "axios";
-import TwoOptionRadioButton from "../components/ViewRadioButton";
+import TwoOptionRadioButton from "../components/utility/ViewRadioButton";
 import { Link } from "react-router-dom";
 
 export default function FriendsPage() {

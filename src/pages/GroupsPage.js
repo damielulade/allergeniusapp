@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Main from "../components/Main";
+import Main from "../components/main/Main";
 import { Link } from "react-router-dom";
-import MainHeaderVariant from "../components/MainHeaderVariant";
+import MainHeaderVariant from "../components/main/MainHeaderVariant";
 import axios from "axios";
 
 export default function GroupsPage() {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import MainHeader from "../components/MainHeader";
-import RestaurantInfo from "../components/RestaurantInfo";
+import MainHeader from "../components/main/MainHeader";
+import RestaurantInfo from "../components/utility/RestaurantInfo";
 import axios from 'axios'
-import MainHeaderVariant from "../components/MainHeaderVariant";
+import MainHeaderVariant from "../components/main/MainHeaderVariant";
 
 
 export default function SearchPage() {

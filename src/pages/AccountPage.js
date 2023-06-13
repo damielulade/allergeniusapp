@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import userimg from "../static/images/user.png"
-import MainHeaderVariant from "../components/MainHeaderVariant";
+import MainHeaderVariant from "../components/main/MainHeaderVariant";
 
 export default function AccountPage() {
   return (

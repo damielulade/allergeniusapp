@@ -28,7 +28,8 @@ restaurantA = {
         "city" : "London",
         "menu" : ["peperroni pizza", "hotdog", "burger", "soup"],
         "ratings": ["5"],
-        "allergens" : {"cereals" : ["hotdog", "burger", "peperroni pizza"], "soybeans" : ["soup"]}
+        "allergens" : {"cereals" : ["hotdog", "burger", "peperroni pizza"], "soybeans" : ["soup"]},
+        "tags" : ["Pizza", "American"]
     }
 
 restaurantB = {
@@ -37,7 +38,8 @@ restaurantB = {
         "city" : "London",
         "menu": ["salad", "sandwich"],
         "ratings": ["4"],
-        "allergens" : {"celery" : ["salad"], "cereals" : ["sandwich"], "sesame" : ["salad"]}
+        "allergens" : {"celery" : ["salad"], "cereals" : ["sandwich"], "sesame" : ["salad"]},
+        "tags" : ["Greek", "American"]
     }
 
 restaurantC = {
@@ -46,7 +48,8 @@ restaurantC = {
         "city" : "London",
         "menu": ["fries", "burger", "garlic bread"],
         "ratings": ["3"],
-        "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]}
+        "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]},
+        "tags" : ["Burgers", "American"]
     }
 
 chopstix = {
@@ -70,7 +73,8 @@ chopstix = {
         "sesame seeds": ["Egg Fried Rice", "Vegetable Noodles", "Skinny Rice", "Teriyaki Beef", "Pumpkin Katsu Curry", "Salt & Pepper Potatoes", "Mini Vegetable Spring Rolls", "Churros Sticks (without sauce)", "Wedges & Curry Sauce", "Noodle Bowl with Spring Rolls & Katsu Sauce", "Caramel Drizzle Chicken", "Salt 'n' Pepper Chicken", "Sweet & Sour Chicken", "BBQ Chicken", "Lemon Chicken TRIAL", "Katsu Chicken Curry", "Sweet Chilli Prawns", "Salt N Pepper Spicy Wings", "Prawn Crackers", "Duck Spring Rolls", "Chicken Balls - large & mini", "Noodle Bowl with Spicy Chicken Wings & Katsu Sauce"], 
         "soya": ["Egg Fried Rice", "Seasoned Rice", "Vegetable Noodles" ,"Skinny Rice", "Red Thai Chicken Curry", "Chinese Chicken Curry", "Massaman Chicken Curry", "Teriyaki Beef", "Plant Based Beef Stirfry TRIAL", "Pumpkin Katsu Curry", "Salt & Pepper Potatoes", "Mini Vegetable Spring Rolls", "Churros Sticks (without sauce)", "Wedges & Curry Sauce", "Noodle Bowl with Spring Rolls & Katsu Sauce", "Caramel Drizzle Chicken", "Salt 'n' Pepper Chicken", "Sweet & Sour Chicken", "BBQ Chicken", "Lemon Chicken TRIAL", "Katsu Chicken Curry", "Sweet Chilli Prawns", "Salt N Pepper Spicy Wings", "Prawn Crackers", "Duck Spring Rolls", "Chicken Balls - large & mini", "Noodle Bowl with Spicy Chicken Wings & Katsu Sauce", "Chocolate Sauce (Churros)"],
         "sulphur dioxide": ["Teriyaki Beef", "Plant Based Beef Stirfry TRIAL", "Pumpkin Katsu Curry", "Plant Based Beef Stirfry TRIAL", "Pumpkin Katsu Curry", "Salt & Pepper Potatoes", "Mini Vegetable Spring Rolls", "Churros Sticks (without sauce)", "Wedges & Curry Sauce", "Noodle Bowl with Spring Rolls & Katsu Sauce", "Caramel Drizzle Chicken", "Salt 'n' Pepper Chicken", "Sweet & Sour Chicken", "BBQ Chicken", "Lemon Chicken TRIAL", "Katsu Chicken Curry", "Sweet Chilli Prawns", "Salt N Pepper Spicy Wings", "Prawn Crackers", "Duck Spring Rolls", "Chicken Balls - large & mini", "Noodle Bowl with Spicy Chicken Wings & Katsu Sauce"]
-    }
+    },
+    "tags" : ["Japanese"]
 }
 
 thai_square = {
@@ -105,7 +109,8 @@ thai_square = {
         "sesame seeds": ["Thai Square Mixed Starters (for 2 people)", "Aromatic Duck (for 2 people)", "Thai Dumplings", "Duck Spring Rolls", "Stir Fried with Cashew Nuts", "Thai Square Noodles", "Mixed Vegetarian Starter (for 2 people)", "Vegetable Spring Rolls", "Tofu with Cashew Nuts"],
         "soya": ["Thai Square Mixed Starters (for 2 people)", "Aromatic Duck (for 2 people)", "Thai Dumplings", "Butterfly Prawns", "Duck Spring Rolls", "Stir Fried with Basil Leaves", "Stir Fried with Cashew Nuts", "Stir Fried with Oyster Sauce", "Stir Fried with Ginger", "Chilli Lamb", "Drunken Duck", "Tamarind Duck", "Weeping Tiger", "Grilled Pork Neck (Kor Moo Yang)", "Spicy Seafood", "Garlic Prawns", "Prawns Love Scallops", "Pad Thai", "Pad Si-ew", "Drunken Noodles", "Thai Square Fried Rice", "Thai Square Noodles", "Mixed Vegetables with Garlic Sauce", "Broccoli with Garlic and Soya Sauce", "Mixed Vegetarian Starter (for 2 people)", "Vegetable Spring Rolls", "Vegetable and Tofu Satay", "Salt and Pepper Tofu", "Papaya Salad (Som Tum Jay)", "Tofu with Basil Leaves", "Vegetable Green Curry", "Vegetable Jungle Curry", "Sweet and Sour Tofu", "Tofu with Cashew Nuts", "Tofu with Ginger", "Spicy Aubergine", "Vegetarian Pad Thai"],
         "sulphur dioxide": [],
-    }
+    },
+    "tags" : ["Thai"]
 }
 
 comptoir_libanais = {
@@ -142,7 +147,8 @@ comptoir_libanais = {
         "sesame seeds": ["Warm Za'atar & Garlic Flatbread", "Mezze Platter", "Lentil Soup", "Hommos", "Tony's Hommos", "Baba Ghanuj", "Batata Harra", "Cheese Samboussek", "Falafel", "Lamb Kibbeh", "Whipped Feta Dip", "Halloumi & Roated Figs", "Mama Zohra Salad", "Falafel Salad", "The Wedge Salad", "Summer Salad", "Chicken Wrap", "Falafel Wrap", "Lamb Kofta Wrap", "Chicken Taouk Plate", "Lamb Kofta Plate", "Falafel Plate", "Chocolate Brownie", "Orange Blossom Mouhalabia", "Baklawa Sandwich", "Comptoir Sundae", "Falafel", "Lamb Kofta", "Chicken Taouk", "Halloumi", "Spiced Lamb Kofta", "Spiced Chicken Kofta", "Marinated Chicken Taouk", "Mixed Grill", "Sea Bass Sayadiyah", "Lamb Kofta Roll", "Steak Skewer", "Spinach & Feta Borek", "Warm Flatbread", "Jewelled Couscous", "Garlic Sauce", "Tahina Sauce", "Harissa Sauce", "Fries", "Lebanese Spiced Hot Chocolate with Cow Milk", "Lebanese Spiced Hot Chocolate with Soya Milk", "Lebanese Spiced Hot Chocolate with Almond Milk"],
         "soya": ["Warm Za'atar & Garlic Flatbread", "Mezze Platter", "Lentil Soup", "Hommos", "Tony's Hommos", "Baba Ghanuj", "Whipped Feta Dip", "Chocolate Brownie", "Comptoir Sundae", "Lamb Kofta Roll", "Warm Flatbread", "Teas with Soya Milk", "Hot Chocolate with Soya Milk", "Americano with Soya Milk", "Cappuccino with Soya Milk", "Latte with Soya Milk", "Flat White with Soya Milk", "Mocha with Soya Milk", "Espresso with Soya Milk", "Macchiato with Sayo Milk", "Lebanese Coffee with Soya Milk", "Lebanese Spiced Hot Chocolate with Soya Milk"],
         "sulphur dioxide": ["Selection of Pickes", "Mezze Platter", "Falafel", "Whipped Feta Dip", "Halloumi & Roasted Figs", "Falafel Salad", "Summer Salad", "Falafel Plate", "Orange Blossom Mouhalabia", "Falafel", "Lamb Kofta", "Chicken Taouk", "Halloumi", "Spiced Lamb Kofta", "Spiced Chicken Kofta", "Marinated Chicken Taouk", "Mixed Grill", "Lamb Kofta Roll", "Chicken & Green Olive Tagine"],
-    }
+    },
+    "tags" : ["Greek"]
 }
 
 wasabi = {
@@ -273,7 +279,8 @@ wasabi = {
                             "Pumpkin katsu curry yakisoba", "Chicken teriyaki bento", "Chicken teriyaki yakisoba", "Salmon teriyaki yakisoba", "Thai green chicken curry yakisoba", 
                             "Chicken teriyaki yakisoba AIR BENTO", "Chicken katsu bao bun", "Pumpkin katsu bao bun", "Chicken yakisoba salad", 
                             "Surimi crabmeat salad", "Chirashi potto", "Spicy chirashi potto", ],
-    }
+    },
+    "tags" : ["Japanese", "Sushi"]
 }
 
 fiveGuys = {
@@ -307,7 +314,8 @@ fiveGuys = {
         "soya": ["Hamburger", "Cheeseburger", "Bacon Burger", "Bacon Cheeseburger", "Little Hamburger", "Little Cheeseburger", "Little Bacon Burger", "Little Bacon Cheeseburger", 
                  "All Beef Hot Dog", "Cheese Dog", "Bacon Dog", "Bacon Cheese Dog", "Five Guys Shake", "Reese's Peanut Butter Cups Shake"],
         "sulphur dioxide": [],
-    }
+    },
+    "tags" : ["American", "Fast Food", "Burgers"]
 }
 
 honestBurger = {
@@ -356,7 +364,8 @@ honestBurger = {
                             "Vegan Fritter Burger", "Smashed By Honest", "Buffalo Wings", "Dressed Green Salad", "Vegan Chipotle Slaw", "Mushroom Fritters", "Vegan Chipotle Mayo", "Vegan Bacon Ketchup",
                             "Bacon Gravy", "Cheesy Bacon Gravy", "Grapefruit Spritz", "Brighton Hugo", "Portabello Spritz", "Aperol Spritz", "Smashed Baconburger", "Smashed Cali Burger", "Smashed BBQ Burger", 
                             "Smashed Plant Burger", ],
-    }
+    },
+    "tags" : ["American", "Burgers"]
 }
 
 tapasBrindisa = {
@@ -399,7 +408,8 @@ tapasBrindisa = {
                             "Squid ala Plancha Black Ink Sauce", "Sirloin", "Pollo al Limon", "White Asparagus Gratin", "Octopus with saffron olive oil mash",
                             "Tortilla Espanola", "Arroz Negro (to share)", "Spring salad", "Raw Cavolo salad", "Spinach Catalan",
                             "Tabla de Quesos", "Seleccion de Charcuteria", "Coconut & Lime rice pudding", "Bitter chocolate and orange catalana", "Cheesecake"],
-    }
+    },
+    "tags" : ["Greek"]
 }
 
 default = {
@@ -423,7 +433,8 @@ default = {
         "sesame seeds": [],
         "soya": [],
         "sulphur dioxide": [],
-    }
+    },
+    "tags" : [],
 }
 
 def get_values(ref, limit=10):

@@ -29,7 +29,7 @@ export default function MapComponent() {
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = () => {
-            axios.get('http://localhost:5000/getRestaurantData')
+            axios.get('/getRestaurantData')
                 .then(response => {
                     console.log(response.data.map(item => {
                         const { location, name } = item;

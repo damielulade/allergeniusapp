@@ -2,8 +2,6 @@ import React from "react";
 import MainHeaderForAccount from "../components/MainHeaderForAccount";
 import AllergenCard from "../components/AllergenCard";
 
-
-
 export default function MyAllergenPage() {
   const allergens = [
     "Gluten",

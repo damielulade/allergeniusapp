@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import userimg from "../static/images/user.png";
 
 export default function AllergenCard(props) {
   const [checked, setChecked] = useState(false);

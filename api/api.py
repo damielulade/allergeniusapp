@@ -28,7 +28,8 @@ restaurantA = {
         "city" : "London",
         "menu" : ["peperroni pizza", "hotdog", "burger", "soup"],
         "ratings": ["5"],
-        "allergens" : {"cereals" : ["hotdog", "burger", "peperroni pizza"], "soybeans" : ["soup"]}
+        "allergens" : {"cereals" : ["hotdog", "burger", "peperroni pizza"], "soybeans" : ["soup"]},
+        "tags" : ["Pizza", "American"]
     }
 
 restaurantB = {
@@ -37,7 +38,8 @@ restaurantB = {
         "city" : "London",
         "menu": ["salad", "sandwich"],
         "ratings": ["4"],
-        "allergens" : {"celery" : ["salad"], "cereals" : ["sandwich"], "sesame" : ["salad"]}
+        "allergens" : {"celery" : ["salad"], "cereals" : ["sandwich"], "sesame" : ["salad"]},
+        "tags" : ["Greek", "American"]
     }
 
 restaurantC = {
@@ -46,7 +48,8 @@ restaurantC = {
         "city" : "London",
         "menu": ["fries", "burger", "garlic bread"],
         "ratings": ["3"],
-        "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]}
+        "allergens" : {"cereals" : ["burger", "garlic bread"], "sesame" : ["fries"]},
+        "tags" : ["Burgers", "American"]
     }
 
 def add_friendship(user1, user2):
@@ -151,4 +154,3 @@ if __name__ == '__main__':
 
 #add_friendship(id1, id2)
 #add_friendship(id2, id3)
-

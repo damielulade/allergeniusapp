@@ -173,7 +173,8 @@ wasabi = {
         "Steamed vegtable gyoza", "Chicken katsu bao bun", "Pumpkin katsu bao bun", "Rainbow pot", "Hana pot", "Wabi wrap", "Sabi wrap", "Mango & yogurt", "Berry & yogurt", 
         "Chicken gyoza salad", "Chicken katsu salad", "Chicken yakisoba salad", "Chilli noodle salad", "Chukka wakame salad", "Surimi crabmeat salad", "Wasabi house salad", 
         "Wasabi superfood salad", "King prawn and broccoli salad", "Sweet chilli chicken", "Mixed salad leaves", "Salmon poke potto", "Sweet chilli chicken potto", 
-        "Chirashi potto", "Spicy chirashi potto", "Salmon teriyaki potto", "Edamame potto", "Ebi & chicken summer roll salad", "Raw naked tofu salad", "Yasai summer roll set", ],
+        "Chirashi potto", "Spicy chirashi potto", "Salmon teriyaki potto", "Edamame potto", "Ebi & chicken summer roll salad", "Raw naked tofu salad", "Yasai summer roll set", 
+        "Original bubble tea", "Green apple bubble tea", "Lychee & rose bubble tea", "Matcha bubble tea", "Thai milk bubble tea", "Taro bubble tea", ],
     "ratings": ["3.55"],
     "allergens": {
         "celery": ["Surimi crabmeat salad", ],
@@ -220,7 +221,7 @@ wasabi = {
         "lupin": [], 
         "milk": ["Fried prawn roll", "Chumaki set", "Harmony set", "Mixed maki set", "Rainbow set", "Crispy ebi roll", "Chumaki set - brown rice", "Rainbow set - brown rice", 
                  "Harmony set - brown rice", "Tsudoi platter", "Tempura prawn", "Rainbow pot", "Hana pot", "Wabi wrap", "Sabi wrap", "Mango & yogurt", "Berry & yogurt", "Chirashi potto",
-                 "Spicy chirashi potto", "Ebi & chicken summer roll salad", "Raw naked tofu salad", ],
+                 "Spicy chirashi potto", "Ebi & chicken summer roll salad", "Raw naked tofu salad", "Original bubble tea", "Matcha bubble tea", "Thai milk bubble tea", "Taro bubble tea", ],
         "molluscs": [],
         "mustard": ["Surumi crabmeat gunkan", "Tuna & mustard onigiri",
                     "Chumaki set", "Harmony set", "Mini hosomaki set", "Mixed maki set", "Rainbow set", "Salmon nigiri set", "Sashimi set", "Tokyo salmon set", "Mini Tokyo Salmon set", "Osaka set",

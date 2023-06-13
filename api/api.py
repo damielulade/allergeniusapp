@@ -475,6 +475,15 @@ def getUserGroups():
 # def getAllergens():
 #     return json.dumps(get_values(db.child("user")))
 
+def foo():
+    ref = db.child("user")
+    members = ["-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r"]
+    for user in ref.get().each():
+        key = user.key()
+        db.child("user").child(key).child("groups/group1").set(members)
+        db.child("user").child(key).child("groups/group2").set(members)
+
+foo()
     
 if __name__ == '__main__':
     app.run(debug=True)

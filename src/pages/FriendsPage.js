@@ -35,7 +35,7 @@ export default function FriendsPage() {
 
   return (
     <div className="section">
-      <div class="main">
+      <div className="main">
         <MainHeaderVariant />
         <div className="container-other">
           {/* <TwoOptionRadioButton option1={"Friends"} option2={"Groups"} /> */}

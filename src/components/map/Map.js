@@ -73,8 +73,8 @@ export default function MapComponent() {
     }), []);
 
     const center = useMemo(() => ({
-        lat: 51.49416381279757, //51.5074,
-        lng: -0.17404775287090068 //-0.1278,
+        lat: 51.4941082, //51.5074,
+        lng: -0.1743669 //-0.1278,
     }), []);
 
     const [data, setData] = useState([]);
@@ -118,14 +118,14 @@ export default function MapComponent() {
                 mapInstanceRef.current = new window.google.maps.Map(mapContainerRef.current, {
                     center: center,
                     options: options,
-                    zoom: 17,
+                    zoom: 15,
                 });
 
                 infowindowRef.current = new window.google.maps.InfoWindow();
 
                 // Create markers
                 markersData.forEach(markerData => {
-                    const marker_colour = getMarkerColour(["fish"], markerData.allergens, markerData.menu)
+                    const marker_colour = getMarkerColour(["milk"], markerData.allergens, markerData.menu)
                     const marker = new window.google.maps.Marker({
                         position: markerData.position,
                         map: mapInstanceRef.current,

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Main from "../components/main/Main";
 import { Link } from "react-router-dom";
 import MainHeaderVariant from "../components/main/MainHeaderVariant";
 import axios from "axios";
+import GroupCard from "../components/GroupCard";
 
 export default function GroupsPage() {
   const [data, setData] = useState([]);
@@ -15,7 +15,6 @@ export default function GroupsPage() {
       axios
         .get(`${baseURL}/getFirstUser`)
         .then((response) => {
-          console.log(response.data)
           setData(response.data);
         })
         .catch((error) => console.log(error));
@@ -24,24 +23,20 @@ export default function GroupsPage() {
   }, []);
 
   const groups = data.map((user) => {
-    // const grp = user.group;
-    return (
-      // <FriendsCard
-      //   key={user.firstName}
-      //   firstName={user.firstName}
-      //   lastName={user.lastName}
-      //   allergens={user.allergens}
-      // />
-      <div></div>
-    );
+    var res = [];
+    for (let group in user.groups) {
+      res.push(
+        <GroupCard key={group} name={group} members={user.groups[group]} />
+      );
+    }
+    return res;
   });
 
   return (
     <div className="section">
-      <div class="main">
+      <div className="main">
         <MainHeaderVariant />
         <div className="container-other">
-
           <h2 id="friends-ID-title">Create a new group of friends </h2>
           <div id="search-friends">
             <input

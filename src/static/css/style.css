@@ -145,7 +145,7 @@ body {
   font-weight: bold;
 }
 
-.container-index {
+.container-index, .container-friends {
   position: fixed;
   top: 10%;
   bottom: 10%;
@@ -174,21 +174,10 @@ body {
   overflow: auto;
 }
 
-.container-friends {
-  position: fixed;
-  top: 10%;
-  bottom: 10%;
-  flex: 1;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px none black;
-  border-top-style: solid;
-  justify-content: space-around;
-  background-color: white;
-  overflow: auto;
-}
+/*.container-friends {*/
+/*  overflow: auto;*/
+/*}*/
 
-/*#map-img, #searchresults {*/
 #map-img {
   object-fit: cover;
   height: 100%;
@@ -484,6 +473,11 @@ input:focus {
   margin-top: -5%;
 }
 
+.friends-scrollable {
+  overflow: scroll;
+  max-height: 65%;
+}
+
 #friends-page-img {
   width: 80%;
   align-self: center;
@@ -584,7 +578,7 @@ input:focus {
   /* position: absolute; */
 }
 
-#search-friends {
+#search-friends, #search-groups {
   height: 5%;
   width: 90%;
   margin: 2.5% 5%;
@@ -595,7 +589,7 @@ input:focus {
   overflow: hidden;
 }
 
-#search-friends-input {
+#search-friends-input, #search-groups-input {
   width: 80%;
   margin: 0 auto;
   padding-left: 2.5%;
@@ -609,7 +603,7 @@ input:focus {
   color: black;
 }
 
-#search-friends-button {
+#search-friends-button, #search-groups-button {
   width: 20%;
   margin: 0 auto;
   font-size:x-large;

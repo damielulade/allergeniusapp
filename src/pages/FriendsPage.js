@@ -38,8 +38,6 @@ export default function FriendsPage() {
       <div className="main">
         <MainHeaderVariant />
         <div className="container-friends">
-          {/* <TwoOptionRadioButton option1={"Friends"} option2={"Groups"} /> */}
-
           <h2 id="friends-ID-title">Search for a user by user ID</h2>
           <div id="search-friends">
             <input
@@ -52,7 +50,9 @@ export default function FriendsPage() {
             </button>
           </div>
           <h2 id="friends-title">Existing Friends</h2>
-          {friends}
+          <div className = "friends-scrollable">
+            {friends}
+          </div>
         </div>
         <div className="button-bar">
           <Link to="/friends" id="friends-button">

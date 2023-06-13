@@ -38,18 +38,20 @@ export default function GroupsPage() {
         <MainHeaderVariant />
         <div className="container-friends">
           <h2 id="friends-ID-title">Create a new group of friends </h2>
-          <div id="search-friends">
+          <div id="search-groups">
             <input
               type="text"
               placeholder="Enter group name..."
-              id="search-friends-input"
+              id="search-groups-input"
             />
-            <button id="search-friends-button">
+            <button id="search-groups-button">
               <span>+</span>
             </button>
           </div>
           <h2 id="friends-title">Existing Groups</h2>
-          {groups}
+          <div className = "friends-scrollable">
+            {groups}
+          </div>
         </div>
         <div className="button-bar">
           <Link to="/friends" id="friends-button">

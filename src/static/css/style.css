@@ -183,7 +183,6 @@ body {
   z-index:1;
 }
 
-/* Bottom right text */
 .map-block {
   position: absolute;
   top: 0;
@@ -194,6 +193,49 @@ body {
   display: flex;
   justify-content: space-between;
   z-index:10;
+}
+
+#map-key-title {
+  text-align: center;
+  margin: 0.5%;
+  font-size: 15px;
+}
+
+.outer-map-key-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 17.5%;
+  width: 80%;
+  box-sizing: border-box;
+  border-top: solid black 1px;
+  border-right: solid black 1px;
+  border-top-right-radius: 10px;
+  background-color: rgba(240, 240, 240, 0.75);
+  z-index:10;
+}
+
+.map-color-key-box {
+  width: 100%;
+  background-color: rgb(0,0,0,0);
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.marker-key-box {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.marker-key-image {
+  width: 90%;
+  height: 90%;
+}
+
+.key-percentage {
+  text-align: center;
 }
 
 input:focus {
@@ -677,6 +719,10 @@ h3 {
     border-right: solid black 1px;
     border-left: solid black 1px;
     box-sizing: border-box;
+  }
+
+  .outer-map-key-box {
+    height: 12.5%;
   }
 
   #friends-img, #account-img {

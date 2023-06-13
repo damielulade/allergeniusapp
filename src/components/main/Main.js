@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-// import mapimg from "../static/images/staticmap2.png";
 import friends_img from "../../static/images/friends.png";
 import account_img from "../../static/images/account.png";
 import MainHeader from "./MainHeader";
 import MapComponent from "../map/Map";
+import MapColorKey from "../map/MapColorKey"
 
 export default function Main() {
     const inputRef = useRef(null);
@@ -41,6 +41,7 @@ export default function Main() {
                         <span>Filter</span>
                     </Link>
                 </div>
+                <MapColorKey />
             </div>
             <div className = "button-bar">
                 <Link to="/friends" id = "friends-button">

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import MainHeaderVariant from "../components/MainHeaderVariant";
-import FriendsCard from "../components/FriendsCard";
-import axios from "axios";
-import TwoOptionRadioButton from "../components/ViewRadioButton";
+import Main from "../components/Main";
 import { Link } from "react-router-dom";
+import MainHeaderVariant from "../components/MainHeaderVariant";
+import axios from "axios";
 
-export default function FriendsPage() {
+export default function GroupsPage() {
   const [data, setData] = useState([]);
 
   // const baseURL = "http://localhost:5000"; // development
@@ -14,8 +13,9 @@ export default function FriendsPage() {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`${baseURL}/getUserFriends`)
+        .get(`${baseURL}/getFirstUser`)
         .then((response) => {
+          console.log(response.data)
           setData(response.data);
         })
         .catch((error) => console.log(error));
@@ -23,14 +23,16 @@ export default function FriendsPage() {
     fetchData();
   }, []);
 
-  const friends = data.map((user) => {
+  const groups = data.map((user) => {
+    // const grp = user.group;
     return (
-      <FriendsCard
-        key={user.firstName}
-        firstName={user.firstName}
-        lastName={user.lastName}
-        allergens={user.allergens}
-      />
+      // <FriendsCard
+      //   key={user.firstName}
+      //   firstName={user.firstName}
+      //   lastName={user.lastName}
+      //   allergens={user.allergens}
+      // />
+      <div></div>
     );
   });
 
@@ -39,21 +41,20 @@ export default function FriendsPage() {
       <div class="main">
         <MainHeaderVariant />
         <div className="container-other">
-          {/* <TwoOptionRadioButton option1={"Friends"} option2={"Groups"} /> */}
 
-          <h2 id="friends-ID-title">Search for a user by user ID</h2>
+          <h2 id="friends-ID-title">Create a new group of friends </h2>
           <div id="search-friends">
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="Enter group name..."
               id="search-friends-input"
             />
             <button id="search-friends-button">
-              <span>⌕</span>
+              <span>+</span>
             </button>
           </div>
-          <h2 id="friends-title">Existing Friends</h2>
-          {friends}
+          <h2 id="friends-title">Existing Groups</h2>
+          {groups}
         </div>
         <div className="button-bar">
           <Link to="/friends" id="friends-button">

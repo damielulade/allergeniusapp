@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 export default function AllergenCard(props) {
   const [checked, setChecked] = useState(false);

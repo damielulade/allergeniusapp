@@ -31,11 +31,6 @@ export default function MapComponent() {
         const fetchData = () => {
             axios.get('/getRestaurantData')
                 .then(response => {
-                    console.log(response.data.map(item => {
-                        const { location, name } = item;
-                        return { location: location.slice(0, 2), name };
-                    })
-                    );
                     setData(response.data);
                 })
                 .catch(error => console.log(error));

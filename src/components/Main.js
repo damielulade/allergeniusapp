@@ -31,12 +31,11 @@ export default function Main() {
         <div className = "main">
             <MainHeader />
             <div className = "container-index">
-                <MapComponent/>
+                <MapComponent />
                 <div className="map-block">
                     <div id="search-box">
-                        <input type="text" placeholder="Search..." id = "search-input" ref={inputRef} onKeyDown={handleKeyPress}/>
-                        <button onClick ={routeChange} id = "search-button"><span>⌕</span></button>
-                        {/* @TODO: fix/replace this button  */}
+                        {/* <input type="text" placeholder="Search..." id = "search-input" ref={inputRef} onKeyDown={handleKeyPress}/>
+                        <button onClick ={routeChange} id = "search-button"><span>⌕</span></button> */}
                     </div>
                     <Link to="/filter" id="filter-button">
                         <span>Filter</span>

@@ -9,9 +9,12 @@ export default function SearchPage() {
 
     const [data, setData] = useState([])
 
+    // const baseURL = "http://localhost:5000"; // development
+    const baseURL = "" // production
+
     useEffect(() => {
         const fetchData = () => {
-            axios.get('/getRestaurantData').then(
+            axios.get('${baseURL}/getRestaurantData').then(
                 response => {
                     setData(response.data)
                 }

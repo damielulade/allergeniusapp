@@ -1,6 +1,13 @@
 import React, {useEffect, useRef, useMemo, useState} from 'react';
 import { Loader } from "@googlemaps/js-api-loader"
 import axios from "axios";
+import red_marker from "../static/images/marker_red.png";
+import orange_marker from "../static/images/marker_orange.png";
+import yellow_marker from "../static/images/marker_yellow.png";
+
+function getPercentage(allergens, allergens_list, menu){
+
+}
 
 export default function MapComponent() {
     const mapContainerRef = useRef(null);
@@ -27,9 +34,13 @@ export default function MapComponent() {
     }), []);
 
     const [data, setData] = useState([]);
+
+    // const baseURL = "http://localhost:5000"; // development
+    const baseURL = "" // production
+
     useEffect(() => {
         const fetchData = () => {
-            axios.get('/getRestaurantData')
+            axios.get('${baseURL}/getRestaurantData')
                 .then(response => {
                     setData(response.data);
                 })
@@ -38,20 +49,15 @@ export default function MapComponent() {
             fetchData();
         }, []);
 
-    // Define your marker positions
-    // const markersData = useMemo(() => ([
-    //     {position: {lat: 51.49436985814742, lng: -0.17354637119368557}, title: "Honest Burger"},
-    //     {position: {lat: 51.49336985814742, lng: -0.17254637119368557}, title: "Marker 2"},
-    //     {position: {lat: 51.49236985814742, lng: -0.17154637119368557}, title: "Marker 3"},
-    // ]), []);
-
     const markersData = useMemo(() => {
         return data.map(item => (
             {
-                position: {lat: item.location[0], lng: item.location[1]}, // Assuming `location` contains the latLng object
-                title: item.name
+                position: {lat: item.location[0], lng: item.location[1]},
+                title: item.name,
+                menu: item.menu,
+                allergens: item.allergens
             }
-        ));
+        ))
     }, [data]);
 
     useEffect(() => {
@@ -77,7 +83,8 @@ export default function MapComponent() {
                     const marker = new window.google.maps.Marker({
                         position: markerData.position,
                         map: mapInstanceRef.current,
-                        title: markerData.title
+                        title: markerData.title,
+                        icon: {url: red_marker}
                     });
                     markersRef.current.push(marker);
 

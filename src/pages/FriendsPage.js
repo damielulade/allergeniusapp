@@ -37,7 +37,7 @@ export default function FriendsPage() {
     <div className="section">
       <div className="main">
         <MainHeaderVariant />
-        <div className="container-other">
+        <div className="container-friends">
           {/* <TwoOptionRadioButton option1={"Friends"} option2={"Groups"} /> */}
 
           <h2 id="friends-ID-title">Search for a user by user ID</h2>

@@ -118,7 +118,7 @@ export default function MapComponent() {
                 mapInstanceRef.current = new window.google.maps.Map(mapContainerRef.current, {
                     center: center,
                     options: options,
-                    zoom: 15,
+                    zoom: 17,
                 });
 
                 infowindowRef.current = new window.google.maps.InfoWindow();

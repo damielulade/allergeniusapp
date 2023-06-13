@@ -36,7 +36,7 @@ export default function GroupsPage() {
     <div className="section">
       <div className="main">
         <MainHeaderVariant />
-        <div className="container-other">
+        <div className="container-friends">
           <h2 id="friends-ID-title">Create a new group of friends </h2>
           <div id="search-friends">
             <input

@@ -471,9 +471,11 @@ def getUserGroups():
     ref = db.child("user").order_by_key().limit_to_first(1)
     return json.dumps(get_values(ref))
 
-# @app.route('/getAllergens', methods=["GET"])
-# def getAllergens():
-#     return json.dumps(get_values(db.child("user")))
+@app.route('/add_group/<group_name>', methods=["GET"])
+def add_group(group_name):
+    key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
+    db.child("user").child(key).child("groups").child(group_name).set(0)
+    return json.dumps([])
 
 def foo():
     ref = db.child("user")

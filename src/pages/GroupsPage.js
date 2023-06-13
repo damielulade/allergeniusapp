@@ -6,18 +6,18 @@ import GroupCard from "../components/GroupCard";
 
 export default function GroupsPage() {
   const [data, setData] = useState([]);
-
+  
   // const baseURL = "http://localhost:5000"; // development
   const baseURL = "" // production
-
+  
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`${baseURL}/getFirstUser`)
-        .then((response) => {
-          setData(response.data);
-        })
-        .catch((error) => console.log(error));
+      .get(`${baseURL}/getFirstUser`)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => console.log(error));
     };
     fetchData();
   }, []);
@@ -27,10 +27,17 @@ export default function GroupsPage() {
     for (let group in user.groups) {
       res.push(
         <GroupCard key={group} name={group} members={user.groups[group]} />
-      );
-    }
-    return res;
+        );
+      }
+      return res;
   });
+
+  const addGroup = (event) => {
+    const group = document.getElementById("search-friends-input").value;
+    // console.log(query);
+    axios.get(`${baseURL}/add_group/${group}`).then()
+    
+  }
 
   return (
     <div className="section">
@@ -44,7 +51,7 @@ export default function GroupsPage() {
               placeholder="Enter group name..."
               id="search-groups-input"
             />
-            <button id="search-groups-button">
+            <button id="search-friends-button" onClick={addGroup}>
               <span>+</span>
             </button>
           </div>

@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useMemo, useState} from 'react';
 import { Loader } from "@googlemaps/js-api-loader"
 import axios from "axios";
-import red_marker from "../static/images/marker_red.png";
-import orange_marker from "../static/images/marker_orange.png";
-import yellow_marker from "../static/images/marker_yellow.png";
+import red_marker from "../../static/images/marker_red.png";
+import orange_marker from "../../static/images/marker_orange.png";
+import yellow_marker from "../../static/images/marker_yellow.png";
 
 function getPercentage(allergens, allergens_list, menu){
 

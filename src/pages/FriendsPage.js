@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 export default function FriendsPage() {
   const [data, setData] = useState([]);
 
-  // const baseURL = "http://localhost:5000"; // development
-  const baseURL = "" // production
+  const baseURL = "http://localhost:5000"; // development
+  // const baseURL = "" // production
 
   useEffect(() => {
     const fetchData = () => {

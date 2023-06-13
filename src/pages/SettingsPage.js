@@ -3,8 +3,6 @@ import MainHeaderVariant from "../components/main/MainHeaderVariant";
 import TwoOptionRadioButton from "../components/utility/ViewRadioButton";
 
 export default function SettingsPage() {
-  const placeholderFunc = (event) => {};
-
   return (
     <div className="section">
       <div className="main">
@@ -14,7 +12,6 @@ export default function SettingsPage() {
           <TwoOptionRadioButton
             option1={"Map View"}
             option2={"List View"}
-            // onChangeFunc={placeholderFunc}
           />
         </div>
       </div>

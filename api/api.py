@@ -316,6 +316,49 @@ honestBurger = {
     }
 }
 
+tapasBrindisa = {
+    "name": "Tapas Brindisa",
+    "location": "location coordinates",
+    "city": "London",
+    "menu": ["Pan de Coca con Tomate", "Aceitunas Gordales Perello", "Pimientos do Padron", "Jamon Croquetas", "Anchovy with onions", "Beetroot Salmorejo", 
+             "Sea Bream Ceviche, Apple & Radishes", "Boquerones Chilli & Parsley", 
+             "Squid ala Plancha Black Ink Sauce", "Leon Chorizo", "Sirloin", "Skrei Cod", "Pollo al Limon", "White Asparagus Gratin",
+             "Octopus with saffron olive oil mash",
+             "Huevos Rotos con Sobrasada", "Monte Enebro", "patatas Bravas y Alioli", "Tortilla Espanola", "Huevos Rotos con pisto", 
+             "Arroz Negro (to share)", "Lamb Shoulder", "Gambas al Ajillo", "Faba beans base",
+             "Pan de la casa", "Spring salad", "Raw Cavolo salad", "Spinach Catalan", "Iberico Jamon de Bellota", "Tabla de Quesos", "Seleccion de Charcuteria",
+             "Vanilla Ice Cream", "Coconut & Lime rice pudding", "Bitter chocolate and orange catalana", "Cheesecake"],
+    "ratings": ["4.20"],
+    "allergens": {
+        "celery": ["Squid ala Plancha Black Ink Sauce", "Skrei Cod", "Octopus with saffron olive oil mash", "Arroz Negro (to share)", "Tabla de Quesos", "Seleccion de Charcuteria",],
+        "cereals": ["Pan de Coca con Tomate", "Jamon Croquetas", "Anchovy with onions", "Sea Bream Ceviche, Apple & Radishes", "Leon Chorizo", "White Asparagus Gratin",
+                    "Octopus with saffron olive oil mash", "Monte Enebro",
+                    "Pan de la casa", "Raw Cavolo salad", "Spinach Catalan", "Iberico Jamon de Bellota", "Tabla de Quesos", "Seleccion de Charcuteria",
+                    "Bitter chocolate and orange catalana",],
+        "crustaceans": ["Squid ala Plancha Black Ink Sauce", "Skrei Cod", "Octopus with saffron olive oil mash", "Arroz Negro (to share)", "Gambas al Ajillo",],
+        "eggs": ["Jamon Croquetas", "White Asparagus Gratin", "Huevos Rotos con Sobrasada", "Monte Enebro", "patatas Bravas y Alioli", "Tortilla Espanola", "Huevos Rotos con pisto", 
+                 "Arroz Negro (to share)", "Raw Cavolo salad", "Tabla de Quesos", "Vanilla Ice Cream", "Bitter chocolate and orange catalana", "Cheesecake"],
+        "fish": ["Aceitunas Gordales Perello", "Anchovy with onions", "Beetroot Salmorejo", "Sea Bream Ceviche, Apple & Radishes", "Boquerones Chilli & Parsley", 
+                 "Squid ala Plancha Black Ink Sauce", "Skrei Cod", "Pollo al Limon", "Octopus with saffron olive oil mash", "Arroz Negro (to share)",
+                 "Gambas al Ajillo", "Raw Cavolo salad", "Seleccion de Charcuteria",],
+        "lupin": [], 
+        "milk": ["Jamon Croquetas", "Squid ala Plancha Black Ink Sauce", "Leon Chorizo", "Skrei Cod", "White Asparagus Gratin", "Octopus with saffron olive oil mash",
+                 "Monte Enebro", "Arroz Negro (to share)", "Pan de la casa", "Raw Cavolo salad", "Tabla de Quesos", "Seleccion de Charcuteria",
+                 "Vanilla Ice Cream", "Bitter chocolate and orange catalana", "Cheesecake"],
+        "molluscs": ["Squid ala Plancha Black Ink Sauce", "Skrei Cod", "Octopus with saffron olive oil mash", "Arroz Negro (to share)",],
+        "mustard": ["Sea Bream Ceviche, Apple & Radishes"],
+        "nuts": ["Aceitunas Gordales Perello", "Sea Bream Ceviche, Apple & Radishes", "Pollo al Limon", "White Asparagus Gratin", "Monte Enebro",
+                 "Pan de la casa", "Spring salad", "Spinach Catalan", "Tabla de Quesos", "Seleccion de Charcuteria", "Bitter chocolate and orange catalana"],
+        "peanuts": ["White Asparagus Gratin", "Pan de la casa", "Spinach Catalan",], 
+        "sesame seeds": ["Sea Bream Ceviche, Apple & Radishes", "Pollo al Limon", "White Asparagus Gratin", "Tabla de Quesos", "Seleccion de Charcuteria",],
+        "soya": ["Octopus with saffron olive oil mash", "Tabla de Quesos", "Seleccion de Charcuteria", "Coconut & Lime rice pudding", "Bitter chocolate and orange catalana"],
+        "sulphur dioxide": ["Aceitunas Gordales Perello", "Anchovy with onions", "Beetroot Salmorejo", "Sea Bream Ceviche, Apple & Radishes",
+                            "Squid ala Plancha Black Ink Sauce", "Sirloin", "Pollo al Limon", "White Asparagus Gratin", "Octopus with saffron olive oil mash",
+                            "Tortilla Espanola", "Arroz Negro (to share)", "Spring salad", "Raw Cavolo salad", "Spinach Catalan",
+                            "Tabla de Quesos", "Seleccion de Charcuteria", "Coconut & Lime rice pudding", "Bitter chocolate and orange catalana", "Cheesecake"],
+    }
+}
+
 default = {
     "name": "",
     "location": "location coordinates",

@@ -5,22 +5,22 @@ import axios from 'axios'
 
 
 export default function SearchPage() {
-
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
 
     // const baseURL = "http://localhost:5000"; // development
     const baseURL = "" // production
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('${baseURL}/getRestaurantData').then(
-                response => {
-                    setData(response.data)
-                }
-            ).catch(error => console.log(error))
-        }
+            axios
+                .get(`${baseURL}/getRestaurantData`)
+                .then((response) => {
+                    setData(response.data);
+                })
+                .catch((error) => console.log(error));
+        };
         fetchData();
-    }, [])
+    }, []);
 
     return (
         <div className = "section">

@@ -40,14 +40,15 @@ export default function MapComponent() {
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('${baseURL}/getRestaurantData')
-                .then(response => {
+            axios
+                .get(`${baseURL}/getRestaurantData`)
+                .then((response) => {
                     setData(response.data);
                 })
-                .catch(error => console.log(error));
-            };
-            fetchData();
-        }, []);
+                .catch((error) => console.log(error));
+        };
+        fetchData();
+    }, []);
 
     const markersData = useMemo(() => {
         return data.map(item => (

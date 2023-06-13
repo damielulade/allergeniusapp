@@ -13,11 +13,11 @@ export default function FriendsPage() {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`${baseURL}/getUserFriends`)
-        .then((response) => {
-          setData(response.data);
-        })
-        .catch((error) => console.log(error));
+          .get(`${baseURL}/getUserFriends`)
+          .then((response) => {
+            setData(response.data);
+          })
+          .catch((error) => console.log(error));
     };
     fetchData();
   }, []);

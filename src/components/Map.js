@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, {useEffect, useRef, useMemo, useState} from 'react';
 import { Loader } from "@googlemaps/js-api-loader"
+import axios from "axios";
 
 export default function MapComponent() {
     const mapContainerRef = useRef(null);
@@ -25,12 +26,38 @@ export default function MapComponent() {
         lng: -0.1743669 //-0.1278,
     }), []);
 
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        const fetchData = () => {
+            axios.get('http://localhost:5000/getRestaurantData')
+                .then(response => {
+                    console.log(response.data.map(item => {
+                        const { location, name } = item;
+                        return { location: location.slice(0, 2), name };
+                    })
+                    );
+                    setData(response.data);
+                })
+                .catch(error => console.log(error));
+            };
+            fetchData();
+        }, []);
+
     // Define your marker positions
-    const markersData = useMemo(() => ([
-        {position: {lat: 51.49436985814742, lng: -0.17354637119368557}, title: "Honest Burger"},
-        {position: {lat: 51.49336985814742, lng: -0.17254637119368557}, title: "Marker 2"},
-        {position: {lat: 51.49236985814742, lng: -0.17154637119368557}, title: "Marker 3"},
-    ]), []);
+    // const markersData = useMemo(() => ([
+    //     {position: {lat: 51.49436985814742, lng: -0.17354637119368557}, title: "Honest Burger"},
+    //     {position: {lat: 51.49336985814742, lng: -0.17254637119368557}, title: "Marker 2"},
+    //     {position: {lat: 51.49236985814742, lng: -0.17154637119368557}, title: "Marker 3"},
+    // ]), []);
+
+    const markersData = useMemo(() => {
+        return data.map(item => (
+            {
+                position: {lat: item.location[0], lng: item.location[1]}, // Assuming `location` contains the latLng object
+                title: item.name
+            }
+        ));
+    }, [data]);
 
     useEffect(() => {
         const loader = new Loader({
@@ -72,14 +99,14 @@ export default function MapComponent() {
         return () => {
             if (mapInstanceRef.current) {
 
-                markersRef.current.forEach(marker => {
-                    marker.setMap(null);
-                });
+                // markersRef.current.forEach(marker => {
+                //     marker.setMap(null);
+                // });
 
                 mapInstanceRef.current = null;
             }
         };
-    }, [center, options]);
+    }, [center, options, markersData]);
 
     return (
         <div ref={mapContainerRef} className="map-container">

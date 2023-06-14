@@ -1,5 +1,5 @@
 from pyrebase import pyrebase
-from flask import Flask, Response
+from flask import Flask, Response, request
 from flask_cors import CORS
 import json
 
@@ -19,7 +19,7 @@ db_config = {
 
 firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
-
+auth = firebase.auth()
 
 # default restaurants
 restaurantA = {
@@ -501,6 +501,38 @@ def get_new_groups():
             # time.sleep(1)
             
     return Response(get_data(), mimetype='text/event-stream')
+
+@app.route("/api/register", methods=["POST"])
+def register():
+    email = request.json.get("email")
+    password = request.json.get("password")
+    age = int(request.json.get("age"))
+    first_name = request.json.get("firstName")
+    last_name = request.json.get("lastName")
+    try:
+        user = auth.create_user_with_email_and_password(email, password)
+        db.child("user").push({
+            "age": age, 
+            "allergens": [],
+            "firstName": first_name,
+            "friends": {},
+            "groups": {},
+            "lastName": last_name
+        })
+        return {"message": "User created successfully."}, 200
+    except Exception as e:
+        return {"error": str(e)}, 500
+
+@app.route("/api/login", methods=["POST"])
+def login():
+    email = request.json.get("email")
+    password = request.json.get("password")
+    try:
+        user = auth.sign_in_with_email_and_password(email, password)
+        # You can also retrieve the user's ID token here if needed
+        return {"message": "Login successful."}, 200
+    except Exception as e:
+        return {"error": str(e)}, 401
     
 if __name__ == '__main__':
     app.run(debug=True)

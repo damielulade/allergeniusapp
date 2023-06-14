@@ -15,7 +15,7 @@ export default function LoginPage() {
   const handleRegister = () => {
     // Send registration request to the backend using Axios
     axios
-      .post(`http://localhost:5000/api/register`, {
+      .post(`/api/register`, {
         email: registerEmail,
         password: registerPassword,
         age: age,
@@ -36,7 +36,7 @@ export default function LoginPage() {
   const handleLogin = () => {
     // Send login request to the backend using Axios
     axios
-      .post(`http://locallhost:5000/api/login`, {
+      .post(`/api/login`, {
         email: loginEmail,
         password: loginPassword,
       })

@@ -6,7 +6,7 @@ function GroupMember(props) {
       <div id="group-member-name">
         <p>{props.member}</p>
       </div>
-      <button id="group-remove-user-button">
+      <button id="group-remove-user-button" onClick={props.removeUser}>
         <span>-</span>
       </button>
     </div>
@@ -30,8 +30,11 @@ export default function GroupCard(props) {
         <div id="group-title">
           <h3>{props.name}</h3>
         </div>
-        <button id="group-add-user-button">
+        <button id="group-add-user-button" onClick={props.addUser}>
           <span>+</span>
+        </button>
+        <button id="group-remove-user-button" onClick={() => props.removeGroup(props.name)}>
+          <span>X</span>
         </button>
         <button id="group-dropdown-button" onClick={viewDropdown}>
           <span>^</span>

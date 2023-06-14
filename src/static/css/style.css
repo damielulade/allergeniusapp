@@ -565,18 +565,18 @@ input:focus {
 
 #group-title, #group-member-name {
   display: inline-flex;
-  width: 80%;
+  width: 70%;
 }
 
-#group-add-user-button, #group-dropdown-button {
+#group-add-user-button, #group-remove-user-button #group-dropdown-button {
   display: inline-flex;
   width: 10%;
 }
 
-#group-remove-user-button {
+/* #group-remove-user-button {
   display: inline-flex;
   width: 20%;
-}
+} */
 
 #group-dropdown {
   /* position: absolute; */

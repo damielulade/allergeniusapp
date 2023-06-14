@@ -477,6 +477,12 @@ def add_group(group_name):
     db.child("user").child(key).child("groups").child(group_name).set(0)
     return json.dumps([])
 
+@app.route('/api/remove_group/<group_name>', methods=["GET"])
+def remove_group(group_name):
+    key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
+    db.child("user").child(key).child("groups").child(group_name).remove()
+    return json.dumps([])
+
 def foo():
     ref = db.child("user")
     members = ["-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r"]
@@ -487,20 +493,20 @@ def foo():
 
 # foo()
 
-@app.route('/api/get_first_user')
-def get_new_groups():
+# @app.route('/api/get_first_user')
+# def get_new_groups():
     
-    def get_data():
+#     def get_data():
         
-        while True:
-            # key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
-            # res = get_values(db.child("user").child(key).child("groups"))
-            ref = db.child("user").order_by_key().limit_to_first(1)
-            res = json.dumps(get_values(ref))
-            yield f'data: {res}\n\n'
-            # time.sleep(1)
+#         while True:
+#             # key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
+#             # res = get_values(db.child("user").child(key).child("groups"))
+#             ref = db.child("user").order_by_key().limit_to_first(1)
+#             res = json.dumps(get_values(ref))
+#             yield f'data: {res}\n\n'
+#             # time.sleep(1)
             
-    return Response(get_data(), mimetype='text/event-stream')
+#     return Response(get_data(), mimetype='text/event-stream')
 
 @app.route("/api/register", methods=["POST"])
 def register():

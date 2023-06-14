@@ -7,46 +7,78 @@ import GroupCard from "../components/GroupCard";
 export default function GroupsPage() {
   const [data, setData] = useState([]);
 
+  // useEffect(() => {
+  //   const sse = new EventSource("api/get_first_user");
+
+  //   function handleStream(e) {
+  //     setData(JSON.parse(e.data));
+  //   }
+
+  //   sse.onmessage = (e) => {
+  //     console.log(JSON.parse(e.data));
+  //     handleStream(e);
+  //   };
+
+  //   sse.onerror = (e) => {
+  //     sse.close();
+  //   };
+
+  //   return () => {
+  //     sse.close();
+  //   };
+  // });
+
   useEffect(() => {
-    const sse = new EventSource("api/get_first_user");
-
-    function handleStream(e) {
-      setData(JSON.parse(e.data));
-    }
-
-    sse.onmessage = (e) => {
-      console.log(JSON.parse(e.data));
-      handleStream(e);
+    const fetchData = () => {
+      axios
+        .get(`api/getFirstUser`)
+        .then((response) => {
+          setData(response.data);
+        })
+        .catch((error) => console.log(error));
     };
+    fetchData();
+  }, []);
 
-    sse.onerror = (e) => {
-      sse.close();
-    };
-
-    return () => {
-      sse.close();
-    };
-  });
-
-  var groupsDisplay = data.map((user) => {
-    var res = [];
-    for (let group in user.groups) {
-      res.push(
-        <GroupCard key={group} name={group} members={user.groups[group]} />
-      );
-    }
-    return res;
-  });
-
-  const addGroup = (event) => {
+  const addGroup = () => {
     const group = document.getElementById("search-groups-input").value;
     if (group) {
       axios
         .get(`/api/add_group/${group}`)
         .then([])
         .catch((error) => console.log(error));
+      window.location.reload(false);
     }
   };
+
+  const removeGroup = (group) => {
+    axios
+      .get(`/api/remove_group/${group}`)
+      .then([])
+      .catch((error) => console.log(error));
+    window.location.reload(false);
+  };
+
+  const addUserToGroup = (event) => {};
+
+  const removeUserFromGroup = (event) => {};
+
+  var groupsDisplay = data.map((user) => {
+    var res = [];
+    for (let group in user.groups) {
+      res.push(
+        <GroupCard
+          key={group}
+          name={group}
+          members={user.groups[group]}
+          removeGroup={removeGroup}
+          addUser={addUserToGroup}
+          removeUser={removeUserFromGroup}
+        />
+      );
+    }
+    return res;
+  });
 
   return (
     <div className="section">

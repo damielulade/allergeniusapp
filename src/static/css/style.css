@@ -1,15 +1,19 @@
 :root {
-  --appcolor: rgb(134, 219, 134);
   --inputbackground: rgb(240, 240, 240);
-  --triadicappcolor1: rgb(134, 134, 219);
-  --triadicappcolor2: rgb(219, 134, 134);
+  --inputbackgrounddarker: rgb(180, 180, 180);
+  --triadicappcolor1: rgb(134, 219, 134);
+  --triadicappcolor2: rgb(134, 134, 219);
+  --triadicappcolor3: rgb(219, 134, 134);
 }
 
 html {
   box-sizing: border-box;
+  min-height: 100%;
+  max-height: 100vh;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
   margin: 0 auto;
 }
 
@@ -23,6 +27,13 @@ body, .section, #root {
   display: flex;
   /*background-color: var(--appcolor)*/
   background-color: white;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  position: relative;
+  height:100vh;
 }
 
 .sidebar-left {
@@ -42,6 +53,14 @@ body, .section, #root {
 }
 
 .main {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-index {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
@@ -76,12 +95,17 @@ body, .section, #root {
   color: white;
   font-weight: lighter;
   height: 10%;
-  background-color: var(--appcolor);
   width: 100%;
+  background-color: var(--triadicappcolor1);
   box-sizing: border-box;
-  border: solid var(--appcolor) 1px;
+  border: solid var(--triadicappcolor1) 1px;
   display: flex;
   align-items: center;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 #settings-button {
@@ -121,20 +145,25 @@ body, .section, #root {
   font-weight: bold;
 }
 
-.container-index {
-  position: relative;
-  height: 80%;
+.container-index, .container-friends {
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  flex: 1;
   width: 100%;
   box-sizing: border-box;
   border: 1px none black;
   border-top-style: solid;
   justify-content: space-around;
   background-color: white;
+  overflow: hidden;
 }
 
 .container-other {
-  position: relative;
-  height: 90%;
+  position: fixed;
+  top: 10%;
+  bottom: 0;
+  flex: 1;
   width: 100%;
   box-sizing: border-box;
   border: solid black 1px;
@@ -142,9 +171,14 @@ body, .section, #root {
   border-left: none;
   justify-content: space-around;
   background-color: white;
+  overflow: auto;
 }
 
-#map-img, #searchresults {
+/*.container-friends {*/
+/*  overflow: auto;*/
+/*}*/
+
+#map-img {
   object-fit: cover;
   height: 100%;
   width: 100%;
@@ -152,17 +186,60 @@ body, .section, #root {
   z-index:1;
 }
 
-/* Bottom right text */
 .map-block {
   position: absolute;
   top: 0;
   left: 0;
   background-color: rgb(0,0,0,0);
-  height: 10%;
+  height: 12.5%;
   width: 100%;
   display: flex;
   justify-content: space-between;
   z-index:10;
+}
+
+#map-key-title {
+  text-align: center;
+  margin: 0.5%;
+  font-size: 15px;
+}
+
+.outer-map-key-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 17.5%;
+  width: 80%;
+  box-sizing: border-box;
+  border-top: solid black 1px;
+  border-right: solid black 1px;
+  border-top-right-radius: 10px;
+  background-color: rgba(240, 240, 240, 0.75);
+  z-index:10;
+}
+
+.map-color-key-box {
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.marker-key-box {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.marker-key-image {
+  width: 90%;
+  height: 90%;
+}
+
+.key-percentage {
+  text-align: center;
 }
 
 input:focus {
@@ -177,6 +254,7 @@ input:focus {
   border-radius: 10px;
   box-sizing: border-box;
   overflow: hidden;
+  visibility: hidden; /* REMOVE WHEN ADDING SEARCH BOX BACK IN */
 }
 
 #search-input {
@@ -239,35 +317,30 @@ input:focus {
   margin:0 auto;
 }
 
-#allergenlist, #favoriteslist {
+#allergenlist, #favoriteslist, #privacysettings {
   margin: 5%;
-  padding-left: 5%;
-  padding-right: 5%;
   height: 7.5%;
   box-sizing: border-box;
-  border: solid var(--triadicappcolor1) 1px;
-  color: black;
-  background-color: rgb(255, 255, 255, 0.5);
-  border-radius: 10px;
   align-items: center;
   display: flex;
 }
 
-#privacysettings {
-  margin: 5%;
+#allergen-button, #favourites-button, #privacy-settings-button {
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
   padding-left: 5%;
   padding-right: 5%;
-  height: 7.5%;
-  box-sizing: border-box;
-  border: solid var(--triadicappcolor1) 1px;
-  color: black;
   background-color: rgb(255, 255, 255, 0.5);
+  border: solid var(--triadicappcolor2) 1px;
+  color: black;
   border-radius: 10px;
-  align-items: center;
   display: flex;
+  align-items: center;
 }
 
-#signout {
+#sign-out-button {
+  text-decoration: none;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -277,7 +350,7 @@ input:focus {
   height: 7.5%;
   width: fit-content;
   box-sizing: border-box;
-  color: var(--triadicappcolor1);
+  color: var(--triadicappcolor2);
   border: none;
   background-color: rgb(255, 255, 255, 0.25);
   align-items: center;
@@ -290,12 +363,79 @@ input:focus {
 }
 
 .button-bar {
-  height: 10%;
+  height: 12.5%;
   width: 100%;
   display: inline-flex;
   z-index:10;
-  position:relative;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
+
+#allergens-list-title {
+  margin: 5%;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 18px; /* Adjusted font size */
+  user-select: none;
+}
+
+.checkbox-container .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px; /* Adjusted size */
+  width: 20px; /* Adjusted size */
+  background-color: var(--inputbackground);
+  border: 1px solid var(--triadicappcolor2);
+  border-radius: 4px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--triadicappcolor2);
+  border-color: var(--triadicappcolor2);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox-container .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 7px; /* Adjusted position */
+  top: 3px; /* Adjusted position */
+  width: 4px; /* Adjusted size */
+  height: 8px; /* Adjusted size */
+  border: solid white;
+  border-width: 0 2px 2px 0; /* Adjusted border size */
+  transform: rotate(45deg);
+}
+
+.allergen-checkbox {}
 
 #friends-button {
   text-decoration: none;
@@ -329,13 +469,13 @@ input:focus {
   align-items: center;
 }
 
-#allergen-button {
-  text-decoration: none;
-  color: black;
-}
-
 #account-button span {
   margin-top: -5%;
+}
+
+.friends-scrollable {
+  overflow: scroll;
+  max-height: 65%;
 }
 
 #friends-page-img {
@@ -349,8 +489,8 @@ input:focus {
   object-fit: cover;
 }
 
-#friend1, #friend2, #friend3, #friend4 {
-  margin: 5%;
+#friend1 {
+  margin: 2.5% 5%;
   padding-left: 5%;
   padding-right: 5%;
   box-sizing: border-box;
@@ -384,8 +524,110 @@ input:focus {
   margin: 5%;
 }
 
+#friends-ID-title {
+  margin: 5%;
+}
+
+#group {
+  width: 90%;
+  margin: 2.5% 5%;
+  padding: 2% 5%;
+  box-sizing: border-box;
+  border: solid black 1px;
+  color: black;
+  background-color: rgb(255, 255, 255, 0.5);
+  border-radius: 10px;
+  display: inline-flex;
+  flex-flow: wrap;
+}
+
+#group-member-card {
+  width: 100%;
+  margin: 2.5% 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-sizing: border-box;
+  border: solid black 1px;
+  color: black;
+  background-color: rgb(255, 255, 255, 0.5);
+  border-radius: 10px;
+  display: inline-flex;
+  flex-flow: wrap;
+}
+
+#group-header {
+  width: 100%;
+}
+
+#group-title, #group-member-name {
+  display: inline-flex;
+  width: 80%;
+}
+
+#group-add-user-button, #group-dropdown-button {
+  display: inline-flex;
+  width: 10%;
+}
+
+#group-remove-user-button {
+  display: inline-flex;
+  width: 20%;
+}
+
+#group-dropdown {
+  /* position: absolute; */
+}
+
+#search-friends, #search-groups {
+  height: 5%;
+  width: 90%;
+  margin: 2.5% 5%;
+  display: flex;
+  border: solid black 1px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#search-friends-input, #search-groups-input {
+  width: 80%;
+  margin: 0 auto;
+  padding-left: 2.5%;
+  font-size: 100%;
+  border: none;
+  /*border: solid black 1px;*/
+  /*border-radius: 10px 0 0 10px;*/
+  /*border-right: transparent;*/
+  /*box-sizing: border-box;*/
+  background-color: white;
+  color: black;
+}
+
+#search-friends-button, #search-groups-button {
+  width: 20%;
+  margin: 0 auto;
+  font-size:x-large;
+  text-align: center;
+  padding: 0;
+  border: none;
+  border-left: solid black 1px;
+  /*border: solid black 1px;*/
+  /*border-radius: 0 10px 10px 0;*/
+  /*box-sizing: border-box;*/
+  background-color: var(--inputbackground);
+  color: black;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 #settings-title {
   margin: 5%;
+}
+
+#privacy-title {
+  margin: 5%;
+  text-align: center;
 }
 
 h3 {
@@ -396,8 +638,13 @@ h3 {
   width: 5%;
 }
 
-#allergenchecks {
+#restaurant-filter-checks, #allergenchecks {
   margin: 5%;
+}
+
+.restaurant-info {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .view-setting label {
@@ -406,7 +653,7 @@ h3 {
   background-color:var(--inputbackground);
   overflow:auto;
   border-collapse: separate;
-  border: solid var(--triadicappcolor1) 1px;
+  border: solid var(--triadicappcolor2) 1px;
   box-sizing: border-box;
 }
 
@@ -434,7 +681,48 @@ h3 {
 }
 
 .view-setting input:checked + span {
-  background-color:var(--triadicappcolor1);
+  background-color:var(--triadicappcolor2);
+  color: white;
+  padding: 0;
+  height: 4vh;
+  line-height: 4vh;
+}
+
+.privacy-setting label {
+  float:left;
+  width:40%;
+  background-color:var(--inputbackground);
+  overflow:auto;
+  border-collapse: separate;
+  border: solid var(--triadicappcolor2) 1px;
+  box-sizing: border-box;
+}
+
+.privacy-setting label:first-of-type {
+  margin-left: 10%;
+  border-radius: 6px 0 0 6px;
+}
+
+.privacy-setting label:last-of-type {
+  margin-right: 10%;
+  border-radius: 0 6px 6px 0;
+}
+
+.privacy-setting label span {
+  text-align:center;
+  display:block;
+  padding: 0;
+  line-height: 4vh;
+  overflow: hidden;
+}
+
+.privacy-setting label input {
+  position:absolute;
+  visibility: hidden;
+}
+
+.privacy-setting input:checked + span {
+  background-color:var(--triadicappcolor2);
   color: white;
   padding: 0;
   height: 4vh;
@@ -448,7 +736,12 @@ h3 {
 
 /* LANDSCAPE DETECTION */
 @media only screen and (orientation: landscape) {
-  .main {
+  .top-bar {
+    box-sizing: border-box;
+    border-right: solid black 1px;
+  }
+
+  .main, .main-index {
     height: 100%;
     width: 40%;
     margin-left: 30%;
@@ -458,6 +751,48 @@ h3 {
     border-bottom: none;
     overflow: hidden;
   }
+
+  .container-index {
+    width: 40%;
+    right: 30%;
+    left: 30%;
+    border: solid black 1px;
+    border-bottom: none;
+    box-sizing: border-box;
+  }
+
+  .container-other {
+    width: 40%;
+    right: 30%;
+    left: 30%;
+    border-right: solid black 1px;
+    border-left: solid black 1px;
+    box-sizing: border-box;
+  }
+
+  .container-friends {
+    width: 40%;
+    right: 30%;
+    left: 30%;
+    border: solid black 1px;
+    border-bottom: none;
+    box-sizing: border-box;
+  }
+
+  .top-bar, .button-bar {
+    height: 10%;
+    width: 40%;
+    right: 30%;
+    left: 30%;
+    border-right: solid black 1px;
+    border-left: solid black 1px;
+    box-sizing: border-box;
+  }
+
+  .outer-map-key-box {
+    height: 12.5%;
+  }
+
   #friends-img, #account-img {
     width: 20%;
     height: auto;
@@ -477,4 +812,10 @@ h3 {
     margin-left: 30%;
     margin-right: 30%;
   }
+
+  /* On mouse-over, add a grey background color */
+  .checkbox-container:hover input ~ .checkmark {
+    background-color: var(--inputbackgrounddarker);
+  }
 }
+

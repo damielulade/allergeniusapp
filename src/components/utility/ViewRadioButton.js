@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-export default function RadioComponent() {
+export default function TwoOptionRadioButton(props) {
     const [selectedOption, setSelectedOption] = useState(0);
-    const handleOptionChange = (event) => {
+    const defaultOptionChange = (event) => {
         const value = event.target.value;
         setSelectedOption(value);
     };
@@ -13,18 +13,18 @@ export default function RadioComponent() {
                 <input
                     type = "radio" id="map-view" name="map-list-view"
                     value = {0} defaultChecked = {selectedOption === 0}
-                    onChange = {handleOptionChange}
+                    onChange = {defaultOptionChange}
                 />
-                <span>Map View</span>
+                <span>{props.option1}</span>
             </label>
 
             <label>
                 <input
                     type = "radio" id="list-view" name="map-list-view"
                     value = {1} defaultChecked = {selectedOption === 1}
-                    onChange = {handleOptionChange}
+                    onChange = {defaultOptionChange}
                 />
-                <span>List View</span>
+                <span>{props.option2}</span>
             </label>
 
             {/*<p>Selected Option: {selectedOption}</p>*/}

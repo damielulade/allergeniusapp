@@ -21,6 +21,128 @@ firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
 auth = firebase.auth()
 
+# Must be initialised after the registration or login.
+# EMAIL_L MUST NEVER BE CHANGED.
+email_l = "example@example.com"
+
+# Invariants
+age_l = -1
+first_name_l = "Example"
+last_name_l = "Example"
+
+# Variants
+allergens_l = []
+friends_l = []
+groups_l = {}
+
+def refresh_information(email_t):
+    for user in db.child("user").get().each():
+        if user.val().get('email') == email_t:
+            data = user.val()
+            email_l = data.get('email', None)
+            age_l = data.get('age', None)
+            first_name_l = data.get('firstName', None)
+            last_name_l = data.get('lastName', None)
+            allergens_l = data.get('allergens', [])
+            friends_l = data.get('friends', [])
+            groups_l = data.get('groups', {})
+            break
+
+
+def get_values(ref, limit=10):
+    res = []
+    for record in ref.get().each():
+        res.append(record.val())
+    return res
+
+
+def delete_values(ref):
+    for record in ref.get().each():
+        key = record.key()
+        ref.child(key).remove()
+        
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
+    
+
+@app.route('/api/getRestaurantData', methods=["GET"])
+def get_restaurant():
+    return json.dumps(get_values(db.child("restaurant")))
+
+@app.route('/api/getUserFriends', methods=["GET"])
+def getUserFriends():
+    return json.dumps(get_values(db.child("user")))
+
+@app.route('/api/getFirstUser', methods=["GET"])
+def getUserGroups():
+    ref = db.child("user").order_by_key().limit_to_first(1)
+    return json.dumps(get_values(ref))
+
+@app.route('/api/add_group/<group_name>', methods=["GET"])
+def add_group(group_name):
+    key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
+    db.child("user").child(key).child("groups").child(group_name).set(0)
+    return json.dumps([])
+
+@app.route('/api/remove_group/<group_name>', methods=["GET"])
+def remove_group(group_name):
+    key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
+    db.child("user").child(key).child("groups").child(group_name).remove()
+    return json.dumps([])
+
+def foo():
+    ref = db.child("user")
+    members = ["-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r"]
+    for user in ref.get().each():
+        key = user.key()
+        db.child("user").child(key).child("groups/group1").set(members)
+        db.child("user").child(key).child("groups/group2").set(members)
+
+@app.route("/api/register", methods=["POST"])
+def register():
+    email = request.json.get("email")
+    password = request.json.get("password")
+    age = int(request.json.get("age"))
+    first_name = request.json.get("firstName")
+    last_name = request.json.get("lastName")
+    try:
+        user = auth.create_user_with_email_and_password(email, password)
+        print("I'm working!!")
+        db.child("user").push({
+            "age": age, 
+            "allergens": [],
+            "firstName": first_name,
+            "friends": {},
+            "groups": {},
+            "lastName": last_name,
+            "email": email
+        })
+        refresh_information(email)
+        print(first_name)
+        print(last_name)
+        return {"message": "User created successfully."}, 200
+    except Exception as e:
+        return {"error": str(e)}, 500
+
+@app.route("/api/login", methods=["POST"])
+def login():
+    email = request.json.get("email")
+    password = request.json.get("password")
+    try:
+        user = auth.sign_in_with_email_and_password(email, password)
+        return {"message": "Login successful."}, 200
+    except Exception as e:
+        return {"error": str(e)}, 401
+    
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
 # default restaurants
 restaurantA = {
         "name": "Restaurant A",
@@ -436,116 +558,3 @@ default = {
     },
     "tags" : [],
 }
-
-def get_values(ref, limit=10):
-    res = []
-    for record in ref.get().each():
-        res.append(record.val())
-    return res
-
-
-def delete_values(ref):
-    for record in ref.get().each():
-        key = record.key()
-        ref.child(key).remove()
-        
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
-
-@app.errorhandler(404)
-def not_found(e):
-    return app.send_static_file('index.html')
-    
-
-@app.route('/api/getRestaurantData', methods=["GET"])
-def get_restaurant():
-    return json.dumps(get_values(db.child("restaurant")))
-
-@app.route('/api/getUserFriends', methods=["GET"])
-def getUserFriends():
-    return json.dumps(get_values(db.child("user")))
-
-@app.route('/api/getFirstUser', methods=["GET"])
-def getUserGroups():
-    ref = db.child("user").order_by_key().limit_to_first(1)
-    return json.dumps(get_values(ref))
-
-@app.route('/api/add_group/<group_name>', methods=["GET"])
-def add_group(group_name):
-    key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
-    db.child("user").child(key).child("groups").child(group_name).set(0)
-    return json.dumps([])
-
-@app.route('/api/remove_group/<group_name>', methods=["GET"])
-def remove_group(group_name):
-    key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
-    db.child("user").child(key).child("groups").child(group_name).remove()
-    return json.dumps([])
-
-def foo():
-    ref = db.child("user")
-    members = ["-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r"]
-    for user in ref.get().each():
-        key = user.key()
-        db.child("user").child(key).child("groups/group1").set(members)
-        db.child("user").child(key).child("groups/group2").set(members)
-
-# foo()
-
-# @app.route('/api/get_first_user')
-# def get_new_groups():
-    
-#     def get_data():
-        
-#         while True:
-#             # key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
-#             # res = get_values(db.child("user").child(key).child("groups"))
-#             ref = db.child("user").order_by_key().limit_to_first(1)
-#             res = json.dumps(get_values(ref))
-#             yield f'data: {res}\n\n'
-#             # time.sleep(1)
-            
-#     return Response(get_data(), mimetype='text/event-stream')
-
-@app.route("/api/register", methods=["POST"])
-def register():
-    email = request.json.get("email")
-    password = request.json.get("password")
-    age = int(request.json.get("age"))
-    first_name = request.json.get("firstName")
-    last_name = request.json.get("lastName")
-    try:
-        user = auth.create_user_with_email_and_password(email, password)
-        db.child("user").push({
-            "age": age, 
-            "allergens": [],
-            "firstName": first_name,
-            "friends": {},
-            "groups": {},
-            "lastName": last_name,
-            "email": email
-        })
-        return {"message": "User created successfully."}, 200
-    except Exception as e:
-        return {"error": str(e)}, 500
-
-@app.route("/api/login", methods=["POST"])
-def login():
-    email = request.json.get("email")
-    password = request.json.get("password")
-    try:
-        user = auth.sign_in_with_email_and_password(email, password)
-        res = None
-        for user in db.child("user").get().each():
-            if user.val().get('email') == email:
-                res = user.val()
-                break
-        print(res)
-        return {"message": "Login successful."}, 200
-    except Exception as e:
-        return {"error": str(e)}, 401
-    
-if __name__ == '__main__':
-    app.run(debug=True)
-

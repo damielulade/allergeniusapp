@@ -1,8 +1,6 @@
-from datetime import datetime
-import time
 from pyrebase import pyrebase
 from flask import Flask, Response
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 import json
 
 app = Flask(__name__, static_folder="../build", static_url_path='/')
@@ -489,18 +487,6 @@ def foo():
 
 # foo()
 
-@app.route('/api/stream')
-def stream():
-    
-    def get_data():
-        
-        while True:
-            #gotcha
-            time.sleep(1)
-            yield f'data: {datetime.now()} \n\n'
-            
-    return Response(get_data(), mimetype='text/event-stream')
-
 @app.route('/api/get_first_user')
 def get_new_groups():
     
@@ -512,7 +498,7 @@ def get_new_groups():
             ref = db.child("user").order_by_key().limit_to_first(1)
             res = json.dumps(get_values(ref))
             yield f'data: {res}\n\n'
-            time.sleep(1)
+            # time.sleep(1)
             
     return Response(get_data(), mimetype='text/event-stream')
     

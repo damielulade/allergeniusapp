@@ -536,7 +536,12 @@ def login():
     password = request.json.get("password")
     try:
         user = auth.sign_in_with_email_and_password(email, password)
-        print(db.child("user").get().val())
+        res = None
+        for user in db.child("user").get().each():
+            if user.val().get('email') == email:
+                res = user.val()
+                break
+        print(res)
         return {"message": "Login successful."}, 200
     except Exception as e:
         return {"error": str(e)}, 401

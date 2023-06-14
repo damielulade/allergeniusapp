@@ -523,7 +523,8 @@ def register():
             "firstName": first_name,
             "friends": {},
             "groups": {},
-            "lastName": last_name
+            "lastName": last_name,
+            "email": email
         })
         return {"message": "User created successfully."}, 200
     except Exception as e:
@@ -535,7 +536,7 @@ def login():
     password = request.json.get("password")
     try:
         user = auth.sign_in_with_email_and_password(email, password)
-        # You can also retrieve the user's ID token here if needed
+        print(db.child("user").get().val())
         return {"message": "Login successful."}, 200
     except Exception as e:
         return {"error": str(e)}, 401

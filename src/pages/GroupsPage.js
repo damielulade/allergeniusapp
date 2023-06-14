@@ -6,38 +6,47 @@ import GroupCard from "../components/GroupCard";
 
 export default function GroupsPage() {
   const [data, setData] = useState([]);
-  
-  // const baseURL = "http://localhost:5000"; // development
-  const baseURL = "" // production
-  
-  useEffect(() => {
-    const fetchData = () => {
-      axios
-      .get(`${baseURL}/getFirstUser`)
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => console.log(error));
-    };
-    fetchData();
-  }, []);
 
-  const groups = data.map((user) => {
+  useEffect(() => {
+    const sse = new EventSource("api/get_first_user");
+
+    function handleStream(e) {
+      setData(JSON.parse(e.data));
+    }
+
+    sse.onmessage = (e) => {
+      console.log(JSON.parse(e.data));
+      handleStream(e);
+    };
+
+    sse.onerror = (e) => {
+      sse.close();
+    };
+
+    return () => {
+      sse.close();
+    };
+  });
+
+  var groupsDisplay = data.map((user) => {
     var res = [];
     for (let group in user.groups) {
       res.push(
         <GroupCard key={group} name={group} members={user.groups[group]} />
-        );
-      }
-      return res;
+      );
+    }
+    return res;
   });
 
   const addGroup = (event) => {
-    const group = document.getElementById("search-friends-input").value;
-    // console.log(query);
-    axios.get(`${baseURL}/add_group/${group}`).then()
-    
-  }
+    const group = document.getElementById("search-groups-input").value;
+    if (group) {
+      axios
+        .get(`/api/add_group/${group}`)
+        .then([])
+        .catch((error) => console.log(error));
+    }
+  };
 
   return (
     <div className="section">
@@ -56,9 +65,7 @@ export default function GroupsPage() {
             </button>
           </div>
           <h2 id="friends-title">Existing Groups</h2>
-          <div className = "friends-scrollable">
-            {groups}
-          </div>
+          <div className="friends-scrollable">{groupsDisplay}</div>
         </div>
         <div className="button-bar">
           <Link to="/friends" id="friends-button">

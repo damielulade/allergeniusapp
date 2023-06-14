@@ -1,5 +1,7 @@
+from datetime import datetime
+import time
 from pyrebase import pyrebase
-from flask import Flask
+from flask import Flask, Response
 from flask_cors import CORS, cross_origin
 import json
 
@@ -458,20 +460,20 @@ def not_found(e):
     return app.send_static_file('index.html')
     
 
-@app.route('/getRestaurantData', methods=["GET"])
+@app.route('/api/getRestaurantData', methods=["GET"])
 def get_restaurant():
     return json.dumps(get_values(db.child("restaurant")))
 
-@app.route('/getUserFriends', methods=["GET"])
+@app.route('/api/getUserFriends', methods=["GET"])
 def getUserFriends():
     return json.dumps(get_values(db.child("user")))
 
-@app.route('/getFirstUser', methods=["GET"])
+@app.route('/api/getFirstUser', methods=["GET"])
 def getUserGroups():
     ref = db.child("user").order_by_key().limit_to_first(1)
     return json.dumps(get_values(ref))
 
-@app.route('/add_group/<group_name>', methods=["GET"])
+@app.route('/api/add_group/<group_name>', methods=["GET"])
 def add_group(group_name):
     key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
     db.child("user").child(key).child("groups").child(group_name).set(0)
@@ -485,7 +487,34 @@ def foo():
         db.child("user").child(key).child("groups/group1").set(members)
         db.child("user").child(key).child("groups/group2").set(members)
 
-foo()
+# foo()
+
+@app.route('/api/stream')
+def stream():
+    
+    def get_data():
+        
+        while True:
+            #gotcha
+            time.sleep(1)
+            yield f'data: {datetime.now()} \n\n'
+            
+    return Response(get_data(), mimetype='text/event-stream')
+
+@app.route('/api/get_first_user')
+def get_new_groups():
+    
+    def get_data():
+        
+        while True:
+            # key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
+            # res = get_values(db.child("user").child(key).child("groups"))
+            ref = db.child("user").order_by_key().limit_to_first(1)
+            res = json.dumps(get_values(ref))
+            yield f'data: {res}\n\n'
+            time.sleep(1)
+            
+    return Response(get_data(), mimetype='text/event-stream')
     
 if __name__ == '__main__':
     app.run(debug=True)

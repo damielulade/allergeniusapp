@@ -1,5 +1,5 @@
 from pyrebase import pyrebase
-from flask import Flask, Response, request
+from flask import Flask, Response, request, session
 from flask_cors import CORS
 import json
 
@@ -20,6 +20,8 @@ db_config = {
 firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
 auth = firebase.auth()
+
+app.secret_key = "secretive"
 
 # default restaurants
 restaurantA = {
@@ -448,6 +450,22 @@ def delete_values(ref):
     for record in ref.get().each():
         key = record.key()
         ref.child(key).remove()
+
+def get_user_info(email):
+    res = None
+    for user in db.child("user").get().each():
+        if user.val().get('email') == email:
+            res = user.val()
+            break
+    return res;
+
+def foo():
+    ref = db.child("user")
+    members = ["-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r"]
+    for user in ref.get().each():
+        key = user.key()
+        db.child("user").child(key).child("groups/group1").set(members)
+        db.child("user").child(key).child("groups/group2").set(members)
         
 @app.route('/')
 def index():
@@ -457,7 +475,6 @@ def index():
 def not_found(e):
     return app.send_static_file('index.html')
     
-
 @app.route('/api/getRestaurantData', methods=["GET"])
 def get_restaurant():
     return json.dumps(get_values(db.child("restaurant")))
@@ -475,6 +492,7 @@ def getUserGroups():
 def add_group(group_name):
     key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
     db.child("user").child(key).child("groups").child(group_name).set(0)
+    session['groups'] = {group_name}
     return json.dumps([])
 
 @app.route('/api/remove_group/<group_name>', methods=["GET"])
@@ -483,30 +501,19 @@ def remove_group(group_name):
     db.child("user").child(key).child("groups").child(group_name).remove()
     return json.dumps([])
 
-def foo():
-    ref = db.child("user")
-    members = ["-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r"]
-    for user in ref.get().each():
-        key = user.key()
-        db.child("user").child(key).child("groups/group1").set(members)
-        db.child("user").child(key).child("groups/group2").set(members)
+@app.route("/api/get_allergens", methods=["GET"])
+def get_allergens():
+    return {"message": f"{session['allergens']}"}
 
-# foo()
+@app.route("/api/get_user_token", methods=["GET"])
+def get_user_token():
+    token = session['user']
+    user = auth.get_account_info(token)
+    return {"message": f"{user}"}
 
-# @app.route('/api/get_first_user')
-# def get_new_groups():
-    
-#     def get_data():
-        
-#         while True:
-#             # key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
-#             # res = get_values(db.child("user").child(key).child("groups"))
-#             ref = db.child("user").order_by_key().limit_to_first(1)
-#             res = json.dumps(get_values(ref))
-#             yield f'data: {res}\n\n'
-#             # time.sleep(1)
-            
-#     return Response(get_data(), mimetype='text/event-stream')
+@app.route("/api/get_current_session", methods=["GET"])
+def get_current_session():
+    return {"message": f"{session}"}
 
 @app.route("/api/register", methods=["POST"])
 def register():
@@ -516,8 +523,7 @@ def register():
     first_name = request.json.get("firstName")
     last_name = request.json.get("lastName")
     try:
-        user = auth.create_user_with_email_and_password(email, password)
-        db.child("user").push({
+        template_data = {
             "age": age, 
             "allergens": [],
             "firstName": first_name,
@@ -525,7 +531,13 @@ def register():
             "groups": {},
             "lastName": last_name,
             "email": email
-        })
+        }
+        user = auth.create_user_with_email_and_password(email, password)
+        db.child("user").push(template_data)
+        session['user'] = user['idToken']
+        session['allergens'] = []
+        session['friends'] = {}
+        session['groups'] = {}
         return {"message": "User created successfully."}, 200
     except Exception as e:
         return {"error": str(e)}, 500
@@ -536,15 +548,21 @@ def login():
     password = request.json.get("password")
     try:
         user = auth.sign_in_with_email_and_password(email, password)
-        res = None
-        for user in db.child("user").get().each():
-            if user.val().get('email') == email:
-                res = user.val()
-                break
-        print(res)
+        user = auth.refresh(user['refreshToken'])
+        session['user'] = user['idToken']
+        data = get_user_info(email)            
+        session['allergens'] = data['allergens'] if ('allergens' in data.keys()) else []
+        session['friends'] = data['allergens'] if ('allergens' in data.keys()) else {}
+        session['groups'] = data['allergens'] if ('allergens' in data.keys()) else {}
         return {"message": "Login successful."}, 200
     except Exception as e:
         return {"error": str(e)}, 401
+
+@app.route('/api/logout')
+def logout():
+    for key in ['user', 'allergens', 'friends', 'groups', 'data']:
+        session.pop(key, None)
+    return {"message": f"{session}"}
     
 if __name__ == '__main__':
     app.run(debug=True)

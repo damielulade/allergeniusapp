@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import MainHeaderVariant from "../components/main/MainHeaderVariant";
-import axios from "axios";
 import GroupCard from "../components/GroupCard";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function GroupsPage() {
   const [data, setData] = useState([]);

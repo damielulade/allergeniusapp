@@ -52,6 +52,64 @@ body {
   display: none;
 }
 
+#register-title {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.register-block {
+  margin: 0 10%;
+  box-sizing: border-box;
+}
+
+.register-input-block {
+  box-sizing: border-box;
+  padding: 2.5%;
+  width: 90%;
+  margin: 0.5% 5%;
+}
+
+.register-button {
+  box-sizing: border-box;
+  border: solid var(--triadicappcolor2) 1px;
+  border-radius: 10px;
+  width: 40%;
+  padding: 2.5%;
+  margin: 5% 30% 0;
+  background-color: var(--triadicappcolor2);
+  color: white;
+}
+
+#login-title {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.login-block {
+  margin: 10%;
+  box-sizing: border-box;
+}
+
+.login-input-block {
+  box-sizing: border-box;
+  padding: 2.5%;
+  width: 90%;
+  margin: 0.5% 5%;
+}
+
+.login-button {
+  box-sizing: border-box;
+  border: solid var(--triadicappcolor2) 1px;
+  border-radius: 10px;
+  width: 40%;
+  padding: 2.5%;
+  margin: 5% 30% 0;
+  background-color: var(--triadicappcolor2);
+  color: white;
+}
+
 .main {
   height: 100%;
   width: 100%;
@@ -145,6 +203,14 @@ body {
   font-weight: bold;
 }
 
+#top-title-login-page {
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  font-size: xxx-large;
+  font-weight: bold;
+}
+
 .container-index, .container-friends {
   position: fixed;
   top: 10%;
@@ -171,6 +237,21 @@ body {
   border-left: none;
   justify-content: space-around;
   background-color: white;
+  overflow: auto;
+}
+
+.container-login {
+  position: fixed;
+  top: 10%;
+  bottom: 0;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+  border: solid black 1px;
+  border-right: none;
+  border-left: none;
+  justify-content: space-around;
+  background-color: var(--triadicappcolor1);
   overflow: auto;
 }
 
@@ -245,6 +326,11 @@ body {
 .restaurant-page-link {
   text-decoration: none;
 }
+
+.restaurant-page-link:focus {
+    outline: none;
+}
+
 
 input:focus {
   outline: none;
@@ -479,7 +565,7 @@ input:focus {
 
 .friends-scrollable {
   overflow: scroll;
-  max-height: 65%;
+  max-height: 67.75%;
 }
 
 #friends-page-img {
@@ -765,7 +851,7 @@ h3 {
     box-sizing: border-box;
   }
 
-  .container-other {
+  .container-other, .container-login {
     width: 40%;
     right: 30%;
     left: 30%;

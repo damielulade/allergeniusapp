@@ -9,6 +9,7 @@ import SearchPage from './pages/SearchPage';
 import HomePage from './pages/HomePage';
 import SettingsPage from './pages/SettingsPage';
 import GroupsPage from './pages/GroupsPage';
+import RestaurantInfoPage from "./components/utility/RestaurantPage";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/allergens" element={<MyAllergenPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path='/restaurant-info/:id' element={<RestaurantInfoPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path='/groups' element={<GroupsPage />} />
         <Route path="*" element={<Navigate to="/" />} />

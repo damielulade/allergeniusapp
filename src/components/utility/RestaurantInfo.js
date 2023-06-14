@@ -1,4 +1,21 @@
-function RestaurantInfo({ name, city, menu, allergens, ratings }) {
+import { useState } from 'react';
+
+export default function RestaurantInfo({ name, city, menu, allergens, ratings }) {
+  const [expandedMenu, setExpandedMenu] = useState(false);
+  const [expandedAllergens, setExpandedAllergens] = useState([]);
+
+  const toggleMenu = () => {
+    setExpandedMenu(!expandedMenu);
+  };
+
+  const toggleAllergen = (allergen) => {
+    if (expandedAllergens.includes(allergen)) {
+      setExpandedAllergens(expandedAllergens.filter((item) => item !== allergen));
+    } else {
+      setExpandedAllergens([...expandedAllergens, allergen]);
+    }
+  };
+
   return (
     <div className="restaurant-info">
       <h2>{name}</h2>
@@ -6,7 +23,15 @@ function RestaurantInfo({ name, city, menu, allergens, ratings }) {
         <strong>City:</strong> {city}
       </p>
       <p>
-        <strong>Menu:</strong> {menu.join(', ')}
+        <strong>Menu: </strong>
+        <button onClick={toggleMenu}>{expandedMenu ? 'Hide Menu' : 'Show Menu'}</button>
+        {expandedMenu && (
+          <ul>
+            {menu.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        )}
       </p>
       <div className="allergens">
         <p>
@@ -15,7 +40,16 @@ function RestaurantInfo({ name, city, menu, allergens, ratings }) {
         <ul>
           {Object.entries(allergens).map(([allergen, items]) => (
             <li key={allergen}>
-              <strong>{allergen}:</strong> {items.join(', ')}
+              <button onClick={() => toggleAllergen(allergen)}>
+                <strong>{allergen}:</strong>
+              </button>
+              {expandedAllergens.includes(allergen) && (
+                <ul>
+                  {items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -26,5 +60,3 @@ function RestaurantInfo({ name, city, menu, allergens, ratings }) {
     </div>
   );
 }
-
-export default RestaurantInfo

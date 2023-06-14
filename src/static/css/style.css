@@ -242,6 +242,10 @@ body {
   text-align: center;
 }
 
+.restaurant-page-link {
+  text-decoration: none;
+}
+
 input:focus {
   outline: none;
 }

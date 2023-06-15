@@ -7,19 +7,20 @@ import axios from "axios";
 
 export default function MyAllergenPage() {
   const allergens = [
-    "Gluten",
+    "Celery",
+    "Crustaceans",
     "Dairy",
+    "Eggs",
+    "Fish",
+    "Gluten",
+    "Lupin",
+    "Molluscs",
+    "Mustard",
     "Nuts",
     "Peanuts",
-    "Lupin",
     "Sesame Seeds",
     "Soya",
-    "Mustard",
-    "Fish",
-    "Crustaceans",
-    "Molluscs",
     "Sulphites",
-    "Celery",
   ];
 
   const [data, setData] = useState([]);

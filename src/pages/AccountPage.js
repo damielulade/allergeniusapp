@@ -2,12 +2,14 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import blank_user_img from "../static/images/user.png";
 import mark from "../static/images/user_images/mark_long_hair.png"
+import konst from "../static/images/user_images/konst.png"
 import MainHeaderVariant from "../components/main/MainHeaderVariant";
 import axios from "axios";
 
 export default function AccountPage() {
     const imageMap = {
         "mark_long_hair": mark,
+        "konst": konst,
     };
 
     function parseImage(userImage) {

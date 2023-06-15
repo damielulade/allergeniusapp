@@ -7,14 +7,14 @@ export default function RestaurantInfoPage({ name, city, menu, allergens, rating
   const [userAllergens, setUserData] = useState([]);
   useEffect(() => {
     const fetchUserData = () => {
-        axios
-            .get(`/api/getUserFriends`)
-            .then((response) => {
-                setUserData(response.data);
-            })
-            .catch((error) => console.log(error));
-    };
-    fetchUserData();
+      axios
+        .get(`/api/allergens`)
+        .then((response) => {
+          setUserData(response.data);
+        })
+          .catch((error) => console.log(error));
+        };
+        fetchUserData();
   }, []);
 
   const toggleMenu = () => {

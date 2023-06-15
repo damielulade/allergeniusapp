@@ -395,10 +395,16 @@ input:focus {
   justify-content: center;
 }
 
-#userimg {
-  width:50%;
-  margin-left: 25%;
-  margin-right: 25%;
+.user-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+
+.user-image-box img {
+  object-fit: fill;
+  border-radius: 50%;
 }
 
 #accountname {

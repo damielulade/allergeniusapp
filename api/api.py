@@ -23,6 +23,157 @@ auth = firebase.auth()
 
 app.secret_key = "secretive"
 
+def refresh_info(user, key, allergens, friends, groups):
+    session['user'] = user
+    session['key'] = key
+    session['allergens'] = allergens
+    session['friends'] = friends
+    session['groups'] = groups
+    # I don't know if email, age, first_name and last_name need to be done
+    
+def get_values(ref, limit=10):
+    res = []
+    for record in ref.get().each():
+        res.append(record.val())
+    return res
+
+
+def delete_values(ref):
+    for record in ref.get().each():
+        key = record.key()
+        ref.child(key).remove()
+
+def get_user_info(email):
+    for user in db.child("user").get().each():
+        if user.val().get('email') == email:
+            return user.key(), user.val()
+    return None
+
+def foo():
+    ref = db.child("user")
+    members = ["-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r"]
+    for user in ref.get().each():
+        key = user.key()
+        db.child("user").child(key).child("groups/group1").set(members)
+        db.child("user").child(key).child("groups/group2").set(members)
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
+    
+@app.route('/api/getRestaurantData', methods=["GET"])
+def get_restaurant():
+    return json.dumps(get_values(db.child("restaurant")))
+
+@app.route('/api/getUserFriends', methods=["GET"])
+def getUserFriends():
+    return json.dumps(get_values(db.child("user")))
+
+@app.route('/api/getFirstUser', methods=["GET"])
+def getUserGroups():
+    ref = db.child("user").order_by_key().limit_to_first(1)
+    return json.dumps(get_values(ref))
+
+@app.route('/api/add_group/<group_name>', methods=["GET"])
+def add_group(group_name):
+    db.child("user").child(session['key']).child("groups").child(group_name).set(0)
+    session['groups'][group_name] = []
+    session.modified = True
+    return session['groups']
+
+@app.route('/api/remove_group/<group_name>', methods=["GET"])
+def remove_group(group_name):
+    db.child("user").child(session['key']).child("groups").child(group_name).remove()
+    session['groups'].pop(group_name, None)
+    session.modified = True
+    return session['groups']
+
+@app.route("/api/get_groups", methods=["GET"])
+def groups():
+    return session['groups']
+
+@app.route("/api/get_allergens", methods=["GET"])
+def get_allergens():
+    return session['allergens']
+
+@app.route("/api/set_allergen/<allergen>/<new_state>", methods=["GET"])
+def set_allergens(allergen, new_state):
+    temp = session['allergens']
+    if (new_state == 'true'):
+        temp.append(allergen)
+    elif (new_state == 'false'):
+        temp.remove(allergen)
+    session['allergens'] = list(set(temp))
+    session.modified = True
+    db.child("user").child(session['key']).child("allergens").set(session['allergens'])
+    return session['allergens']
+
+@app.route("/api/get_user_token", methods=["GET"])
+def get_user_token():
+    token = session['user']
+    user = auth.get_account_info(token)
+    return {"message": f"{user}"}
+
+@app.route("/api/get_current_session", methods=["GET"])
+def get_current_session():
+    return {"message": f"{session}"}
+
+@app.route("/api/register", methods=["POST"])
+def register():
+    email = request.json.get("email")
+    password = request.json.get("password")
+    age = int(request.json.get("age"))
+    first_name = request.json.get("firstName")
+    last_name = request.json.get("lastName")
+    try:
+        user = auth.create_user_with_email_and_password(email, password)
+        print("I'm working!!")
+        new_ref = db.child("user").push({
+            "age": age, 
+            "allergens": [],
+            "firstName": first_name,
+            "friends": {},
+            "groups": {},
+            "lastName": last_name,
+            "email": email
+        })
+        refresh_info(user['idToken'], new_ref['name'], [], {}, {})
+        print(first_name)
+        print(last_name)
+        return {"message": "User created successfully."}, 200
+    except Exception as e:
+        return {"error": str(e)}, 500
+
+@app.route("/api/login", methods=["POST"])
+def login():
+    email = request.json.get("email")
+    password = request.json.get("password")
+    try:
+        user = auth.sign_in_with_email_and_password(email, password)
+        user = auth.refresh(user['refreshToken'])
+        key, data = get_user_info(email)
+        allergens = list(set(data['allergens'])) if ('allergens' in data.keys()) else []
+        friends = data['friends'] if ('friends' in data.keys()) else {}
+        groups = data['groups'] if ('groups' in data.keys()) else {}
+        refresh_info(user['idToken'], key, allergens, friends, groups)
+        return {"message": "Login successful."}, 200
+    except Exception as e:
+        return {"error": str(e)}, 401
+
+@app.route('/api/logout')
+def logout():
+    for key in ['user', 'allergens', 'friends', 'groups', 'key']:
+        session.pop(key, None)
+    return {"message": f"{session}"}
+    
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
 # default restaurants
 restaurantA = {
         "name": "Restaurant A",
@@ -438,152 +589,3 @@ default = {
     },
     "tags" : [],
 }
-
-def get_values(ref, limit=10):
-    res = []
-    for record in ref.get().each():
-        res.append(record.val())
-    return res
-
-
-def delete_values(ref):
-    for record in ref.get().each():
-        key = record.key()
-        ref.child(key).remove()
-
-def get_user_info(email):
-    for user in db.child("user").get().each():
-        if user.val().get('email') == email:
-            # print(user.key())
-            # print(user.val())
-            return user.key(), user.val()
-    return None
-
-def foo():
-    ref = db.child("user")
-    members = ["-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r", "-NXkKtFF_hiBZ88gE16r"]
-    for user in ref.get().each():
-        key = user.key()
-        db.child("user").child(key).child("groups/group1").set(members)
-        db.child("user").child(key).child("groups/group2").set(members)
-        
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
-
-@app.errorhandler(404)
-def not_found(e):
-    return app.send_static_file('index.html')
-    
-@app.route('/api/getRestaurantData', methods=["GET"])
-def get_restaurant():
-    return json.dumps(get_values(db.child("restaurant")))
-
-@app.route('/api/getUserFriends', methods=["GET"])
-def getUserFriends():
-    return json.dumps(get_values(db.child("user")))
-
-@app.route('/api/getFirstUser', methods=["GET"])
-def getUserGroups():
-    ref = db.child("user").order_by_key().limit_to_first(1)
-    return json.dumps(get_values(ref))
-
-@app.route('/api/add_group/<group_name>', methods=["GET"])
-def add_group(group_name):
-    db.child("user").child(session['key']).child("groups").child(group_name).set(0)
-    session['groups'][group_name] = []
-    session.modified = True
-    return session['groups']
-
-@app.route('/api/remove_group/<group_name>', methods=["GET"])
-def remove_group(group_name):
-    db.child("user").child(session['key']).child("groups").child(group_name).remove()
-    session['groups'].pop(group_name, None)
-    session.modified = True
-    return session['groups']
-
-@app.route("/api/get_groups", methods=["GET"])
-def groups():
-    return session['groups']
-
-@app.route("/api/get_allergens", methods=["GET"])
-def get_allergens():
-    return session['allergens']
-
-@app.route("/api/set_allergen/<allergen>/<new_state>", methods=["GET"])
-def set_allergens(allergen, new_state):
-    temp = session['allergens']
-    if (new_state == 'true'):
-        temp.append(allergen)
-    elif (new_state == 'false'):
-        temp.remove(allergen)
-    session['allergens'] = list(set(temp))
-    session.modified = True
-    db.child("user").child(session['key']).child("allergens").set(session['allergens'])
-    return session['allergens']
-
-@app.route("/api/get_user_token", methods=["GET"])
-def get_user_token():
-    token = session['user']
-    user = auth.get_account_info(token)
-    return {"message": f"{user}"}
-
-@app.route("/api/get_current_session", methods=["GET"])
-def get_current_session():
-    return {"message": f"{session}"}
-
-@app.route("/api/register", methods=["POST"])
-def register():
-    email = request.json.get("email")
-    password = request.json.get("password")
-    age = int(request.json.get("age"))
-    first_name = request.json.get("firstName")
-    last_name = request.json.get("lastName")
-    try:
-        template_data = {
-            "age": age, 
-            "allergens": [],
-            "firstName": first_name,
-            "friends": {},
-            "groups": {},
-            "lastName": last_name,
-            "email": email
-        }
-        user = auth.create_user_with_email_and_password(email, password)
-        user_ref = db.child("user").push(template_data)
-        session['user'] = user['idToken']
-        session['key'] = user_ref['name']
-        session['allergens'] = []
-        session['friends'] = {}
-        session['groups'] = {}
-        return {"message": "User created successfully."}, 200
-    except Exception as e:
-        return {"error": str(e)}, 500
-
-@app.route("/api/login", methods=["POST"])
-def login():
-    email = request.json.get("email")
-    password = request.json.get("password")
-    try:
-        user = auth.sign_in_with_email_and_password(email, password)
-        user = auth.refresh(user['refreshToken'])
-        session['user'] = user['idToken']
-        session['email'] = email
-        key, data = get_user_info(email)
-        session['key'] = key
-        session['allergens'] = list(set(data['allergens'])) if ('allergens' in data.keys()) else []
-        session['friends'] = data['friends'] if ('friends' in data.keys()) else {}
-        session['groups'] = data['groups'] if ('groups' in data.keys()) else {}
-        return {"message": "Login successful."}, 200
-    except Exception as e:
-        return {"error": str(e)}, 401
-
-@app.route('/api/logout')
-def logout():
-    for key in ['user', 'allergens', 'friends', 'groups', 'key']:
-        session.pop(key, None)
-    return {"message": f"{session}"}
-    
-if __name__ == '__main__':
-    app.run(debug=True)
-

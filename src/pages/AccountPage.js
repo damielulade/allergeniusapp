@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import userimg from "../static/images/user.png";
 import MainHeaderVariant from "../components/main/MainHeaderVariant";

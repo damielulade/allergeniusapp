@@ -1,15 +1,34 @@
-import { useState } from 'react';
+import {useEffect, useMemo, useState} from 'react';
+import axios from "axios";
 
 export default function RestaurantInfoPage({ name, city, menu, allergens, ratings }) {
   const [expandedMenu, setExpandedMenu] = useState(false);
 
-  const my_allergens = ["milk"];
+  const [userData, setUserData] = useState([]);
+  useEffect(() => {
+    const fetchUserData = () => {
+        axios
+            .get(`/api/getUserFriends`)
+            .then((response) => {
+                setUserData(response.data);
+            })
+            .catch((error) => console.log(error));
+    };
+    fetchUserData();
+  }, []);
+
+  const thisUserAllergens = useMemo(() => {
+    return userData
+      .filter(item => item.firstName.includes('Mark'))
+      .flatMap(item => item.allergens)
+  }, [userData]);
+
   const toggleMenu = () => {
     setExpandedMenu(!expandedMenu);
   };
 
   let total_unsafe_items = [];
-  my_allergens.forEach(allergen => {
+  thisUserAllergens.forEach(allergen => {
       const unsafe_items = allergens[allergen] || [];
       total_unsafe_items.push(...unsafe_items);
   })

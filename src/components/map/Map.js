@@ -73,22 +73,22 @@ export default function MapComponent() {
         lng: -0.1743669 //-0.1278,
     }), []);
 
-    const [data, setData] = useState([]);
+    const [restaurantData, setRestaurantData] = useState([]);
 
     useEffect(() => {
-        const fetchData = () => {
+        const fetchRestaurantData = () => {
             axios
                 .get(`/api/getRestaurantData`)
                 .then((response) => {
-                    setData(response.data);
+                    setRestaurantData(response.data);
                 })
                 .catch((error) => console.log(error));
         };
-        fetchData();
+        fetchRestaurantData();
     }, []);
 
     const markersData = useMemo(() => {
-        return data.map(item => (
+        return restaurantData.map(item => (
             {
                 position: {lat: item.location[0], lng: item.location[1]},
                 title: item.name,
@@ -96,7 +96,27 @@ export default function MapComponent() {
                 allergens: item.allergens
             }
         ))
-    }, [data]);
+    }, [restaurantData]);
+
+    const [userData, setUserData] = useState([]);
+
+    useEffect(() => {
+        const fetchUserData = () => {
+            axios
+                .get(`/api/getUserFriends`)
+                .then((response) => {
+                    setUserData(response.data);
+                })
+                .catch((error) => console.log(error));
+        };
+        fetchUserData();
+    }, []);
+
+    const thisUserAllergens = useMemo(() => {
+        return userData
+            .filter(item => item.firstName.includes('Mark'))
+            .flatMap(item => item.allergens)
+    }, [userData]);
 
     useEffect(() => {
         const loader = new Loader({
@@ -118,7 +138,7 @@ export default function MapComponent() {
 
                 // Create markers
                 markersData.forEach(markerData => {
-                    const marker_colour = getMarkerColour(["milk"], markerData.allergens, markerData.menu)
+                    const marker_colour = getMarkerColour(thisUserAllergens, markerData.allergens, markerData.menu)
                     const marker = new window.google.maps.Marker({
                         position: markerData.position,
                         map: mapInstanceRef.current,
@@ -153,7 +173,7 @@ export default function MapComponent() {
                 mapInstanceRef.current = null;
             }
         };
-    }, [center, options, markersData]);
+    }, [center, options, markersData, thisUserAllergens]);
 
     return (
         <div ref={mapContainerRef} className="map-container">

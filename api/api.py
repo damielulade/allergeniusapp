@@ -78,39 +78,35 @@ def getUserGroups():
     ref = db.child("user").order_by_key().limit_to_first(1)
     return json.dumps(get_values(ref))
 
-@app.route('/api/add_group/<group_name>', methods=["GET"])
-def add_group(group_name):
-    db.child("user").child(session['key']).child("groups").child(group_name).set(0)
-    session['groups'][group_name] = []
-    session.modified = True
-    return session['groups']
-
-@app.route('/api/remove_group/<group_name>', methods=["GET"])
-def remove_group(group_name):
-    db.child("user").child(session['key']).child("groups").child(group_name).remove()
-    session['groups'].pop(group_name, None)
-    session.modified = True
-    return session['groups']
-
-@app.route("/api/get_groups", methods=["GET"])
+@app.route('/api/groups', methods=["GET", "POST"])
 def groups():
+    if request.method == 'POST':
+        group_name = request.json.get("groupName")
+        mode = request.json.get("mode")
+        if (mode == "add"):
+            db.child("user").child(session['key']).child("groups").child(group_name).set(0)
+            session['groups'][group_name] = []
+            session.modified = True
+        elif (mode == "remove"):
+            db.child("user").child(session['key']).child("groups").child(group_name).remove()
+            session['groups'].pop(group_name, None)
+            session.modified = True
     return session['groups']
 
-@app.route("/api/get_allergens", methods=["GET"])
-def get_allergens():
-    return session['allergens']
-
-@app.route("/api/set_allergen/<allergen>/<new_state>", methods=["GET"])
-def set_allergens(allergen, new_state):
-    temp = session['allergens']
-    if (new_state == 'true'):
-        temp.append(allergen)
-    elif (new_state == 'false'):
-        temp.remove(allergen)
-    session['allergens'] = list(set(temp))
-    session.modified = True
-    db.child("user").child(session['key']).child("allergens").set(session['allergens'])
-    return session['allergens']
+@app.route('/api/allergens', methods=["GET", "POST"])
+def allergens():
+    if request.method == 'POST':
+        allergen = request.json.get("allergen")
+        new_state = request.json.get("newState")
+        temp = session['allergens']
+        if (new_state == True):
+            temp.append(allergen)
+        elif (new_state == False):
+            temp.remove(allergen)
+        session['allergens'] = list(set(temp))
+        session.modified = True
+        db.child("user").child(session['key']).child("allergens").set(session['allergens'])
+    return session['allergens']     
 
 @app.route("/api/get_user_token", methods=["GET"])
 def get_user_token():

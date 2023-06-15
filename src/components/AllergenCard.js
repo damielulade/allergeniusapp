@@ -11,7 +11,10 @@ export default function AllergenCard(props) {
   const handleChange = () => {
     setChecked(!checked);
     axios
-      .get(`/api/set_allergen/${props.allergen}/${!checked}`)
+      .post(`/api/allergens`, {
+        allergen: props.allergen,
+        newState: !checked,
+      })
       .then(() => {})
       .catch((error) => console.log(error));
   };

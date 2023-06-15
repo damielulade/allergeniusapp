@@ -27,7 +27,7 @@ export default function MyAllergenPage() {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get("/api/get_allergens")
+        .get("/api/allergens")
         .then((response) => setData(response.data))
         .catch((error) => console.log(error));
     };

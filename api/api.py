@@ -168,7 +168,7 @@ def login():
 def logout():
     for key in ['user', 'allergens', 'friends', 'groups', 'key']:
         session.pop(key, None)
-    return {"message": f"{session}"}
+    return {"message": "Successfully logged out"}
     
 if __name__ == '__main__':
     app.run(debug=True)

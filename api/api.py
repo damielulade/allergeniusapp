@@ -452,12 +452,12 @@ def delete_values(ref):
         ref.child(key).remove()
 
 def get_user_info(email):
-    res = None
     for user in db.child("user").get().each():
         if user.val().get('email') == email:
-            res = user.val()
-            break
-    return res;
+            # print(user.key())
+            # print(user.val())
+            return user.key(), user.val()
+    return None
 
 def foo():
     ref = db.child("user")
@@ -490,16 +490,21 @@ def getUserGroups():
 
 @app.route('/api/add_group/<group_name>', methods=["GET"])
 def add_group(group_name):
-    key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
-    db.child("user").child(key).child("groups").child(group_name).set(0)
-    session['groups'] = {group_name}
-    return json.dumps([])
+    db.child("user").child(session['key']).child("groups").child(group_name).set(0)
+    session['groups'][group_name] = []
+    session.modified = True
+    return session['groups']
 
 @app.route('/api/remove_group/<group_name>', methods=["GET"])
 def remove_group(group_name):
-    key = db.child("user").order_by_key().limit_to_first(1).get().each()[0].key()
-    db.child("user").child(key).child("groups").child(group_name).remove()
-    return json.dumps([])
+    db.child("user").child(session['key']).child("groups").child(group_name).remove()
+    session['groups'].pop(group_name, None)
+    session.modified = True
+    return session['groups']
+
+@app.route("/api/get_groups", methods=["GET"])
+def groups():
+    return session['groups']
 
 @app.route("/api/get_allergens", methods=["GET"])
 def get_allergens():
@@ -533,8 +538,9 @@ def register():
             "email": email
         }
         user = auth.create_user_with_email_and_password(email, password)
-        db.child("user").push(template_data)
+        user_ref = db.child("user").push(template_data)
         session['user'] = user['idToken']
+        session['key'] = user_ref['name']
         session['allergens'] = []
         session['friends'] = {}
         session['groups'] = {}
@@ -550,7 +556,9 @@ def login():
         user = auth.sign_in_with_email_and_password(email, password)
         user = auth.refresh(user['refreshToken'])
         session['user'] = user['idToken']
-        data = get_user_info(email)            
+        session['email'] = email
+        key, data = get_user_info(email)
+        session['key'] = key
         session['allergens'] = data['allergens'] if ('allergens' in data.keys()) else []
         session['friends'] = data['allergens'] if ('allergens' in data.keys()) else {}
         session['groups'] = data['allergens'] if ('allergens' in data.keys()) else {}

@@ -1,10 +1,10 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useState} from 'react';
 import axios from "axios";
 
 export default function RestaurantInfoPage({ name, city, menu, allergens, ratings }) {
   const [expandedMenu, setExpandedMenu] = useState(false);
 
-  const [userData, setUserData] = useState([]);
+  const [userAllergens, setUserData] = useState([]);
   useEffect(() => {
     const fetchUserData = () => {
         axios
@@ -17,18 +17,19 @@ export default function RestaurantInfoPage({ name, city, menu, allergens, rating
     fetchUserData();
   }, []);
 
-  const thisUserAllergens = useMemo(() => {
-    return userData
-      .filter(item => item.firstName.includes('Mark'))
-      .flatMap(item => item.allergens)
-  }, [userData]);
-
   const toggleMenu = () => {
     setExpandedMenu(!expandedMenu);
   };
 
+  let fixedAllergens = userAllergens
+    .filter(item => item !== null)
+      .map(item => {
+        let lowerCaseItem = item.toLowerCase();
+        return lowerCaseItem === "dairy" ? "milk" : lowerCaseItem;
+      });
+
   let total_unsafe_items = [];
-  thisUserAllergens.forEach(allergen => {
+  fixedAllergens.forEach(allergen => {
       const unsafe_items = allergens[allergen] || [];
       total_unsafe_items.push(...unsafe_items);
   })

@@ -14,8 +14,15 @@ import marker_90 from "../../static/images/marker90.png";   // #33FF00
 import marker_100 from "../../static/images/marker100.png"; // #0080FF
 
 function getMarkerColour(allergens, allergens_list, menu){
+    let fixedAllergens = allergens
+        .filter(item => item !== null)
+        .map(item => {
+            let lowerCaseItem = item.toLowerCase();
+            return lowerCaseItem === "dairy" ? "milk" : lowerCaseItem;
+        });
+
     let total_unsafe_items = [];
-    allergens.forEach(allergen => {
+    fixedAllergens.forEach(allergen => {
         const unsafe_items = allergens_list[allergen] || [];
         total_unsafe_items.push(...unsafe_items);
     })
@@ -103,7 +110,7 @@ export default function MapComponent() {
     useEffect(() => {
         const fetchUserData = () => {
             axios
-                .get(`/api/getUserFriends`)
+                .get(`/api/allergens`)
                 .then((response) => {
                     setUserData(response.data);
                 })
@@ -114,8 +121,6 @@ export default function MapComponent() {
 
     const thisUserAllergens = useMemo(() => {
         return userData
-            .filter(item => item.firstName.includes('Mark'))
-            .flatMap(item => item.allergens)
     }, [userData]);
 
     useEffect(() => {

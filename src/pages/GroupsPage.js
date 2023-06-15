@@ -10,7 +10,7 @@ export default function GroupsPage() {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`/api/get_groups`)
+        .get(`/api/groups`)
         .then((response) => setData(response.data))
         .catch((error) => console.log(error));
     };
@@ -21,7 +21,10 @@ export default function GroupsPage() {
     const group = document.getElementById("search-groups-input").value;
     if (group) {
       axios
-        .get(`/api/add_group/${group}`)
+        .post(`/api/groups`, {
+          mode: "add",
+          groupName: group,
+        })
         .then((response) => setData(response.data))
         .catch((error) => console.log(error));
       // window.location.reload(false);
@@ -30,7 +33,10 @@ export default function GroupsPage() {
 
   const removeGroup = (group) => {
     axios
-      .get(`/api/remove_group/${group}`)
+      .post(`/api/groups`, {
+        mode: "remove",
+        groupName: group,
+      })
       .then((response) => setData(response.data))
       .catch((error) => console.log(error));
     // window.location.reload(false);

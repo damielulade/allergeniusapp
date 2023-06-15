@@ -1,12 +1,19 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export default function AllergenCard(props) {
-  const [checked, setChecked] = useState(false);
-  // this state needs to be changed to take the db value for the allergen
+  const [checked, setChecked] = useState(props.startState);
+
+  useEffect(() => {
+    setChecked(props.startState);
+  }, [props.startState]);
 
   const handleChange = () => {
     setChecked(!checked);
-    // update the db to set this allergen
+    axios
+      .get(`/api/set_allergen/${props.allergen}/${!checked}`)
+      .then(() => {})
+      .catch((error) => console.log(error));
   };
 
   return (

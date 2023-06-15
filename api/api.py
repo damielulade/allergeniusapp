@@ -508,7 +508,19 @@ def groups():
 
 @app.route("/api/get_allergens", methods=["GET"])
 def get_allergens():
-    return {"message": f"{session['allergens']}"}
+    return session['allergens']
+
+@app.route("/api/set_allergen/<allergen>/<new_state>", methods=["GET"])
+def set_allergens(allergen, new_state):
+    temp = session['allergens']
+    if (new_state == 'true'):
+        temp.append(allergen)
+    elif (new_state == 'false'):
+        temp.remove(allergen)
+    session['allergens'] = list(set(temp))
+    session.modified = True
+    db.child("user").child(session['key']).child("allergens").set(session['allergens'])
+    return session['allergens']
 
 @app.route("/api/get_user_token", methods=["GET"])
 def get_user_token():
@@ -559,16 +571,16 @@ def login():
         session['email'] = email
         key, data = get_user_info(email)
         session['key'] = key
-        session['allergens'] = data['allergens'] if ('allergens' in data.keys()) else []
-        session['friends'] = data['allergens'] if ('allergens' in data.keys()) else {}
-        session['groups'] = data['allergens'] if ('allergens' in data.keys()) else {}
+        session['allergens'] = list(set(data['allergens'])) if ('allergens' in data.keys()) else []
+        session['friends'] = data['friends'] if ('friends' in data.keys()) else {}
+        session['groups'] = data['groups'] if ('groups' in data.keys()) else {}
         return {"message": "Login successful."}, 200
     except Exception as e:
         return {"error": str(e)}, 401
 
 @app.route('/api/logout')
 def logout():
-    for key in ['user', 'allergens', 'friends', 'groups', 'data']:
+    for key in ['user', 'allergens', 'friends', 'groups', 'key']:
         session.pop(key, None)
     return {"message": f"{session}"}
     

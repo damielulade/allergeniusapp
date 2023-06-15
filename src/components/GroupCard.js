@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function GroupMember(props) {
   return (
@@ -6,7 +6,10 @@ function GroupMember(props) {
       <div id="group-member-name">
         <p>{props.member}</p>
       </div>
-      <button id="group-remove-user-button" onClick={props.removeUser}>
+      <button
+        id="group-remove-user-button"
+        onClick={() => props.removeUser(props.group, props.member)}
+      >
         <span>-</span>
       </button>
     </div>
@@ -15,7 +18,14 @@ function GroupMember(props) {
 
 export default function GroupCard(props) {
   const memberCards = Object.values(props.members).map((member, index) => {
-    return <GroupMember key={index} member={member} />;
+    return (
+      <GroupMember
+        key={index}
+        member={member}
+        group={props.name}
+        removeUser={props.removeUser}
+      />
+    );
   });
 
   const [dropdownState, setDropdownState] = useState(false);
@@ -30,17 +40,26 @@ export default function GroupCard(props) {
         <div id="group-title">
           <h3>{props.name}</h3>
         </div>
-        <button id="group-add-user-button" onClick={props.addUser}>
+        <button
+          id="group-add-user-button"
+          onClick={() => {
+            props.addUser(props.name, props.members);
+          }}
+        >
           <span>+</span>
-        </button>
-        <button id="group-remove-user-button" onClick={() => props.removeGroup(props.name)}>
-          <span>X</span>
         </button>
         <button id="group-dropdown-button" onClick={viewDropdown}>
           <span>^</span>
         </button>
+        <button
+          id="group-remove-user-button"
+          onClick={() => props.removeGroup(props.name)}
+        >
+          <span>X</span>
+        </button>
       </div>
       {dropdownState && <div id="group-dropdown">{memberCards}</div>}
+      {/* {false && <AddUserToGroup members={props.members}/>} */}
     </div>
   );
 }

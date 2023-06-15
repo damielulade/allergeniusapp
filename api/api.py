@@ -35,7 +35,6 @@ def refresh_info(user, key, email, privacy, allergens, friends, groups, first_na
     session['firstName'] = first_name
     session['lastName'] = last_name
     session['userImage'] = user_image
-    # I don't know if email, age, first_name and last_name need to be done
 
 
 def get_values(ref, limit=10):
@@ -99,16 +98,35 @@ def groups():
     if request.method == 'POST':
         group_name = request.json.get("groupName")
         mode = request.json.get("mode")
-        if (mode == "add"):
-            db.child("user").child(session['key']).child("groups").child(group_name).set(0)
-            session['groups'][group_name] = []
+        action = request.json.get("action")
+        if mode == "group":
+            if (action == "add"):
+                db.child("user").child(session['key']).child("groups").child(group_name).set(0)
+                session['groups'][group_name] = []
+                session.modified = True
+            elif (action == "remove"):
+                db.child("user").child(session['key']).child("groups").child(group_name).remove()
+                session['groups'].pop(group_name, None)
+                session.modified = True
+        elif mode == "member":
+            user = request.json.get("member")
+            # print(user)
+            temp = session['groups'][group_name]
+            if action == "add":
+                temp.append(user)
+            if action == "remove":
+                temp.remove(user)
+            session['groups'][group_name] = list(set(temp))
             session.modified = True
-        elif (mode == "remove"):
-            db.child("user").child(session['key']).child("groups").child(group_name).remove()
-            session['groups'].pop(group_name, None)
-            session.modified = True
+            db.child("user").child(session['key']).child("groups").set(session['groups'])
     return session['groups']
 
+
+@app.route('/api/update_db/<field>', methods=["GET"])
+def update_db(field):
+    db.child("user").child(session['key']).child(field).set(session[field])
+    return json.dumps([])
+    
 
 @app.route('/api/allergens', methods=["GET", "POST"])
 def allergens():
@@ -125,8 +143,9 @@ def allergens():
         db.child("user").child(session['key']).child("allergens").set(session['allergens'])
     return session['allergens']
 
-@app.route('/api/friends', methods=["GET", "POST"])
-def friends():
+@app.route('/api/friends', methods=["GET", "POST"], defaults={'settings': None})
+@app.route('/api/friends/<settings>', methods=["GET", "POST"])
+def friends(settings):
     if request.method == 'POST':
         friend_key = request.json.get("friendKey")
         mode = request.json.get("mode")
@@ -137,7 +156,13 @@ def friends():
             temp.pop(friend_key, None)
         session['friends'] = temp
         session.modified = True
-        db.child("user").child(session['key']).child("friends").set(temp.keys())
+        db.child("user").child(session['key']).child("friends").set(list(temp.keys()))
+    if (settings == 'live'):
+        friends = db.child("user").child(session['key']).child("friends").get().val()
+        if friends:
+            for friend in list(friends):
+                session['friends'][friend] = get_user_by_key(friend)
+                session.modified = True
     return session['friends']
 
 @app.route('/api/privacy', methods=["GET", "POST"])
@@ -151,11 +176,16 @@ def privacy():
 
 @app.route('/api/user_by_email/<email>', methods=["GET"])
 def user_by_email(email):
-    if (session['email'] == email):
-        return None
-    key, data = get_user_by_email(email)
-    return key
-
+    try:
+        if (session['email'] == email):
+            raise Exception("You cannot request the current user using this API request")
+        key, data = get_user_by_email(email)
+        if (key):
+            return key
+        else:
+            raise Exception("Server canot find a user with this email.")
+    except Exception as e:
+        return {"error": str(e)}, 500
 
 @app.route('/api/get_name', methods=["GET"])
 def get_name():
@@ -191,7 +221,7 @@ def register():
     last_name = request.json.get("lastName")
     try:
         user = auth.create_user_with_email_and_password(email, password)
-        print("I'm working!!")
+        # print("I'm working!!")
         new_ref = db.child("user").push({
             "age": age,
             "allergens": [],
@@ -240,7 +270,7 @@ def login():
 
 @app.route('/api/logout')
 def logout():
-    for key in ['user', 'allergens', 'friends', 'groups', 'key']:
+    for key in ['user', 'key', 'email', 'privacy', 'allergens', 'friends', 'groups', 'first_name', 'last_name', 'user_image']:
         session.pop(key, None)
     return {"message": "Successfully logged out"}
 

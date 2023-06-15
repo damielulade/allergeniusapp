@@ -22,7 +22,8 @@ export default function GroupsPage() {
     if (group) {
       axios
         .post(`/api/groups`, {
-          mode: "add",
+          mode: "group",
+          action: "add",
           groupName: group,
         })
         .then((response) => setData(response.data))
@@ -34,7 +35,8 @@ export default function GroupsPage() {
   const removeGroup = (group) => {
     axios
       .post(`/api/groups`, {
-        mode: "remove",
+        mode: "group",
+        action: "remove",
         groupName: group,
       })
       .then((response) => setData(response.data))
@@ -42,20 +44,37 @@ export default function GroupsPage() {
     // window.location.reload(false);
   };
 
-  const addUserToGroup = (event) => {};
+  const addUserToGroup = (group) => {
+    window.location.href = `/groups/${group}`;
+  };
 
-  const removeUserFromGroup = (event) => {};
+  const removeUserFromGroup = (group, member) => {
+    axios
+      .post(`/api/groups`, {
+        mode: "member",
+        action: "remove",
+        member: member,
+        groupName: group,
+      })
+      .then(() => {})
+      .catch((error) => console.log(error));
+    axios
+      .get("/api/update_db/groups")
+      .then(() => {})
+      .catch((error) => console.log(error));
+    window.location.href = `/groups`;
+  };
 
   var groups = Object.entries(data).map((group) => {
     return (
-      <GroupCard
-        key={group}
-        name={group[0]}
-        members={group[1]}
-        removeGroup={removeGroup}
-        addUser={addUserToGroup}
-        removeUser={removeUserFromGroup}
-      />
+        <GroupCard
+          key={group}
+          name={group[0]}
+          members={group[1]}
+          removeGroup={removeGroup}
+          addUser={addUserToGroup}
+          removeUser={removeUserFromGroup}
+        />
     );
   });
 

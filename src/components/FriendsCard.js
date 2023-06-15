@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import userimg from "../static/images/user.png";
 
 export default function FriendsCard(props) {
@@ -9,7 +8,7 @@ export default function FriendsCard(props) {
     setDropdownState(!dropdownState);
   };
 
-  const allergens = props.info.allergens.map((allergen) => {
+  const allergens = props.info.allergens?.map((allergen) => {
     return <p>- {allergen}</p>;
   });
 
@@ -24,15 +23,24 @@ export default function FriendsCard(props) {
         </p>
         <p id="friends-desc">{props.info.email}</p>
       </div>
-      {props.info.privacy && (
+      {!props.info.privacy && props.displayAllergens && (
         <div id="friend-delete-button" onClick={viewDetails}>
-          <p>see allergens</p>
+          <p>{dropdownState ? "Hide" : "View"} Allergens</p>
         </div>
       )}
       {dropdownState && (
         <div>
-          <p id="friends-desc">Allergens</p>
-          <div id="friends-desc">{allergens}</div>
+          {props.info.allergens && (
+            <div>
+              <p id="friends-desc">Allergens</p>
+              <div id="friends-desc">{allergens}</div>
+            </div>
+          )}
+          {!props.info.allergens && (
+            <div>
+              <p id="friends-desc">Allergens: NONE SPECIFIED</p>
+            </div>
+          )}
         </div>
       )}
       {/* <img src={userimg} id="userimg1" /> */}

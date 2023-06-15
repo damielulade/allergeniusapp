@@ -5,20 +5,27 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function FriendsPage() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`/api/friends`)
-        .then((response) => setData(response.data))
+        .get(`/api/friends/live`)
+        .then((response) => {
+          if (response.data === undefined) {
+            console.log(response.data);
+          } else {
+            console.log(Object.entries(response.data));
+            setData(Object.entries(response.data));
+          }
+        })
         .catch((error) => console.log(error));
     };
     fetchData();
     // console.log(data)
   }, []);
 
-  const [temp, setTemp] = useState(null)
+  const [temp, setTemp] = useState(null);
 
   const findFriend = () => {
     const email = document.getElementById("search-friends-input").value;
@@ -32,28 +39,18 @@ export default function FriendsPage() {
         })
         .catch((error) => console.log(error));
       if (temp) {
-        console.log(temp)
+        console.log(temp);
         axios
-          .post(`/api/friends`, {
+          .post(`/api/friends/live`, {
             mode: "add",
             friendKey: temp,
           })
           .then((response) => setData(response.data))
           .catch((error) => console.log(error));
       }
-      // window.location.reload(false); 
+      // window.location.reload(false);
     }
   };
-
-  var friends = Object.entries(data).map((friend) => {
-    return (
-      <FriendsCard
-        key={friend}
-        id={friend[0]}
-        info={friend[1]}
-      />
-    );
-  })  
 
   return (
     <div className="section">
@@ -73,7 +70,18 @@ export default function FriendsPage() {
             </button>
           </div>
           <h2 id="friends-title">Existing Friends</h2>
-          <div className="friends-scrollable">{friends}</div>
+          <div className="friends-scrollable">
+            {data?.map((friend) => {
+              return (
+                <FriendsCard
+                  key={friend}
+                  id={friend[0]}
+                  info={friend[1]}
+                  displayAllergens={true}
+                />
+              );
+            })}
+          </div>
         </div>
         <div className="button-bar">
           <Link to="/friends" id="friends-button">

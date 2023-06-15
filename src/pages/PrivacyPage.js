@@ -1,17 +1,19 @@
 import React from "react";
 import MainHeaderForAccount from "../components/main/MainHeaderForAccount";
-import RadioComponent from '../components/utility/PrivacyRadioButton';
+import RadioComponent from "../components/utility/PrivacyRadioButton";
 
 export default function PrivacyPage() {
-    return (
-      <div className="section">
-          <div className="main">
-              <MainHeaderForAccount/>
-              <div className="container-other">
-                  <h2 id="privacy-title">Do you want others to see your allergen info?</h2>
-                  <RadioComponent />
-              </div>
-          </div>
+  return (
+    <div className="section">
+      <div className="main">
+        <MainHeaderForAccount />
+        <div className="container-other">
+          <h2 id="privacy-title">
+            Do you want others to see your allergen info?
+          </h2>
+          <RadioComponent />
+        </div>
       </div>
-  )
+    </div>
+  );
 }

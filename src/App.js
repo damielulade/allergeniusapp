@@ -11,6 +11,7 @@ import SettingsPage from './pages/SettingsPage';
 import GroupsPage from './pages/GroupsPage';
 import RestaurantInfoPage from "./components/utility/RestaurantPage";
 import LoginPage from './pages/LoginPage';
+import AddUserToGroup from './components/utility/AddUserToGroup';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path='/restaurant-info/:id' element={<RestaurantInfoPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path='/groups' element={<GroupsPage />} />
+        <Route path='/groups/:id' element={<AddUserToGroup />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

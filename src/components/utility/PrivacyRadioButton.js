@@ -1,33 +1,62 @@
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
 export default function RadioComponent() {
-    const [selectedOption, setSelectedOption] = useState(0);
-    const handleOptionChange = (event) => {
-        const value = event.target.value;
-        setSelectedOption(value);
-    };
+  const [selectedOption, setSelectedOption] = useState();
 
-    return (
-        <div className = "privacy-setting">
-            <label>
-                <input
-                    type = "radio" id="public" name="public-private-privacy"
-                    value = {0} defaultChecked = {selectedOption === 0}
-                    onChange = {handleOptionChange}
-                />
-                <span>Yes</span>
-            </label>
+  const fetchData = async () => {
+    try {
+      let response = await axios.get('/api/privacy');
+      let data = await JSON.parse(response.data);
+      console.log("collected data is " + data)
+      setSelectedOption(data ? 'no' : 'yes');
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-            <label>
-                <input
-                    type = "radio" id="private" name="public-private-privacy"
-                    value = {1} defaultChecked = {selectedOption === 1}
-                    onChange = {handleOptionChange}
-                />
-                <span>No</span>
-            </label>
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-            {/*<p>Selected Option: {selectedOption}</p>*/}
-        </div>
-    );
+  const handleOptionChange = (event) => {
+    const value = event.target.value;
+    setSelectedOption(value);
+    console.log("updated data is " + value);
+    axios
+      .post("/api/privacy", {
+        newState: value === 'no',
+      })
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
+  return (
+    <div className="privacy-setting">
+      <label>
+        <input
+          type="radio"
+          id="public"
+          name="public-private-privacy"
+          value={"yes"}
+          defaultChecked={selectedOption === "yes"}
+          onChange={handleOptionChange}
+        />
+        <span>Yes</span>
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          id="private"
+          name="public-private-privacy"
+          value={"no"}
+          defaultChecked={selectedOption === "no"}
+          onChange={handleOptionChange}
+        />
+        <span>No</span>
+      </label>
+    </div>
+  );
 }

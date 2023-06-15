@@ -24,9 +24,11 @@ auth = firebase.auth()
 app.secret_key = "secretive"
 
 
-def refresh_info(user, key, allergens, friends, groups, first_name, last_name, user_image):
+def refresh_info(user, key, email, privacy, allergens, friends, groups, first_name, last_name, user_image):
     session['user'] = user
     session['key'] = key
+    session['email'] = email
+    session['privacy'] = privacy
     session['allergens'] = allergens
     session['friends'] = friends
     session['groups'] = groups
@@ -42,18 +44,19 @@ def get_values(ref, limit=10):
         res.append(record.val())
     return res
 
-
 def delete_values(ref):
     for record in ref.get().each():
         key = record.key()
         ref.child(key).remove()
 
-
-def get_user_info(email):
+def get_user_by_email(email):
     for user in db.child("user").get().each():
         if user.val().get('email') == email:
             return user.key(), user.val()
-    return None
+    return None, None
+
+def get_user_by_key(key):
+    return db.child("user").child(key).get().val()
 
 
 def foo():
@@ -122,6 +125,37 @@ def allergens():
         db.child("user").child(session['key']).child("allergens").set(session['allergens'])
     return session['allergens']
 
+@app.route('/api/friends', methods=["GET", "POST"])
+def friends():
+    if request.method == 'POST':
+        friend_key = request.json.get("friendKey")
+        mode = request.json.get("mode")
+        temp = session['friends']
+        if (mode == "add"):
+            temp[friend_key] = get_user_by_key(friend_key)
+        elif (mode == "remove"):
+            temp.pop(friend_key, None)
+        session['friends'] = temp
+        session.modified = True
+        db.child("user").child(session['key']).child("friends").set(temp.keys())
+    return session['friends']
+
+@app.route('/api/privacy', methods=["GET", "POST"])
+def privacy():
+    if request.method == 'POST':
+        new_state = request.json.get("newState")
+        db.child("user").child(session['key']).child("privacy").set(new_state)
+        session['privacy'] = new_state
+        session.modified = True
+    return json.dumps(session['privacy'])
+
+@app.route('/api/user_by_email/<email>', methods=["GET"])
+def user_by_email(email):
+    if (session['email'] == email):
+        return None
+    key, data = get_user_by_email(email)
+    return key
+
 
 @app.route('/api/get_name', methods=["GET"])
 def get_name():
@@ -162,13 +196,14 @@ def register():
             "age": age,
             "allergens": [],
             "firstName": first_name,
-            "friends": {},
+            "friends": [],
             "groups": {},
             "lastName": last_name,
             "email": email,
+            "privacy": False,
             "userImage": "default"
         })
-        refresh_info(user['idToken'], new_ref['name'], [], {}, {}, first_name, last_name, "default")
+        refresh_info(user['idToken'], new_ref['name'], email, False, [], {}, {}, first_name, last_name, "default")
         # print(first_name)
         # print(last_name)
         return {"message": "User created successfully."}, 200
@@ -183,17 +218,21 @@ def login():
     try:
         user = auth.sign_in_with_email_and_password(email, password)
         user = auth.refresh(user['refreshToken'])
-        key, data = get_user_info(email)
+        key, data = get_user_by_email(email)
         allergens = list(set(data['allergens'])) if ('allergens' in data.keys()) else []
-        friends = data['friends'] if ('friends' in data.keys()) else {}
+        friends = {}
+        if 'friends' in data.keys():
+            for friend in data['friends']:
+                friends[friend] = get_user_by_key(friend)
         groups = data['groups'] if ('groups' in data.keys()) else {}
+        privacy = data['privacy'] if ('privacy' in data.keys()) else False
 
         first_name = data['firstName'] if ('firstName' in data.keys()) else {}
         last_name = data['lastName'] if ('lastName' in data.keys()) else {}
 
         user_image = data['userImage'] if ('userImage' in data.keys()) else "default"
 
-        refresh_info(user['idToken'], key, allergens, friends, groups, first_name, last_name, user_image)
+        refresh_info(user['idToken'], key, email, privacy, allergens, friends, groups, first_name, last_name, user_image)
         return {"message": "Login successful."}, 200
     except Exception as e:
         return {"error": str(e)}, 401

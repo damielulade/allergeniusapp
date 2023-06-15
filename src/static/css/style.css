@@ -606,7 +606,11 @@ input:focus {
 }
 
 #friend-description-box {
-  width: 70%;
+  width: 60%;
+}
+
+#friend-delete-button {
+  width: 10%;
 }
 
 #friend1-name, #friend2-name, #friend3-name, #friend4-name {

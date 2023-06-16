@@ -40,23 +40,27 @@ export default function GroupCard(props) {
         <div id="group-title">
           <h3>{props.name}</h3>
         </div>
-        <button
-          id="group-add-user-button"
-          onClick={() => {
-            props.addUser(props.name, props.members);
-          }}
-        >
-          <span>+</span>
-        </button>
-        <button id="group-dropdown-button" onClick={viewDropdown}>
-          <span>^</span>
-        </button>
-        <button
-          id="group-remove-user-button"
-          onClick={() => props.removeGroup(props.name)}
-        >
-          <span>X</span>
-        </button>
+        {!props.hideButtons && (
+          <section>
+            <button
+              id="group-add-user-button"
+              onClick={() => {
+                props.addUser(props.name, props.members);
+              }}
+            >
+              <span>+</span>
+            </button>
+            <button id="group-dropdown-button" onClick={viewDropdown}>
+              <span>^</span>
+            </button>
+            <button
+              id="group-remove-user-button"
+              onClick={() => props.removeGroup(props.name)}
+            >
+              <span>X</span>
+            </button>
+          </section>
+        )}
       </div>
       {dropdownState && <div id="group-dropdown">{memberCards}</div>}
       {/* {false && <AddUserToGroup members={props.members}/>} */}

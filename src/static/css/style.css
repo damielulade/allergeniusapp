@@ -740,13 +740,17 @@ h3 {
   width: 5%;
 }
 
-#restaurant-filter-checks, #allergenchecks {
+#restaurant-filter-checks, #allergenchecks, #settings-group-filter {
   margin: 5%;
 }
 
 .restaurant-info {
   margin-left: 5%;
   margin-right: 5%;
+}
+
+#filter-type-section {
+  margin-top: 20%;
 }
 
 .view-setting label {

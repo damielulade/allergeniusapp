@@ -35,6 +35,7 @@ def refresh_info(user, key, email, privacy, allergens, friends, groups, first_na
     session['firstName'] = first_name
     session['lastName'] = last_name
     session['userImage'] = user_image
+    session['current_filter'] = "Myself"
 
 
 def get_values(ref, limit=10):
@@ -101,7 +102,7 @@ def groups():
         action = request.json.get("action")
         if mode == "group":
             if (action == "add"):
-                db.child("user").child(session['key']).child("groups").child(group_name).set(0)
+                # db.child("user").child(session['key']).child("groups").child(group_name).set(0)
                 session['groups'][group_name] = []
                 session.modified = True
             elif (action == "remove"):
@@ -173,6 +174,26 @@ def privacy():
         session['privacy'] = new_state
         session.modified = True
     return json.dumps(session['privacy'])
+
+@app.route('/api/current_filter/<mode>', methods=["GET", "POST"])
+def current_filter(mode):
+    if mode == "setting":
+        if request.method == 'POST':
+            new_state = request.json.get("newState")
+            session['current_filter'] = new_state
+            session.modified = True
+    if mode == "allergens":
+        filter = session['current_filter']
+        if filter == "Myself":
+            return session['allergens']
+        else:
+            res = session['allergens']
+            users = session['groups'][filter]
+            for user in users:
+                data = db.child("user").child(user).child("allergens").get().val()
+                res.extend(data)
+            return list(set(res))
+    return json.dumps(session['current_filter'])
 
 @app.route('/api/user_by_email/<email>', methods=["GET"])
 def user_by_email(email):

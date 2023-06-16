@@ -291,7 +291,7 @@ def login():
 
 @app.route('/api/logout')
 def logout():
-    for key in ['user', 'key', 'email', 'privacy', 'allergens', 'friends', 'groups', 'first_name', 'last_name', 'user_image']:
+    for key in ['user', 'key', 'email', 'privacy', 'allergens', 'friends', 'groups', 'first_name', 'last_name', 'user_image', 'current_filter']:
         session.pop(key, None)
     return {"message": "Successfully logged out"}
 

@@ -580,12 +580,7 @@ input:focus {
 
 .friends-scrollable {
   overflow: scroll;
-  max-height: 67.75%;
-}
-
-#friends-page-img {
-  width: 80%;
-  align-self: center;
+  max-height: 65%;
 }
 
 #friends-img, #account-img {
@@ -596,8 +591,6 @@ input:focus {
 
 #friend1 {
   margin: 2.5% 5%;
-  padding-left: 5%;
-  padding-right: 5%;
   box-sizing: border-box;
   border: solid black 1px;
   color: black;
@@ -605,28 +598,87 @@ input:focus {
   border-radius: 10px;
   display: inline-flex;
   flex-flow: wrap;
+  justify-content: space-between;
 }
 
-#friend-profile-picture {
-  display: inline-flex;
-  width: 30%;
-}
-
-#friend-description-box {
-  width: 70%;
-}
-
-#friend-delete-button {
+.friend-card {
+  margin: 2.5% 5%;
+  box-sizing: border-box;
+  border: solid var(--triadicappcolor2) 1px;
+  border-radius: 10px;
+  color: black;
+  display: flex;
   width: 90%;
 }
 
-#friend1-name, #friend2-name, #friend3-name, #friend4-name {
-  font-weight: bold;
-  width: 100%;
+.friend-profile-picture {
+  flex: 1;
+  display: inline;
+  justify-content: center;
+  align-items: center;
 }
 
-#friends-desc {
+#friends-page-img {
+  margin: 15%;
+  width: 70%;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 2.5px var(--triadicappcolor2);
+}
+
+.friend-details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.friend-description-box {
+  flex: 3;
+}
+
+.friend-allergen-box{
+  flex: 4;
+}
+
+.friend-delete-button {
+}
+
+.view-hide {
+  width: 75%;
+  margin: 0;
+  padding: 2.5%;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: solid var(--triadicappcolor2) 1px;
+  background-color: var(--triadicappcolor2);
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.friend-name {
+  font-weight: bold;
+}
+
+.friends-desc {
   width: 100%;
+  font-size: small;
+}
+
+.friends-allergen-block {
+  border: solid var(--triadicappcolor2) 1px;
+  border-radius: 10px;
+  width: 65%;
+  padding: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  flex: 1;
+}
+
+.friends-allergen-list-title {
+  margin-top: 0;
+}
+
+.friends-allergen-list {
 }
 
 #friends-title {
@@ -642,7 +694,7 @@ input:focus {
   margin: 2.5% 5%;
   padding: 2% 5%;
   box-sizing: border-box;
-  border: solid black 1px;
+  border: solid var(--triadicappcolor2) 1px;
   color: black;
   background-color: rgb(255, 255, 255, 0.5);
   border-radius: 10px;
@@ -651,17 +703,19 @@ input:focus {
 }
 
 #group-member-card {
-  width: 100%;
-  margin: 2.5% 5%;
+  width: 95%;
+  margin: 1% 2.5%;
   padding-left: 5%;
   padding-right: 5%;
   box-sizing: border-box;
-  border: solid black 1px;
+  border: solid var(--triadicappcolor2) 1px;
+  border-radius: 10px;
   color: black;
   background-color: rgb(255, 255, 255, 0.5);
-  border-radius: 10px;
   display: inline-flex;
   flex-flow: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #group-header {
@@ -671,20 +725,32 @@ input:focus {
 #group-title, #group-member-name {
   display: inline-flex;
   width: 70%;
+  margin-bottom: 0;
 }
 
-#group-add-user-button, #group-remove-user-button #group-dropdown-button {
+#group-add-user-button, #group-dropdown-button, #group-delete-group-button {
   display: inline-flex;
-  width: 10%;
+  background-color: var(--triadicappcolor2);
+  border: solid var(--triadicappcolor2) 1px;
+  border-radius: 10px;
+  justify-content: center;
+  color: white;
+  font-size: large;
 }
 
-/* #group-remove-user-button {
+#group-remove-user-button {
   display: inline-flex;
-  width: 20%;
-} */
+  background-color: var(--triadicappcolor2);
+  border: solid var(--triadicappcolor2) 1px;
+  border-radius: 10px;
+  justify-content: center;
+  color: white;
+  font-size: large;
+}
 
-#group-dropdown {
-  /* position: absolute; */
+#group-button-bar {
+  margin-bottom: 2.5%;
+  display: flex;
 }
 
 #search-friends, #search-groups {
@@ -728,6 +794,7 @@ input:focus {
   align-items: center;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 #settings-title {
@@ -931,6 +998,17 @@ h3 {
   /* On mouse-over, add a grey background color */
   .checkbox-container:hover input ~ .checkmark {
     background-color: var(--inputbackgrounddarker);
+  }
+
+  .friends-scrollable {
+    overflow: scroll;
+    max-height: 67.75%;
+  }
+
+  #group-add-user-button, #group-dropdown-button, #group-delete-group-button, #group-remove-user-button {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 2.5%;
   }
 }
 

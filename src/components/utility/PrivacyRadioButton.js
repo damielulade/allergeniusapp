@@ -9,7 +9,7 @@ export default function RadioComponent() {
     try {
       let response = await axios.get('/api/privacy');
       let data = await JSON.parse(response.data);
-      console.log("collected data is " + data)
+      // console.log("collected data is " + data)
       setSelectedOption(data ? 'no' : 'yes');
     } catch (error) {
       console.log(error)
@@ -23,7 +23,7 @@ export default function RadioComponent() {
   const handleOptionChange = (event) => {
     const value = event.target.value;
     setSelectedOption(value);
-    console.log("updated data is " + value);
+    // console.log("updated data is " + value);
     axios
       .post("/api/privacy", {
         newState: value === 'no',

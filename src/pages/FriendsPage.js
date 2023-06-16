@@ -13,9 +13,9 @@ export default function FriendsPage() {
         .get(`/api/friends/live`)
         .then((response) => {
           if (response.data === undefined) {
-            console.log(response.data);
+            // console.log(response.data);
           } else {
-            console.log(Object.entries(response.data));
+            // console.log(Object.entries(response.data));
             setData(Object.entries(response.data));
           }
         })
@@ -39,7 +39,7 @@ export default function FriendsPage() {
         })
         .catch((error) => console.log(error));
       if (temp) {
-        console.log(temp);
+        // console.log(temp);
         axios
           .post(`/api/friends/live`, {
             mode: "add",

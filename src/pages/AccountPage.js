@@ -13,7 +13,7 @@ export default function AccountPage() {
     };
 
     function parseImage(userImage) {
-        console.log(userImage);
+        // console.log(userImage);
         if (userImage === null || userImage === "" || userImage === "default") {
             return blank_user_img;
         } else {

@@ -26,31 +26,34 @@ export default function FriendsPage() {
   }, []);
 
   const [temp, setTemp] = useState(null);
+  const [isFindFriendCalled, setIsFindFriendCalled] = useState(false);
 
   const findFriend = () => {
     const email = document.getElementById("search-friends-input").value;
     if (email) {
-      // var user_key;
       axios
         .get(`/api/user_by_email/${email}`)
         .then((response) => {
           setTemp(response.data);
-          // console.log(response.data);
+          setIsFindFriendCalled(true);
         })
-        .catch((error) => console.log(error));
-      if (temp) {
-        // console.log(temp);
-        axios
-          .post(`/api/friends/live`, {
-            mode: "add",
-            friendKey: temp,
-          })
-          .then((response) => setData(response.data))
-          .catch((error) => console.log(error));
-      }
-      // window.location.reload(false);
+        .catch((error) => console.log(error))
     }
   };
+
+  useEffect(() => {
+    if (isFindFriendCalled && temp) {
+      axios
+        .post(`/api/friends/live`, {
+          mode: "add",
+          friendKey: temp
+        })
+        .then((response) => setData(Object.entries(response.data)))
+        .catch((error) => console.log(error))
+    }
+    console.log(data);
+    setIsFindFriendCalled(false);
+  }, [isFindFriendCalled, temp])
 
   return (
     <div className="section">

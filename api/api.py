@@ -44,16 +44,19 @@ def get_values(ref, limit=10):
         res.append(record.val())
     return res
 
+
 def delete_values(ref):
     for record in ref.get().each():
         key = record.key()
         ref.child(key).remove()
+
 
 def get_user_by_email(email):
     for user in db.child("user").get().each():
         if user.val().get('email') == email:
             return user.key(), user.val()
     return None, None
+
 
 def get_user_by_key(key):
     return db.child("user").child(key).get().val()
@@ -156,7 +159,8 @@ def friends(settings):
         elif (mode == "remove"):
             temp.pop(friend_key, None)
         session['friends'] = temp
-        session.modified = True
+        print("Looking for temp keys work as below:")
+        print(list(temp.keys()))
         db.child("user").child(session['key']).child("friends").set(list(temp.keys()))
     if (settings == 'live'):
         friends = db.child("user").child(session['key']).child("friends").get().val()
@@ -164,6 +168,8 @@ def friends(settings):
             for friend in list(friends):
                 session['friends'][friend] = get_user_by_key(friend)
                 session.modified = True
+        print("Looking for friends list")
+        print(session)
     return session['friends']
 
 @app.route('/api/privacy', methods=["GET", "POST"])

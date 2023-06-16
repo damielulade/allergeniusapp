@@ -225,6 +225,11 @@ def get_user_image():
         return session['userImage']
     except KeyError:
         return ""
+    
+@app.route('/api/get_friend_name', methods=["GET"])
+def get_friend_name(member):
+    friend = db.child("user").child(member.id).get()
+    return (friend["firstname"] + " " + friend["lastName"])
 
 
 @app.route("/api/get_user_token", methods=["GET"])

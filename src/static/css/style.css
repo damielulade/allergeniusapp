@@ -158,6 +158,7 @@ body {
   box-sizing: border-box;
   border: solid var(--triadicappcolor1) 1px;
   border-bottom: solid black 1px;
+  border-top: solid black 1px;
   display: flex;
   align-items: center;
   z-index: 10;
@@ -393,6 +394,12 @@ input:focus {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+#userimg {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 .user-image-box {

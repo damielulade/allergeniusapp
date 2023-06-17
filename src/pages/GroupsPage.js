@@ -6,15 +6,22 @@ import axios from "axios";
 
 export default function GroupsPage() {
   const [data, setData] = useState([]);
+  const [friends, setFriends] = useState([]);
+
+  const getAllData = async () => {
+    try {
+      const groupResponse = await axios.get(`/api/groups`);
+      const friendsResponse = await axios.get(`/api/friends`);
+      setData(groupResponse.data);
+      if (!(friendsResponse.data === undefined))
+        setFriends(Object.entries(friendsResponse.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = () => {
-      axios
-        .get(`/api/groups`)
-        .then((response) => setData(response.data))
-        .catch((error) => console.log(error));
-    };
-    fetchData();
+    getAllData();
   }, []);
 
   const addGroup = () => {
@@ -48,33 +55,32 @@ export default function GroupsPage() {
     window.location.href = `/groups/${group}`;
   };
 
-  const removeUserFromGroup = (group, member) => {
-    axios
-      .post(`/api/groups`, {
+  const removeUserFromGroup = async (group, member) => {
+    try {
+      await axios.post(`/api/groups`, {
         mode: "member",
         action: "remove",
         member: member,
         groupName: group,
-      })
-      .then(() => {})
-      .catch((error) => console.log(error));
-    axios
-      .get("/api/update_db/groups")
-      .then(() => {})
-      .catch((error) => console.log(error));
+      });
+      await axios.get("/api/update_db/groups");
+    } catch (error) {
+      console.log(error);
+    }
     window.location.href = `/groups`;
   };
 
   var groups = Object.entries(data).map((group) => {
     return (
-        <GroupCard
-          key={group}
-          name={group[0]}
-          members={group[1]}
-          removeGroup={removeGroup}
-          addUser={addUserToGroup}
-          removeUser={removeUserFromGroup}
-        />
+      <GroupCard
+        key={group}
+        name={group[0]}
+        members={group[1]}
+        friendsData={friends}
+        removeGroup={removeGroup}
+        addUser={addUserToGroup}
+        removeUser={removeUserFromGroup}
+      />
     );
   });
 

@@ -601,14 +601,16 @@ input:focus {
   justify-content: space-between;
 }
 
-.friend-card {
+.friend-card, .friend-card-no-border {
   margin: 2.5% 5%;
   box-sizing: border-box;
-  border: solid var(--triadicappcolor2) 1px;
-  border-radius: 10px;
   color: black;
   display: flex;
   width: 90%;
+}
+.friend-card {
+  border: solid var(--triadicappcolor2) 1px;
+  border-radius: 10px;
 }
 
 .friend-profile-picture {
@@ -705,14 +707,14 @@ input:focus {
 #group-member-card {
   width: 95%;
   margin: 1% 2.5%;
-  padding-left: 5%;
+  /* padding-left: 5%; */
   padding-right: 5%;
   box-sizing: border-box;
   border: solid var(--triadicappcolor2) 1px;
   border-radius: 10px;
   color: black;
   background-color: rgb(255, 255, 255, 0.5);
-  display: inline-flex;
+  /* display: inline-flex; */
   flex-flow: wrap;
   justify-content: space-between;
   align-items: center;
@@ -724,7 +726,7 @@ input:focus {
 
 #group-title, #group-member-name {
   display: inline-flex;
-  width: 70%;
+  width: 90%;
   margin-bottom: 0;
 }
 
@@ -738,7 +740,13 @@ input:focus {
   font-size: large;
 }
 
+#group-dropdown {
+  width: 100%;
+}
+
 #group-remove-user-button {
+  position:static;
+  width: 10%;
   display: inline-flex;
   background-color: var(--triadicappcolor2);
   border: solid var(--triadicappcolor2) 1px;
@@ -952,7 +960,7 @@ h3 {
     box-sizing: border-box;
   }
 
-  .container-friends {
+  .container-friends, .container-groups {
     width: 40%;
     right: 30%;
     left: 30%;

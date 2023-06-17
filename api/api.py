@@ -218,7 +218,7 @@ def view():
 @app.route('/api/user_by_email/<email>', methods=["GET"])
 def user_by_email(email):
     try:
-        if (session['email'] == email):
+        if (session['email'] == email.lower()):
             raise Exception("You cannot request the current user using this API request")
         key, data = get_user_by_email(email)
         if (key):
@@ -276,11 +276,11 @@ def register():
             "friends": [],
             "groups": {},
             "lastName": last_name,
-            "email": email,
+            "email": email.lower(),
             "privacy": False,
             "userImage": "default"
         })
-        refresh_info(user['idToken'], new_ref['name'], email, False, [], {}, {}, first_name, last_name, "default")
+        refresh_info(user['idToken'], new_ref['name'], email.lower(), False, [], {}, {}, first_name, last_name, "default")
         # print(first_name)
         # print(last_name)
         return {"message": "User created successfully."}, 200
@@ -295,7 +295,7 @@ def login():
     try:
         user = auth.sign_in_with_email_and_password(email, password)
         user = auth.refresh(user['refreshToken'])
-        key, data = get_user_by_email(email)
+        key, data = get_user_by_email(email.lower())
         allergens = list(set(data['allergens'])) if ('allergens' in data.keys()) else []
         friends = {}
         if 'friends' in data.keys():
@@ -309,7 +309,7 @@ def login():
 
         user_image = data['userImage'] if ('userImage' in data.keys()) else "default"
 
-        refresh_info(user['idToken'], key, email, privacy, allergens, friends, groups, first_name, last_name, user_image)
+        refresh_info(user['idToken'], key, email.lower(), privacy, allergens, friends, groups, first_name, last_name, user_image)
         return {"message": "Login successful."}, 200
     except Exception as e:
         return {"error": str(e)}, 401

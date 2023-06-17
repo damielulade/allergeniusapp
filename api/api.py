@@ -1091,6 +1091,34 @@ tapasBrindisa = {
     "tags": ["Greek"]
 }
 
+bellaItalia = {
+    "name": "Bella Italia",
+    "location": "location coordinates",
+    "city": "London",
+    "menu": ["Green Olives", "Black Olives", "Mixed Olives", "Calamari", "Garlic Dough Balls", "Mozzarella Dough Balls", "Meatballs", "Vegan Meatballs", "King Prawns", 
+             "GF King Prawns", "Mushroom Al-Forno", "GF Mushroom Al-Forno", "Tomato Bruschetta","GF Tomato Bruschetta", "Cheese Filled Gnocchi", "Garlic Flatbread",
+             "Vegan Garlic Flatbread", "GF Garlic Flatbread", "Mozzarella & Garlic Flatbread", "Vegan Mozzarella & Garlic Flatbread", "GF Mozzarella & Garlic Flatbread",
+             "Caramelised Onion Flatbread", "GF Caramelised Onion Flatbread", "Tomato & Basil Flatbread", "GF Tomato & Basil Flatbread", ],
+    "ratings": ["4.20"],
+    "allergens": {
+        "celery": ["Garlic Dough Balls", "Mozzarella Dough Balls", ],
+        "cereals": ["Calamari", "Garlic Dough Balls", "Mozzarella Dough Balls", ],
+        "crustaceans": ["Calamari", ],
+        "eggs": ["Calamari", ],
+        "fish": ["Calamari", ],
+        "lupin": ["Garlic Dough Balls", "Mozzarella Dough Balls", ],
+        "milk": ["Calamari", "Garlic Dough Balls", "Mozzarella Dough Balls", ],
+        "molluscs": ["Calamari", ],
+        "mustard": ["Calamari", ],
+        "nuts": ["Garlic Dough Balls", "Mozzarella Dough Balls", ],
+        "peanuts": ["Garlic Dough Balls", "Mozzarella Dough Balls", ],
+        "sesame seeds": ["Garlic Dough Balls", "Mozzarella Dough Balls", ],
+        "soya": ["Calamari", "Garlic Dough Balls", "Mozzarella Dough Balls", ],
+        "sulphur dioxide": ["Calamari", ],
+    },
+    "tags": ["Italian"],
+}
+
 default = {
     "name": "",
     "location": "location coordinates",

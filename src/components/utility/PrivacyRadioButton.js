@@ -2,31 +2,20 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-export default function RadioComponent() {
-  const [selectedOption, setSelectedOption] = useState();
-
-  const fetchData = async () => {
-    try {
-      let response = await axios.get('/api/privacy');
-      let data = await JSON.parse(response.data);
-      // console.log("collected data is " + data)
-      setSelectedOption(data ? 'no' : 'yes');
-    } catch (error) {
-      console.log(error)
-    }
-  }
+export default function RadioComponent(props) {
+  const [selectedOption, setSelectedOption] = useState(props.startState);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    setSelectedOption(props.startState);
+  }, [props.startState]);
 
   const handleOptionChange = (event) => {
     const value = event.target.value;
-    setSelectedOption(value);
-    // console.log("updated data is " + value);
+    setSelectedOption(JSON.parse(value));
+    console.log();
     axios
       .post("/api/privacy", {
-        newState: value === 'no',
+        newState: JSON.parse(value),
       })
       .then(() => {})
       .catch((error) => console.log(error));
@@ -39,8 +28,8 @@ export default function RadioComponent() {
           type="radio"
           id="public"
           name="public-private-privacy"
-          value={"yes"}
-          defaultChecked={selectedOption === "yes"}
+          value={false}
+          defaultChecked={!selectedOption}
           onChange={handleOptionChange}
         />
         <span>Yes</span>
@@ -51,8 +40,8 @@ export default function RadioComponent() {
           type="radio"
           id="private"
           name="public-private-privacy"
-          value={"no"}
-          defaultChecked={selectedOption === "no"}
+          value={true}
+          defaultChecked={selectedOption}
           onChange={handleOptionChange}
         />
         <span>No</span>

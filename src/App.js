@@ -4,7 +4,6 @@ import AccountPage from './pages/AccountPage';
 import FilterPage from './pages/FilterPage';
 import FriendsPage from './pages/FriendsPage';
 import MyAllergenPage from './pages/MyAllergenPage';
-import PrivacyPage from './pages/PrivacyPage';
 import SearchPage from './pages/SearchPage';
 import HomePage from './pages/HomePage';
 import SettingsPage from './pages/SettingsPage';
@@ -23,7 +22,6 @@ export default function App() {
         <Route path="/filter" element={<FilterPage />} />
         <Route path="/friends" element={<FriendsPage />} />
         <Route path="/allergens" element={<MyAllergenPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path='/restaurant-info/:id' element={<RestaurantInfoPage />} />
         <Route path="/settings" element={<SettingsPage />} />

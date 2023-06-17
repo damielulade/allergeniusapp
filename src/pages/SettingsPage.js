@@ -7,33 +7,31 @@ import axios from "axios";
 import SettingsGroupCard from "../components/SettingsGroupCard";
 
 export default function SettingsPage() {
-  const [data, setData] = useState([]);
-  const [filter, setFilter] = useState("Myself")
+  const [groups, setGroups] = useState([]);
+  const [filter, setFilter] = useState("Myself");
+  const [view, setView] = useState("");
+
+  const fetchData = async () => {
+    try {
+      const groupsResponse = await axios.get(`/api/groups`);
+      const filterResponse = await axios.get("/api/current_filter/setting");
+      const viewResponse = await axios.get(`/api/view`);
+      setGroups(groupsResponse.data);
+      setFilter(filterResponse.data);
+      setView(viewResponse.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = () => {
-      axios
-        .get(`/api/groups`)
-        .then((response) => setData(response.data))
-        .catch((error) => console.log(error));
-    };
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchFilter = () => {
-      axios
-        .get("/api/current_filter/setting")
-        .then((response) => setFilter(response.data))
-        .catch((error) => console.log(error));
-    };
-    fetchFilter();
-  }, []);
+  const filterOptions = Object.entries(groups);
+  filterOptions.unshift(["Myself", {}]);
 
-  const groups = Object.entries(data)
-  groups.unshift(["Myself", {}]);
-
-  const cards = groups.map((group, index) => {
+  const cards = filterOptions.map((group, index) => {
     return (
       <SettingsGroupCard
         key={index}
@@ -50,7 +48,7 @@ export default function SettingsPage() {
         <MainHeaderVariant />
         <div className="container-other">
           <h2 id="settings-title">Settings</h2>
-          <TwoOptionRadioButton option1={"Map View"} option2={"List View"} />
+          {!(view === "") && (<TwoOptionRadioButton startState={view} />)}
           <div id="filter-type-section">
             <h2 id="settings-title">Filter out allergens by:</h2>
             <form id="settings-group-filter">{cards}</form>

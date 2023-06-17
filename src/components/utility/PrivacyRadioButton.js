@@ -12,7 +12,6 @@ export default function RadioComponent(props) {
   const handleOptionChange = (event) => {
     const value = event.target.value;
     setSelectedOption(JSON.parse(value));
-    console.log();
     axios
       .post("/api/privacy", {
         newState: JSON.parse(value),

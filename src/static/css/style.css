@@ -580,7 +580,12 @@ input:focus {
 
 .friends-scrollable {
   overflow: scroll;
-  max-height: 65%;
+  max-height: 72.5%;
+}
+
+.restaurants-scrollable {
+  overflow: scroll;
+  max-height: 77.5%;
 }
 
 #friends-img, #account-img {

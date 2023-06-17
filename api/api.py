@@ -36,6 +36,7 @@ def refresh_info(user, key, email, privacy, allergens, friends, groups, first_na
     session['lastName'] = last_name
     session['userImage'] = user_image
     session['current_filter'] = "Myself"
+    session['restaurants_view'] = "map"
 
 
 def get_values(ref, limit=10):
@@ -147,6 +148,7 @@ def allergens():
         db.child("user").child(session['key']).child("allergens").set(session['allergens'])
     return session['allergens']
 
+
 @app.route('/api/friends', methods=["GET", "POST"], defaults={'settings': None})
 @app.route('/api/friends/<settings>', methods=["GET", "POST"])
 def friends(settings):
@@ -172,6 +174,7 @@ def friends(settings):
         print(session)
     return session['friends']
 
+
 @app.route('/api/privacy', methods=["GET", "POST"])
 def privacy():
     if request.method == 'POST':
@@ -180,6 +183,7 @@ def privacy():
         session['privacy'] = new_state
         session.modified = True
     return json.dumps(session['privacy'])
+
 
 @app.route('/api/current_filter/<mode>', methods=["GET", "POST"])
 def current_filter(mode):
@@ -201,6 +205,16 @@ def current_filter(mode):
             return list(set(res))
     return json.dumps(session['current_filter'])
 
+
+@app.route('/api/view', methods=["GET", "POST"])
+def view():
+    if request.method == "POST":
+        new_state = request.json.get("newState")
+        session['restaurants_view'] = new_state
+        session.modified = True
+    return json.dumps(session['restaurants_view'])
+
+
 @app.route('/api/user_by_email/<email>', methods=["GET"])
 def user_by_email(email):
     try:
@@ -213,6 +227,7 @@ def user_by_email(email):
             raise Exception("Server canot find a user with this email.")
     except Exception as e:
         return {"error": str(e)}, 500
+
 
 @app.route('/api/get_name', methods=["GET"])
 def get_name():
@@ -241,7 +256,7 @@ def get_user_token():
 
 @app.route("/api/get_current_session", methods=["GET"])
 def get_current_session():
-    return {"message": f"{session}"}
+    return json.dumps(list(session.items()))
 
 
 @app.route("/api/register", methods=["POST"])
@@ -305,7 +320,6 @@ def logout():
     for key in ['user', 'key', 'email', 'privacy', 'allergens', 'friends', 'groups', 'first_name', 'last_name', 'user_image', 'current_filter']:
         session.pop(key, None)
     return {"message": "Successfully logged out"}
-
 
 if __name__ == '__main__':
     app.run(debug=True)

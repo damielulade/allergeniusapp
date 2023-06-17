@@ -1,11 +1,23 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useEffect } from "react";
 
 export default function TwoOptionRadioButton(props) {
-  const [selectedOption, setSelectedOption] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(props.startState);
 
-  const defaultOptionChange = (event) => {
+  useEffect(() => {
+    setSelectedOption(props.startState);
+  }, [props.startState]);
+
+  const handleOptionChange = (event) => {
     const value = event.target.value;
     setSelectedOption(value);
+    axios
+      .post("/api/view", {
+        newState: value,
+      })
+      .then(() => {})
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -15,11 +27,11 @@ export default function TwoOptionRadioButton(props) {
           type="radio"
           id="map-view"
           name="map-list-view"
-          value={0}
-          defaultChecked={selectedOption === 0}
-          onChange={defaultOptionChange}
+          value={"map"}
+          defaultChecked={selectedOption === "map"}
+          onChange={handleOptionChange}
         />
-        <span>{props.option1}</span>
+        <span>Map View</span>
       </label>
 
       <label>
@@ -27,11 +39,11 @@ export default function TwoOptionRadioButton(props) {
           type="radio"
           id="list-view"
           name="map-list-view"
-          value={1}
-          defaultChecked={selectedOption === 1}
-          onChange={defaultOptionChange}
+          value={"list"}
+          defaultChecked={selectedOption === "list"}
+          onChange={handleOptionChange}
         />
-        <span>{props.option2}</span>
+        <span>List View</span>
       </label>
 
       {/*<p>Selected Option: {selectedOption}</p>*/}

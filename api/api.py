@@ -1167,6 +1167,37 @@ bellaItalia = {
     "tags": ["Italian"],
 }
 
+francoManca = {
+    "name": "Franco Manca",
+    "location": [51.49266,-0.17710,17],
+    "city": "London",
+    "menu": ["Nocellara green olives", "Sharer platter", "Cured meats", "Sourdough pizza bread with salt & rosemary", "Garlic bread with a light tomato base", "Garlic bread with mozzarella",
+             "Burrata on toasted sourdough pizza bread bites", "Buffalo mozzarella & marinated baby plum toatoes with mint bites", "Beef ragu al forno bites", "Free range spicy Yorkshire lamb sausage bites", 
+             "Tuscan pork fennel sausage & buffalo mozzarella bruschetta", "Aubergine parmigiana", ],
+    "ratings": ["4.20"],
+    "allergens": {
+        "celery": ["Beef ragu al forno bites", ],
+        "cereals": ["Sharer Platter", "Cured meats", "Sourdough pizza bread with salt & rosemary", "Garlic bread with a light tomato base", "Garlic bread with mozzarella",
+                    "Burrata on toasted sourdough pizza bread bites", "Beef ragu al forno bites", "Tuscan pork fennel sausage & buffalo mozzarella bruschetta", ],
+        "crustaceans": [],
+        "eggs": ["Sharer Platter", "Cured meats", "Beef ragu al forno bites", "Aubergine parmigiana", ],
+        "fish": [],
+        "lupin": ["Nocellara green olives", ],
+        "milk": ["Sharer Platter", "Cured meats", "Garlic bread with mozzarella", "Burrata on toasted sourdough pizza bread bites",  "Buffalo mozzarella & marinated baby plum toatoes with mint bites", 
+                 "Beef ragu al forno bites", "Free range spicy Yorkshire lamb sausage bites", "Tuscan pork fennel sausage & buffalo mozzarella bruschetta", "Aubergine parmigiana", ],
+        "molluscs": [],
+        "mustard": ["Sharer Platter", "Cured meats", "Sourdough pizza bread with salt & rosemary", "Garlic bread with a light tomato base", "Garlic bread with mozzarella", 
+                    "Burrata on toasted sourdough pizza bread bites", "Beef ragu al forno bites", "Tuscan pork fennel sausage & buffalo mozzarella bruschetta", ],
+        "nuts": [],
+        "peanuts": [],
+        "sesame seeds": [],
+        "soya": ["Sharer Platter", "Cured meats", "Sourdough pizza bread with salt & rosemary", "Garlic bread with a light tomato base", "Garlic bread with mozzarella", 
+                 "Burrata on toasted sourdough pizza bread bites", "Beef ragu al forno bites", "Tuscan pork fennel sausage & buffalo mozzarella bruschetta", ],
+        "sulphur dioxide": ["Sharer Platter", "Beef ragu al forno bites", ],
+    },
+    "tags": [],
+}
+
 default = {
     "name": "",
     "location": "location coordinates",

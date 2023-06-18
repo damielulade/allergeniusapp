@@ -430,6 +430,10 @@ input:focus {
   display: flex;
 }
 
+#favoriteslist {
+  display: none;
+}
+
 #allergen-button, #favourites-button, #privacy-settings-button {
   text-decoration: none;
   height: 100%;

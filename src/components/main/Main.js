@@ -77,7 +77,7 @@ export default function Main() {
         </div>
       )}
       {view === "list" && (
-        <div className="container-other restaurants-scrollable">
+        <div className = "container-other restaurants-scrollable">
           {data.map((restaurant, index) => (
             <RestaurantInfoPage key={index} {...restaurant} />
           ))}

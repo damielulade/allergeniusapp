@@ -1187,7 +1187,11 @@ francoManca = {
               "Roasted butternut squash, artichoke, plum tomato, goat cheese & walnut salad", "Mixed leaves, cucumber & plum tomato side salad", "Mixed leaves, cucumber, plum tomato & black olive side salad", 
               "Affogato", "Caramel pecan cheesecake", "Chocolate & hazelnut cake with ice cream", "Homemade tiramisu", "Madagascan vanilla ice cream", "Chocolate & sea salt ice cream", 
               "Salted caramel ice cream", "Chocolate & blood orange ice cream", "Raspberry sorbet", "Lemon sorbet", "Espresso", "Macchiato", "Cappuccino", "Flat white",
-               "Americano", "Fresh mint tea", "English breakfast tea", "Grappa digestif", "Limoncello digestif", "Amaro digestif",  ],
+               "Americano", "Fresh mint tea", "English breakfast tea", "Grappa digestif", "Limoncello digestif", "Amaro digestif", "Insolia: Tenute Normanno (wine)", "Pinot Grigio: Nativo (wine)",
+               "Trebbiano: Francesco Cirelli (wine)", "Grillo: Della Mora (wine)", "Nero d'Avola: Tenute Normanno (wine)", "Nero d'Avola: Tenute Normanno (wine)", "Sangiovese: Nativo (wine)", "Montepulciano : Francesco Cirelli (wine)",
+                   "Syrah: Della Mora (wine)", "Extra dry Prosecco (wine)", "Aperol spritz", "Negroni", "Negroni Sbagliato", "Gin & Tonic", "Homemade organic lemonade",
+                   "Orange juice", "Apple juice", "San Pellegrino sparkling water", "Acqua Panna still water", "San Pellegrino Limonata", "San Pellegrino Aranciata",
+                   "Coke", "Diet Coke", "Coke Zero"],
     "ratings": ["4.20"],
     "allergens": {
         "celery": ["Beef ragu al forno bites", "Slow-cooked beef ragu, tomato, mozzarella, cheese, pancetta & basil pizza", "Slow-cooked beef ragu, tomato, mozzarella, cheese, pancetta & basil pizza GF base",
@@ -1255,7 +1259,8 @@ francoManca = {
                             "Scotch bonnet chilli dip",  "Yellowfin tuna, plum tomato, black olive, pepper salad", "Roasted butternut squash, artichoke, plum tomato, goat cheese & walnut salad", 
                             "Mixed leaves, cucumber & plum tomato side salad", "Mixed leaves, cucumber, plum tomato & black olive side salad", "Lightly smoked beechwood spicy salami, tomato, mozzarella & onion pizza GF base", 
                             "Slow-cooked beef ragu, tomato, mozzarella, cheese, pancetta & basil pizza GF base", "Tuscan pork fennel sausage, broccoli pesto base, mozzarella and Franco & Cantarelli Grana pizza GF base",
-                            ],
+                            "Insolia: Tenute Normanno (wine)", "Pinot Grigio: Nativo (wine)", "Trebbiano: Francesco Cirelli (wine)", "Grillo: Della Mora (wine)", "Nero d'Avola: Tenute Normanno (wine)", "Nero d'Avola: Tenute Normanno (wine)", "Sangiovese: Nativo (wine)", "Montepulciano : Francesco Cirelli (wine)",
+                            "Syrah: Della Mora (wine)", "Extra dry Prosecco (wine)", "Aperol spritz", "Negroni", "Negroni Sbagliato", "Gin & Tonic", ],
     },
     "tags": [],
 }

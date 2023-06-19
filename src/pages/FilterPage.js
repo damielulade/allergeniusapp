@@ -7,19 +7,21 @@ import axios from "axios";
 
 export default function MyAllergenPage() {
   const cuisines = [
-    "American",
-    "Italian",
-    "Greek",
-    "Breakfast",
-    "Fast Food",
-    "Chinese",
-    "Burgers",
-    "Sushi",
-    "Caribbean",
-    "Vietnamese",
-    "Korean",
-    "Brazilian",
-    "Pasta",
+      "American",
+      "Italian",
+      "Greek",
+      "Breakfast",
+      "Fast Food",
+      "Chinese",
+      "Burgers",
+      "Sushi",
+      "Caribbean",
+      "Vietnamese",
+      "Korean",
+      "Brazilian",
+      "Pasta",
+      "Lebanese",
+      "Spanish"
   ];
 
   const [data, setData] = useState([]);

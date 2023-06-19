@@ -90,6 +90,38 @@ export default function MapComponent() {
     []
   );
 
+  const [cuisineData, setCuisineFilter] = useState([]);
+
+  useEffect(() => {
+    const fetchUserData = () => {
+      axios
+        .get(`/api/set_restaurant_filter`)
+        .then((response) => {
+          setCuisineFilter(response.data);
+        })
+        .catch((error) => console.log(error));
+    };
+    fetchUserData();
+  }, []);
+
+  const currentCuisineFilters = useMemo(() => {
+    return cuisineData;
+  }, [cuisineData]);
+
+
+  function checkSimilarItems(list1, list2) {
+    const set1 = new Set(list1);
+    const set2 = new Set(list2);
+
+    for (const item of set1) {
+      if (set2.has(item)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   const [restaurantData, setRestaurantData] = useState([]);
 
   useEffect(() => {
@@ -105,13 +137,15 @@ export default function MapComponent() {
   }, []);
 
   const markersData = useMemo(() => {
-    return restaurantData.map((item) => ({
-      position: { lat: item.location[0], lng: item.location[1] },
-      title: item.name,
-      menu: item.menu,
-      allergens: item.allergens,
-    }));
-  }, [restaurantData]);
+    return restaurantData
+        .filter(item => checkSimilarItems(currentCuisineFilters, item.tags))
+        .map((item) => ({
+          position: { lat: item.location[0], lng: item.location[1] },
+          title: item.name,
+          menu: item.menu,
+          allergens: item.allergens,
+        }));
+    }, [restaurantData, currentCuisineFilters]);
 
   const [userData, setUserData] = useState([]);
 

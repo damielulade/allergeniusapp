@@ -24,7 +24,7 @@ auth = firebase.auth()
 app.secret_key = "secretive"
 
 
-def refresh_info(user, key, email, privacy, allergens, friends, groups, first_name, last_name, user_image):
+def refresh_info(user, key, email, privacy, allergens, friends, groups, first_name, last_name, user_image, tags):
     session['user'] = user
     session['key'] = key
     session['email'] = email
@@ -37,6 +37,7 @@ def refresh_info(user, key, email, privacy, allergens, friends, groups, first_na
     session['userImage'] = user_image
     session['current_filter'] = "Myself"
     session['restaurants_view'] = "map"
+    session['tags'] = tags
 
 
 def get_values(ref, limit=10):
@@ -184,6 +185,19 @@ def privacy():
         session.modified = True
     return json.dumps(session['privacy'])
 
+@app.route('/api/set_restaurant_filter', methods=["GET", "POST"])
+def set_restaurant_filter():
+    if request.method == 'POST':
+        cuisine = request.json.get("cuisine")
+        new_state = request.json.get("newState")
+        temp = session['tags']
+        if (new_state == True):
+            temp.append(cuisine)
+        elif (new_state == False):
+            temp.remove(cuisine)
+        session['tags'] = list(set(temp))
+        session.modified = True
+    return json.dumps(session['tags'])
 
 @app.route('/api/current_filter/<mode>', methods=["GET", "POST"])
 def current_filter(mode):
@@ -279,9 +293,9 @@ def register():
             "lastName": last_name,
             "email": email.lower(),
             "privacy": False,
-            "userImage": "default"
+            "userImage": "default",
         })
-        refresh_info(user['idToken'], new_ref['name'], email.lower(), False, [], {}, {}, first_name, last_name, "default")
+        refresh_info(user['idToken'], new_ref['name'], email.lower(), False, [], {}, {}, first_name, last_name, "default", [])
         # print(first_name)
         # print(last_name)
         return {"message": "User created successfully."}, 200
@@ -310,7 +324,7 @@ def login():
 
         user_image = data['userImage'] if ('userImage' in data.keys()) else "default"
 
-        refresh_info(user['idToken'], key, email.lower(), privacy, allergens, friends, groups, first_name, last_name, user_image)
+        refresh_info(user['idToken'], key, email.lower(), privacy, allergens, friends, groups, first_name, last_name, user_image, [])
         return {"message": "Login successful."}, 200
     except Exception as e:
         return {"error": str(e)}, 401

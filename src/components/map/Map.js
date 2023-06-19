@@ -119,6 +119,10 @@ export default function MapComponent() {
       }
     }
 
+    if(list1.length === 0){
+      return true
+    }
+
     return false;
   }
 

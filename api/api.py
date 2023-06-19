@@ -201,7 +201,8 @@ def current_filter(mode):
             users = session['groups'][filter]
             for user in users:
                 data = db.child("user").child(user).child("allergens").get().val()
-                res.extend(data)
+                if (data):
+                    res.extend(data)
             return list(set(res))
     return json.dumps(session['current_filter'])
 

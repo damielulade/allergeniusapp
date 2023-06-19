@@ -15,10 +15,16 @@ import marker_100 from "../../static/images/marker100.png"; // #0080FF
 
 function getMarkerColour(allergens, allergens_list, menu) {
   let fixedAllergens = allergens
-    .filter((item) => item !== null)
-    .map((item) => {
-      let lowerCaseItem = item.toLowerCase();
-      return lowerCaseItem === "dairy" ? "milk" : lowerCaseItem;
+      .filter((item) => item !== null)
+      .map((item) => {
+        let lowerCaseItem = item.toLowerCase();
+        if (lowerCaseItem === "dairy") {
+          return "milk";
+        } else if (lowerCaseItem === "gluten") {
+          return "cereals";
+        } else {
+          return lowerCaseItem;
+        }
     });
 
   let total_unsafe_items = [];
